@@ -4,22 +4,22 @@ import { assets } from "../assets/assets";
 
 const Kades = () => {
   return (
-    <div className="flex items-center justify-center gap-4 w-full h-auto my-8 md:,y-16 px-4 md:px-32">
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full h-auto my-8 md:,y-16 px-4 md:px-32">
       <Image
         src={assets.kades}
         alt="Kades"
         width={200}
         height={200}
-        className="rounded-full"
+        className="rounded-full w-40 h-40 md:w-60 md:h-60 object-cover"
       />
       <div className="">
-        <h1 className="text-3xl font-bold text-hijau-tua">
+        <h1 className="text-2xl sm:text-3xl font-bold text-hijau-tua">
           Sambutan Kepala Desa
         </h1>
         <span className="font-bold text-l md:text-xl mb-2">
           Mario Sp.d, Pp.h
         </span>
-        <p className="mt-2">
+        <p className="text-xs sm:text-base mt-2">
           Website ini kami hadirkan sebagai bagian dari upaya meningkatkan
           transparansi, partisipasi, dan pelayanan publik yang lebih baik di
           desa kita. Melalui media ini, kami berharap dapat memudahkan warga
