@@ -2,6 +2,8 @@ import Hero from "@/src/components/Hero";
 import Kades from "@/src/components/Kades";
 import Intro from "@/src/components/Intro";
 import Data from "@/src/components/Data";
+import PetaDesaSection from "@/src/components/Map";
+import SotkSection from "@/src/components/Sotk";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <Kades />
       <Intro />
       <Data />
+      <PetaDesaSection />
+      <SotkSection />
     </main>
   );
 }
