@@ -8,9 +8,7 @@ const Kades = () => {
       <Image
         src={assets.kades}
         alt="Kades"
-        width={200}
-        height={200}
-        className="rounded-full w-40 h-40 md:w-60 md:h-60 object-cover"
+        className="rounded-full w-30 h-30 md:w-50 md:h-50 object-cover"
       />
       <div className="">
         <h1 className="text-2xl sm:text-3xl font-bold text-hijau-tua">

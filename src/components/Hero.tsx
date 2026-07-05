@@ -6,7 +6,7 @@ import Image from "next/image";
 const Hero = () => {
   return (
     // 1. Parent harus 'relative', 'w-full', dan memiliki tinggi tetap (h-[75vh])
-    <div className="relative w-full h-[75vh] overflow-hidden flex flex-col bg-[linear-gradient(#1F7943,#0C3B1F)] ">
+    <div className="relative w-full h-[50vh] md:h-[80vh] overflow-hidden flex flex-col bg-[linear-gradient(#1F7943,#0C3B1F)] ">
       {/* 2. Image menggunakan fill dan object-cover agar pas 100% tanpa distorsi */}
       <Image
         src={assets.desa}
