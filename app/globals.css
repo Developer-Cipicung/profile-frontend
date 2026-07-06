@@ -4,12 +4,18 @@
   --background: #ffffff;
   --foreground: #171717;
   --hijau-tua: #165E33;
+  --hijau: #36C56F;
+  --hijau-muda: #83FFBB;
+  --kuning: #E8B921;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-hijau-tua: var(--hijau-tua);
+  --color-hijau: var(--hijau);
+  --color-hijau-muda: var(--hijau-muda);
+  --color-kuning: var(--kuning);
   --font-sans: var(--font-noto-sans);
 }
 

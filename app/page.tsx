@@ -4,6 +4,8 @@ import Intro from "@/src/components/Intro";
 import Data from "@/src/components/Data";
 import PetaDesaSection from "@/src/components/Map";
 import SotkSection from "@/src/components/Sotk";
+import BeritaDesaSection from "@/src/components/Berita";
+import Footer from "@/src/components/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +16,7 @@ export default function Home() {
       <Data />
       <PetaDesaSection />
       <SotkSection />
+      <BeritaDesaSection />
     </main>
   );
 }
