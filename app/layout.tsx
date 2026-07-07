@@ -33,7 +33,7 @@ export default function RootLayout({
       <body
         className={`${notoSans.variable} ${lakkiReddy.variable} min-h-full flex flex-col bg-white antialiased`}
       >
-        <div className="mx-auto w-full sm:max-w-2xl md:max-w-[1640px]">
+        <div className="mx-auto w-full sm:max-w-2xl md:max-w-[1840px]">
           <Navbar />
           {children}
           <Footer />

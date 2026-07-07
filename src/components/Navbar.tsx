@@ -1,48 +1,35 @@
 "use client";
 
-import { assets } from "@/src/assets/assets";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ChevronDown } from "lucide-react";
+import { assets } from "@/src/assets/assets";
 
-const navigation = [
+type NavItem = {
+  label: string;
+  href?: string;
+  children?: Array<{ label: string; href: string }>;
+};
+
+const navItems: NavItem[] = [
   { label: "Beranda", href: "/" },
   { label: "Profil Desa", href: "/profil-desa" },
   { label: "Lokasi", href: "/lokasi" },
   { label: "Berita", href: "/berita" },
-  { label: "Program", href: "/program" },
+  {
+    label: "Program",
+    children: [
+      { label: "SILIH PAGEUH", href: "/program/silih-pageuh" },
+    ],
+  },
   { label: "Produk Lokal", href: "/produk-lokal" },
 ];
 
-function VillageLogo() {
-  return (
-    <svg
-      aria-hidden="true"
-      className="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
-      viewBox="0 0 48 48"
-      fill="none"
-    >
-      <circle cx="24" cy="24" r="23" fill="white" fillOpacity="0.14" />
-      <path
-        d="M14 27.5 24 18l10 9.5V36H14v-8.5Z"
-        fill="white"
-        fillOpacity="0.95"
-      />
-      <path d="M20.5 36v-7h7v7" fill="#165E33" />
-      <path
-        d="M24 17c.7-4.8 3.5-7.3 8.2-7.5-.2 4.7-2.9 7.4-8.2 7.5Z"
-        fill="#BDE7C8"
-      />
-      <path
-        d="M23.8 17.2c-3.9-.5-6.2-2.6-6.8-6.4 3.9.1 6.4 2.2 6.8 6.4Z"
-        fill="#D7F2DE"
-      />
-    </svg>
-  );
-}
-
-export default function Navbar() {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isProgramOpen, setIsProgramOpen] = useState(false);
   const pathname = usePathname();
 
   const isActive = (href: string) =>
@@ -50,51 +37,112 @@ export default function Navbar() {
       ? pathname === href
       : pathname === href || pathname.startsWith(`${href}/`);
 
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+    setIsProgramOpen(false);
+  };
+
   return (
-    <header className="sticky top-0 z-50 bg-[#165E33] text-white shadow-[0_2px_12px_rgba(0,0,0,0.12)]">
+    <header className="sticky top-0 z-50 bg-hijau-tua text-white shadow-[0_2px_12px_rgba(0,0,0,0.12)]">
       <nav
         aria-label="Navigasi utama"
-        className="mx-auto flex min-h-20 max-w-8xl items-center justify-between gap-3 px-2 sm:px-2 lg:px-8"
+        className="mx-auto flex min-h-20 max-w-[1640px] items-center justify-between gap-3 px-4 lg:px-8"
       >
-        <a
-          href="#beranda"
+        <Link
+          href="/"
           aria-label="Beranda Desa Cipicung"
           className="flex min-w-0 items-center gap-3 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-          onClick={() => setIsOpen(false)}
+          onClick={closeMobileMenu}
         >
-          {/* <VillageLogo /> */}
           <Image
             src={assets.profile}
-            alt="logo-desa"
-            className="drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
+            alt="Logo Desa Cipicung"
+            className="size-11 shrink-0 object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:size-12"
           />
-          <span className="min-w-0 pl-1 leading-none">
+          <span className="min-w-0 leading-none">
             <span className="block text-xs font-medium tracking-[0.12em] text-white/75 sm:text-sm">
               Kabupaten Bogor
             </span>
-            <span className="mt-0 block text-lg font-bold tracking-tight sm:text-xl">
+            <span className="mt-1 block text-lg font-bold tracking-tight sm:text-xl">
               Desa Cipicung
             </span>
           </span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
-          {navigation.map((item) => {
-            const active = isActive(item.href);
+          {navItems.map((item) => {
+            if (item.children) {
+              const active = item.children.some((child) => isActive(child.href));
+
+              return (
+                <div
+                  key={item.label}
+                  className="group relative"
+                  onMouseLeave={() => setIsProgramOpen(false)}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={isProgramOpen}
+                    aria-haspopup="menu"
+                    onClick={() => setIsProgramOpen((open) => !open)}
+                    className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                      active
+                        ? "text-white underline decoration-2 underline-offset-8"
+                        : "text-white/85 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={15}
+                      aria-hidden="true"
+                      className={`transition-transform duration-200 ${
+                        isProgramOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  <div
+                    role="menu"
+                    className={`absolute left-1/2 top-full z-50 mt-2 w-52 -translate-x-1/2 rounded-xl border border-gray-100 bg-white p-2 text-hijau-tua shadow-[0_12px_28px_rgba(0,0,0,0.16)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+                      isProgramOpen
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-1 opacity-0"
+                    }`}
+                  >
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        role="menuitem"
+                        onClick={() => setIsProgramOpen(false)}
+                        className={`block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors hover:bg-hijau-muda/30 ${
+                          isActive(child.href) ? "bg-hijau-muda/20" : ""
+                        }`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            const href = item.href ?? "/";
+            const active = isActive(href);
 
             return (
-              <a
-                key={item.href}
-                href={item.href}
+              <Link
+                key={href}
+                href={href}
                 aria-current={active ? "page" : undefined}
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                   active
                     ? "text-white underline decoration-2 underline-offset-8"
-                    : "text-white/85 hover:text-white/70"
+                    : "text-white/85 hover:text-white"
                 }`}
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -104,8 +152,11 @@ export default function Navbar() {
           aria-label={isOpen ? "Tutup menu" : "Buka menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-white/25 transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
-          onClick={() => setIsOpen((open) => !open)}
+          className="grid size-11 shrink-0 place-items-center rounded-lg border border-white/25 transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
+          onClick={() => {
+            setIsOpen((open) => !open);
+            if (isOpen) setIsProgramOpen(false);
+          }}
         >
           <span className="sr-only">{isOpen ? "Tutup menu" : "Buka menu"}</span>
           <span className="relative block h-5 w-6" aria-hidden="true">
@@ -130,32 +181,83 @@ export default function Navbar() {
 
       <div
         id="mobile-navigation"
-        className={`overflow-hidden border-t border-white/10 bg-[#165E33] transition-[max-height,opacity] duration-200 lg:hidden ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`overflow-hidden border-t border-white/10 bg-hijau-tua transition-[max-height,opacity] duration-300 lg:hidden ${
+          isOpen ? "max-h-[560px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6">
-          {navigation.map((item) => {
-            const active = isActive(item.href);
+          {navItems.map((item) => {
+            if (item.children) {
+              return (
+                <div key={item.label}>
+                  <button
+                    type="button"
+                    aria-expanded={isProgramOpen}
+                    onClick={() => setIsProgramOpen((open) => !open)}
+                    className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/10"
+                  >
+                    {item.label}
+                    <ChevronDown
+                      size={16}
+                      aria-hidden="true"
+                      className={`transition-transform ${
+                        isProgramOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity] duration-200 ${
+                      isProgramOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="ml-3 border-l border-white/20 pl-3">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={closeMobileMenu}
+                            className={`block rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
+                              isActive(child.href)
+                                ? "bg-white/10 text-white"
+                                : "text-white/75 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            const href = item.href ?? "/";
+            const active = isActive(href);
 
             return (
-              <a
-                key={item.href}
-                href={item.href}
+              <Link
+                key={href}
+                href={href}
                 aria-current={active ? "page" : undefined}
-                className={`rounded-lg px-3 py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-white ${
+                onClick={closeMobileMenu}
+                className={`rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
                   active
-                    ? "text-white underline decoration-2 underline-offset-4"
-                    : "text-white/90 hover:text-white/70"
+                    ? "bg-white/10 text-white"
+                    : "text-white/90 hover:bg-white/10 hover:text-white"
                 }`}
-                onClick={() => setIsOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             );
           })}
         </div>
       </div>
     </header>
   );
-}
+};
+
+export default Navbar;

@@ -62,7 +62,7 @@ const ProfileDataSection = () => {
   return (
     <section
       aria-label="Data profil Desa Cipicung"
-      className="w-full py-16 md:py-20"
+      className="w-full py-4 md:py-6"
     >
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[2fr_0.85fr]">
