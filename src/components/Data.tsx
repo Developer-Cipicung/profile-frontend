@@ -1,39 +1,13 @@
 import type { LucideIcon } from "lucide-react";
 import { Heart, House, LandPlot, Store, UsersRound } from "lucide-react";
+import { getPublicPopulationSummary } from "@/src/services/populationService";
+import { formatNumber } from "@/src/utils/format";
 
 type DataCardProps = {
   icon: LucideIcon;
   value: string;
   description: string;
 };
-
-const villageData: DataCardProps[] = [
-  {
-    icon: UsersRound,
-    value: "10.676",
-    description: "Jumlah Penduduk",
-  },
-  {
-    icon: LandPlot,
-    value: "67,67 hektar",
-    description: "Luas Desa",
-  },
-  {
-    icon: House,
-    value: "35 / 7",
-    description: "Jumlah RT / RW",
-  },
-  {
-    icon: Heart,
-    value: "12",
-    description: "Jumlah Posyandu",
-  },
-  {
-    icon: Store,
-    value: "5",
-    description: "Jumlah UMKM",
-  },
-];
 
 const DataCard = ({ icon: Icon, value, description }: DataCardProps) => {
   return (
@@ -49,7 +23,49 @@ const DataCard = ({ icon: Icon, value, description }: DataCardProps) => {
   );
 };
 
-const Data = () => {
+const Data = async () => {
+  let populationSummary = null;
+
+  try {
+    populationSummary = await getPublicPopulationSummary();
+  } catch {
+    populationSummary = null;
+  }
+
+  const villageData: DataCardProps[] = [
+    {
+      icon: UsersRound,
+      value: populationSummary
+        ? formatNumber(populationSummary.currentPopulation)
+        : "Data menyesuaikan",
+      description: "Jumlah Penduduk",
+    },
+    {
+      icon: LandPlot,
+      value: "415,16 Ha",
+      description: "Luas Desa",
+    },
+    {
+      icon: House,
+      value: populationSummary
+        ? `${formatNumber(populationSummary.sumRt)} / ${formatNumber(
+            populationSummary.sumRw,
+          )}`
+        : "Data menyesuaikan",
+      description: "Jumlah RT / RW",
+    },
+    {
+      icon: Heart,
+      value: "12",
+      description: "Jumlah Posyandu",
+    },
+    {
+      icon: Store,
+      value: "5",
+      description: "Jumlah UMKM",
+    },
+  ];
+
   return (
     <section
       aria-label="Data Desa Cipicung"

@@ -19,7 +19,7 @@ const Hero = () => {
 
       <div className="relative z-20 flex-1 pt-12  md:pt-30  px-8 md:px-16 text-white flex flex-col justify-between">
         <div>
-          <h1 className="text-5xl sm:text-7xl font- font-reddy mb-2">
+          <h1 className="text-4xl sm:text-7xl font- font-reddy mb-2">
             Selamat Datang di <br /> Desa Cipicung
           </h1>
           <p className="text-sm md:text-xl font-sans font-weight mb-4">

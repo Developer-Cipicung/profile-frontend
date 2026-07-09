@@ -15,7 +15,16 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { label: "Beranda", href: "/" },
-  { label: "Profil Desa", href: "/profil-desa" },
+  {
+    label: "Profil Desa",
+    children: [
+      { label: "Profil", href: "/profil-desa" },
+      {
+        label: "Struktur Organisasi Desa",
+        href: "/profil-desa/struktur-organisasi",
+      },
+    ],
+  },
   { label: "Lokasi", href: "/lokasi" },
   { label: "Berita", href: "/berita" },
   {
@@ -29,7 +38,7 @@ const navItems: NavItem[] = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isProgramOpen, setIsProgramOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   const isActive = (href: string) =>
@@ -39,7 +48,7 @@ const Navbar = () => {
 
   const closeMobileMenu = () => {
     setIsOpen(false);
-    setIsProgramOpen(false);
+    setOpenDropdown(null);
   };
 
   return (
@@ -73,18 +82,23 @@ const Navbar = () => {
           {navItems.map((item) => {
             if (item.children) {
               const active = item.children.some((child) => isActive(child.href));
+              const isDropdownOpen = openDropdown === item.label;
 
               return (
                 <div
                   key={item.label}
                   className="group relative"
-                  onMouseLeave={() => setIsProgramOpen(false)}
+                  onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button
                     type="button"
-                    aria-expanded={isProgramOpen}
+                    aria-expanded={isDropdownOpen}
                     aria-haspopup="menu"
-                    onClick={() => setIsProgramOpen((open) => !open)}
+                    onClick={() =>
+                      setOpenDropdown((open) =>
+                        open === item.label ? null : item.label,
+                      )
+                    }
                     className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                       active
                         ? "text-white underline decoration-2 underline-offset-8"
@@ -96,7 +110,7 @@ const Navbar = () => {
                       size={15}
                       aria-hidden="true"
                       className={`transition-transform duration-200 ${
-                        isProgramOpen ? "rotate-180" : ""
+                        isDropdownOpen ? "rotate-180" : ""
                       }`}
                     />
                   </button>
@@ -104,7 +118,7 @@ const Navbar = () => {
                   <div
                     role="menu"
                     className={`absolute left-1/2 top-full z-50 mt-2 w-52 -translate-x-1/2 rounded-xl border border-gray-100 bg-white p-2 text-hijau-tua shadow-[0_12px_28px_rgba(0,0,0,0.16)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
-                      isProgramOpen
+                      isDropdownOpen
                         ? "visible translate-y-0 opacity-100"
                         : "invisible -translate-y-1 opacity-0"
                     }`}
@@ -114,7 +128,7 @@ const Navbar = () => {
                         key={child.href}
                         href={child.href}
                         role="menuitem"
-                        onClick={() => setIsProgramOpen(false)}
+                        onClick={() => setOpenDropdown(null)}
                         className={`block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors hover:bg-hijau-muda/30 ${
                           isActive(child.href) ? "bg-hijau-muda/20" : ""
                         }`}
@@ -155,7 +169,7 @@ const Navbar = () => {
           className="grid size-11 shrink-0 place-items-center rounded-lg border border-white/25 transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:hidden"
           onClick={() => {
             setIsOpen((open) => !open);
-            if (isOpen) setIsProgramOpen(false);
+            if (isOpen) setOpenDropdown(null);
           }}
         >
           <span className="sr-only">{isOpen ? "Tutup menu" : "Buka menu"}</span>
@@ -188,12 +202,18 @@ const Navbar = () => {
         <div className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6">
           {navItems.map((item) => {
             if (item.children) {
+              const isDropdownOpen = openDropdown === item.label;
+
               return (
                 <div key={item.label}>
                   <button
                     type="button"
-                    aria-expanded={isProgramOpen}
-                    onClick={() => setIsProgramOpen((open) => !open)}
+                    aria-expanded={isDropdownOpen}
+                    onClick={() =>
+                      setOpenDropdown((open) =>
+                        open === item.label ? null : item.label,
+                      )
+                    }
                     className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/10"
                   >
                     {item.label}
@@ -201,13 +221,13 @@ const Navbar = () => {
                       size={16}
                       aria-hidden="true"
                       className={`transition-transform ${
-                        isProgramOpen ? "rotate-180" : ""
+                        isDropdownOpen ? "rotate-180" : ""
                       }`}
                     />
                   </button>
                   <div
                     className={`grid transition-[grid-template-rows,opacity] duration-200 ${
-                      isProgramOpen
+                      isDropdownOpen
                         ? "grid-rows-[1fr] opacity-100"
                         : "grid-rows-[0fr] opacity-0"
                     }`}

@@ -4,14 +4,10 @@ import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { assets } from "@/src/assets/assets";
-
-type PerangkatDesa = {
-  nama: string;
-  jabatan: string;
-  image: StaticImageData;
-  periode?: string;
-  utama?: boolean;
-};
+import {
+  daftarPerangkatDesa,
+  type PerangkatDesaItem,
+} from "@/src/data/perangkatDesa";
 
 type SafeImageProps = {
   src: StaticImageData;
@@ -21,30 +17,7 @@ type SafeImageProps = {
   className?: string;
 };
 
-const perangkatDesa: PerangkatDesa[] = [
-  {
-    nama: "Mario Sp.d Dr.d",
-    jabatan: "Kepala Desa Cipicung",
-    periode: "Periode 2020 - 2026",
-    image: assets.kades,
-    utama: true,
-  },
-  {
-    nama: "Jaing Nuriamil",
-    jabatan: "Sekretaris Desa",
-    image: assets.orang1,
-  },
-  {
-    nama: "Muhammad Wahyu Hajri",
-    jabatan: "Kaur Keuangan",
-    image: assets.orang2,
-  },
-  {
-    nama: "Wildan Budisono",
-    jabatan: "Kaur Perencanaan",
-    image: assets.orang3,
-  },
-];
+const perangkatDesaRingkas = daftarPerangkatDesa.slice(0, 4);
 
 const SafeImage = ({
   src,
@@ -79,7 +52,7 @@ const SafeImage = ({
   );
 };
 
-const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesa }) => {
+const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
   const isMain = perangkat.utama === true;
 
   return (
@@ -89,13 +62,28 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesa }) => {
       }`}
     >
       <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-[#EAF8F0]">
-        <SafeImage
-          src={perangkat.image}
-          alt={`Foto ${perangkat.nama}, ${perangkat.jabatan}`}
-          sizes="(min-width: 768px) 20vw, 50vw"
-          fallback={`Foto ${perangkat.nama}`}
-          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-        />
+        {perangkat.image ? (
+          <SafeImage
+            src={perangkat.image}
+            alt={`Foto ${perangkat.nama}, ${perangkat.jabatan}`}
+            sizes="(min-width: 768px) 20vw, 50vw"
+            fallback={`Foto ${perangkat.nama}`}
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div
+            role="img"
+            aria-label={`Inisial ${perangkat.nama}`}
+            className="flex h-full w-full items-center justify-center text-4xl font-extrabold text-[#165E33]"
+          >
+            {perangkat.nama
+              .split(" ")
+              .map((word) => word[0])
+              .join("")
+              .slice(0, 2)
+              .toUpperCase()}
+          </div>
+        )}
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col p-3 sm:p-4 md:p-2 lg:p-4 xl:p-5">
@@ -114,11 +102,11 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesa }) => {
           {perangkat.jabatan}
         </p>
 
-        {perangkat.periode && (
+        {isMain ? (
           <p className="mt-2 text-[10px] leading-tight text-white/75 md:mt-1 md:text-[9px] lg:mt-2 lg:text-[10px] xl:text-xs">
-            {perangkat.periode}
+            Pimpinan Desa
           </p>
-        )}
+        ) : null}
       </div>
     </article>
   );
@@ -157,14 +145,14 @@ const SotkSection = () => {
 
         <div className="mx-auto w-full max-w-[760px] md:w-4/5 md:max-w-none">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-3 lg:gap-4 xl:gap-6">
-            {perangkatDesa.map((perangkat) => (
+            {perangkatDesaRingkas.map((perangkat) => (
               <PerangkatCard key={perangkat.nama} perangkat={perangkat} />
             ))}
           </div>
 
           <div className="mt-4 flex justify-end">
             <Link
-              href="/profil-desa"
+              href="/profil-desa/struktur-organisasi"
               className="text-xs font-semibold text-[#165E33] transition-colors hover:text-[#36C56F] sm:text-sm md:text-base"
             >
               Selengkapnya &gt;

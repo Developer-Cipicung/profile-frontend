@@ -1,12 +1,12 @@
 const visiDesa =
-  "Terwujudnya Desa Cipicung yang Maju, Mandiri, Sehat, dan Sejahtera Berlandaskan Nilai Gotong Royong dan Kearifan Lokal";
+  "Terwujudnya Pemerintahan Desa yang Transparan, Profesional dan Akuntabel menuju Masyarakat Sejahtera, Cerdas dan Agamis";
 
 const misiDesa = [
-  "Meningkatkan kualitas pelayanan publik yang prima, transparan, dan mudah diakses oleh masyarakat.",
-  "Mengembangkan potensi ekonomi lokal melalui pertanian, pangan lokal, dan produk UMKM desa.",
-  "Mewujudkan masyarakat sehat melalui layanan posyandu dan program kesehatan masyarakat yang berkelanjutan.",
-  "Membangun infrastruktur desa secara merata untuk mendukung aktivitas sosial dan ekonomi warga.",
-  "Melestarikan budaya, gotong royong, serta kearifan lokal masyarakat Desa Cipicung.",
+  "Meningkatkan Pelayanan Publik yang Prima",
+  "Meningkatkan Pembangunan Sarana dan Prasarana Tepat Sasaran",
+  "Optimalisasi Pelayanan Posyandu",
+  "Menciptakan Kondisi Masyarakat Desa Cipicung Aman, Tertib, Rukun dalam kehidupan bermasyarakat dengan Azas Musyawarah Mufakat serta Gotong Royong.",
+  "Pemberdayaan Potensi Kepemudaan Melalui Wadah Organisasi.",
 ];
 
 const VisiMisiSection = () => {
@@ -29,6 +29,9 @@ const VisiMisiSection = () => {
           <h2 className="text-xl font-bold text-hijau-tua md:text-2xl">
             Misi
           </h2>
+          <p className="mt-2 text-sm leading-relaxed text-gray-600">
+            Misi Desa Cipicung yaitu sebagai berikut:
+          </p>
           <ol className="mt-6 space-y-4">
             {misiDesa.map((item, index) => (
               <li key={item} className="flex items-start gap-3">
