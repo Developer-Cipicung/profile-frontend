@@ -83,9 +83,9 @@ export default function BoundaryMap({
     <div className={className}>
       {showTitle ? (
         <div className="mb-6">
-          <p className="text-sm font-semibold text-[var(--hijau)]">
+          {/* <p className="text-sm font-semibold text-[var(--hijau)]">
             Lokasi Desa
-          </p>
+          </p> */}
           <h2 className="text-3xl font-bold text-[var(--hijau-tua)]">
             Peta Desa
           </h2>
@@ -95,7 +95,7 @@ export default function BoundaryMap({
         </div>
       ) : null}
 
-      <div className="h-[320px] w-full overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-md md:h-[430px]">
+      <div className="cipicung-boundary-map relative z-0 h-[320px] w-full overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-md md:h-[430px]">
         <MapContainer
           center={kantorDesaPosition}
           zoom={14}

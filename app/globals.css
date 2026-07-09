@@ -30,3 +30,13 @@ body {
 .font-header-creative {
   font-family: var(--font-lakki-reddy), serif;
 }
+
+.cipicung-boundary-map .leaflet-pane,
+.cipicung-boundary-map .leaflet-top,
+.cipicung-boundary-map .leaflet-bottom {
+  z-index: 0;
+}
+
+.cipicung-boundary-map .leaflet-control {
+  z-index: 1;
+}
