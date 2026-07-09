@@ -6,7 +6,6 @@ import {
   GraduationCap,
   Heart,
   HeartPulse,
-  Map as MapIcon,
   MapPin,
   type LucideIcon,
 } from "lucide-react";
@@ -144,39 +143,12 @@ const LokasiPentingSection = () => {
 
   return (
     <section
-      aria-labelledby="lokasi-penting-title"
-      className="w-full bg-[#f8faf8] px-6 py-16 md:py-20"
+      aria-label="Daftar lokasi penting Desa Cipicung"
+      className="w-full bg-[#f8faf8] px-6 pb-16 md:pb-20"
     >
       <div className="mx-auto max-w-7xl">
-        <header className="text-center">
-          <h1
-            id="lokasi-penting-title"
-            className="font-reddy text-3xl text-hijau-tua md:text-5xl"
-          >
-            Lokasi Penting Desa
-          </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 md:text-base">
-            Temukan fasilitas, layanan, dan lokasi strategis di Desa Cipicung
-          </p>
-        </header>
-
-        <div className="mt-10 flex h-40 flex-col items-center justify-center rounded-2xl border border-hijau/20 bg-hijau-muda/20 px-4 text-center md:h-52">
-          <MapIcon
-            size={42}
-            strokeWidth={1.5}
-            aria-hidden="true"
-            className="text-hijau"
-          />
-          <h2 className="mt-3 text-lg font-bold text-hijau-tua md:text-xl">
-            Peta Interaktif Desa Cipicung
-          </h2>
-          <p className="mt-1 text-sm text-gray-600">
-            Kecamatan Cijeruk, Kabupaten Bogor, Jawa Barat
-          </p>
-        </div>
-
         <div
-          className="mt-8 flex gap-3 overflow-x-auto pb-2"
+          className="flex gap-3 overflow-x-auto pb-2"
           aria-label="Filter kategori lokasi"
         >
           {categories.map((category) => {
