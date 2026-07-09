@@ -10,71 +10,24 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Pagination from "@/src/components/common/Pagination";
-
-type Lokasi = {
-  name: string;
-  category: string;
-  address: string;
-  description: string;
-};
+import {
+  villageLocations,
+  type VillageLocation,
+  type VillageLocationCategory,
+} from "@/src/data/villageLocations";
 
 const categories = [
   "Semua",
-  "Posyandu",
   "Kantor Desa",
+  "Posyandu",
   "Fasilitas Umum",
   "Pendidikan",
   "Kesehatan",
-];
+] as const satisfies readonly (VillageLocationCategory | "Semua")[];
 
-const lokasiList: Lokasi[] = [
-  {
-    name: "Kantor Desa Cipicung",
-    category: "Kantor Desa",
-    address:
-      "Jl. Genteng No.01, Cipicung, Cijeruk, Kabupaten Bogor, Jawa Barat 16740",
-    description: "Administrasi desa, surat menyurat, dan pelayanan publik.",
-  },
-  ...[
-    ["Posyandu Cempaka 1", "RW 01"],
-    ["Posyandu Anggrek 1", "RW 02"],
-    ["Posyandu Anggrek 2", "RW 02"],
-    ["Posyandu Melati 1", "RW 03"],
-    ["Posyandu Melati 2", "RW 03"],
-    ["Posyandu Flamboyan 1", "RW 04"],
-    ["Posyandu Flamboyan 2", "RW 04"],
-    ["Posyandu Mawar 1", "RW 05"],
-    ["Posyandu Mawar 2", "RW 05"],
-    ["Posyandu Bougenvil", "RW 06"],
-    ["Posyandu Cempaka 2", "RW 06"],
-    ["Posyandu Aster", "RW 07"],
-  ].map(([name, rw]) => ({
-    name,
-    category: "Posyandu",
-    address: `${rw}, Desa Cipicung`,
-    description: "Layanan kesehatan ibu, anak, balita, dan lansia.",
-  })),
-  {
-    name: "PAUD Desa Cipicung",
-    category: "Pendidikan",
-    address: "Desa Cipicung, Kecamatan Cijeruk",
-    description: "Layanan pendidikan anak usia dini.",
-  },
-  {
-    name: "Lapangan Desa Cipicung",
-    category: "Fasilitas Umum",
-    address: "Desa Cipicung, Kecamatan Cijeruk",
-    description: "Fasilitas umum untuk kegiatan warga dan olahraga.",
-  },
-  {
-    name: "Puskesmas Pembantu Cipicung",
-    category: "Kesehatan",
-    address: "Desa Cipicung, Kecamatan Cijeruk",
-    description: "Pelayanan kesehatan dasar bagi masyarakat Desa Cipicung.",
-  },
-];
+type LocationCategoryFilter = (typeof categories)[number];
 
-const categoryIcons: Record<string, LucideIcon> = {
+const categoryIcons: Record<VillageLocationCategory, LucideIcon> = {
   Posyandu: Heart,
   "Kantor Desa": Building2,
   Pendidikan: GraduationCap,
@@ -84,8 +37,9 @@ const categoryIcons: Record<string, LucideIcon> = {
 
 const ITEMS_PER_PAGE = 6;
 
-const LokasiCard = ({ lokasi }: { lokasi: Lokasi }) => {
-  const Icon = categoryIcons[lokasi.category] ?? MapPin;
+const LokasiCard = ({ lokasi }: { lokasi: VillageLocation }) => {
+  const Icon = categoryIcons[lokasi.category];
+  const hasCoordinate = lokasi.position !== null;
 
   return (
     <article className="rounded-2xl border border-gray-100 bg-white p-5 shadow-[0_8px_20px_rgba(22,94,51,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
@@ -93,14 +47,30 @@ const LokasiCard = ({ lokasi }: { lokasi: Lokasi }) => {
         <div className="grid size-10 shrink-0 place-items-center rounded-xl bg-hijau-muda/25 text-hijau-tua">
           <Icon size={20} strokeWidth={1.8} aria-hidden="true" />
         </div>
-        <span className="rounded-full bg-hijau-muda/25 px-3 py-1 text-[11px] font-semibold text-hijau-tua">
-          {lokasi.category}
-        </span>
+        <div className="flex flex-wrap justify-end gap-2">
+          <span className="rounded-full bg-hijau-muda/25 px-3 py-1 text-[11px] font-semibold text-hijau-tua">
+            {lokasi.category}
+          </span>
+          <span
+            className={`rounded-full px-3 py-1 text-[11px] font-semibold ${
+              hasCoordinate
+                ? "bg-emerald-50 text-emerald-700"
+                : "bg-amber-50 text-amber-700"
+            }`}
+          >
+            {hasCoordinate ? "Tersedia di peta" : "Koordinat belum tersedia"}
+          </span>
+        </div>
       </div>
 
       <h2 className="mt-4 text-lg font-bold leading-snug text-hijau-tua">
         {lokasi.name}
       </h2>
+      {lokasi.rw ? (
+        <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-hijau">
+          {lokasi.rw}
+        </p>
+      ) : null}
       <p className="mt-3 flex items-start gap-2 text-xs leading-relaxed text-gray-500">
         <MapPin
           size={15}
@@ -110,33 +80,39 @@ const LokasiCard = ({ lokasi }: { lokasi: Lokasi }) => {
         />
         {lokasi.address}
       </p>
-      <p className="mt-3 text-sm leading-relaxed text-gray-600">
-        {lokasi.description}
-      </p>
+      {lokasi.description ? (
+        <p className="mt-3 text-sm leading-relaxed text-gray-600">
+          {lokasi.description}
+        </p>
+      ) : null}
     </article>
   );
 };
 
 const LokasiPentingSection = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Semua");
+  const [selectedCategory, setSelectedCategory] =
+    useState<LocationCategoryFilter>("Semua");
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredLokasi = useMemo(
     () =>
       selectedCategory === "Semua"
-        ? lokasiList
-        : lokasiList.filter((item) => item.category === selectedCategory),
+        ? villageLocations
+        : villageLocations.filter((item) => item.category === selectedCategory),
     [selectedCategory],
   );
 
-  const totalPages = Math.ceil(filteredLokasi.length / ITEMS_PER_PAGE);
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredLokasi.length / ITEMS_PER_PAGE),
+  );
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentItems = filteredLokasi.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE,
   );
 
-  const selectCategory = (category: string) => {
+  const selectCategory = (category: LocationCategoryFilter) => {
     setSelectedCategory(category);
     setCurrentPage(1);
   };
@@ -174,7 +150,7 @@ const LokasiPentingSection = () => {
 
         <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {currentItems.map((lokasi) => (
-            <LokasiCard key={lokasi.name} lokasi={lokasi} />
+            <LokasiCard key={lokasi.id} lokasi={lokasi} />
           ))}
         </div>
 

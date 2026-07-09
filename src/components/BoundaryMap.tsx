@@ -11,24 +11,124 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import type { FeatureCollection } from "geojson";
+import {
+  mappedVillageLocations,
+  type VillageLocation,
+} from "@/src/data/villageLocations";
 
 type BoundaryMapProps = {
   className?: string;
   showTitle?: boolean;
 };
 
-const kantorDesaPosition: [number, number] = [-6.6786, 106.7989];
+const kantorDesaLocation = mappedVillageLocations.find(
+  (location) => location.id === "kantor-desa-cipicung",
+);
+const kantorDesaPosition = kantorDesaLocation?.position ?? [-6.6786, 106.7989];
 
-const defaultIcon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl:
-    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
+const kantorDesaIcon = L.divIcon({
+  className: "",
+  html: `
+    <div style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    ">
+      <div style="
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(135deg, #165E33, #36C56F);
+        border: 4px solid white;
+        border-radius: 18px;
+        box-shadow: 0 12px 28px rgba(22, 94, 51, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(45deg);
+      ">
+        <span style="
+          transform: rotate(-45deg);
+          color: white;
+          font-size: 18px;
+          font-weight: 900;
+          letter-spacing: 0;
+        ">
+          K
+        </span>
+      </div>
+
+      <div style="
+        margin-top: 8px;
+        background: white;
+        color: #165E33;
+        border: 1px solid rgba(22, 94, 51, 0.15);
+        border-radius: 9999px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      ">
+        Kantor Desa
+      </div>
+    </div>
+  `,
+  iconSize: [110, 82],
+  iconAnchor: [55, 54],
+  popupAnchor: [0, -54],
 });
+
+const posyanduIcon = L.divIcon({
+  className: "",
+  html: `
+    <div style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    ">
+      <div style="
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, #E8B921, #83FFBB);
+        border: 3px solid white;
+        border-radius: 9999px;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #165E33;
+        font-size: 22px;
+        font-weight: 800;
+      ">
+        +
+      </div>
+
+      <div style="
+        margin-top: 5px;
+        background: white;
+        color: #165E33;
+        border-radius: 9999px;
+        padding: 3px 8px;
+        font-size: 10px;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      ">
+        Posyandu
+      </div>
+    </div>
+  `,
+  iconSize: [90, 68],
+  iconAnchor: [45, 44],
+  popupAnchor: [0, -44],
+});
+
+function getLocationIcon(location: VillageLocation) {
+  if (location.category === "Kantor Desa") return kantorDesaIcon;
+  if (location.category === "Posyandu") return posyanduIcon;
+
+  return posyanduIcon;
+}
 
 function FitToBoundary({ data }: { data: FeatureCollection }) {
   const map = useMap();
@@ -133,14 +233,33 @@ export default function BoundaryMap({
             </>
           ) : null}
 
-          <Marker position={kantorDesaPosition} icon={defaultIcon}>
-            <Popup>
-              <strong>Kantor Desa Cipicung</strong>
-              <br />
-              Jl. Genteng No.01, Cipicung, Cijeruk, Kabupaten Bogor, Jawa Barat
-              16740
-            </Popup>
-          </Marker>
+          {mappedVillageLocations.map((location) => (
+            <Marker
+              key={location.id}
+              position={location.position}
+              icon={getLocationIcon(location)}
+            >
+              <Popup>
+                <div className="space-y-1">
+                  <strong>{location.name}</strong>
+                  {location.rw ? (
+                    <>
+                      <br />
+                      <span>{location.rw}</span>
+                    </>
+                  ) : null}
+                  <br />
+                  <span>{location.address}</span>
+                  {location.description ? (
+                    <>
+                      <br />
+                      <span>{location.description}</span>
+                    </>
+                  ) : null}
+                </div>
+              </Popup>
+            </Marker>
+          ))}
         </MapContainer>
       </div>
     </div>
