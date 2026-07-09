@@ -1,92 +1,41 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { assets } from "@/src/assets/assets";
-import Pagination from "@/src/components/Pagination";
-
-type ProdukUMKM = {
-  name: string;
-  seller: string;
-  dusun: string;
-  price: number;
-  image: StaticImageData;
-  whatsapp: string;
-};
-
-const produkUMKM: ProdukUMKM[] = [
-  {
-    name: "Keripik Singkong Mpok Imas",
-    seller: "Mpok Imas",
-    dusun: "Dusun Cipicung",
-    price: 15000,
-    image: assets.desa,
-    whatsapp: "6281234567890",
-  },
-  {
-    name: "Anyaman Bambu Tas Belanja",
-    seller: "Kelompok PKK Ciwangi",
-    dusun: "Dusun Ciwangi",
-    price: 85000,
-    image: assets.desa,
-    whatsapp: "6281234567890",
-  },
-  {
-    name: "Tempe Organik Pak Ujang",
-    seller: "Pak Ujang",
-    dusun: "Dusun Sindangresmi",
-    price: 5000,
-    image: assets.desa,
-    whatsapp: "6281234567890",
-  },
-  {
-    name: "Madu Hutan Murni",
-    seller: "Kelompok Tani Maju Bersama",
-    dusun: "Dusun Neglasari",
-    price: 120000,
-    image: assets.desa,
-    whatsapp: "6281234567890",
-  },
-  {
-    name: "Batik Cap Motif Cipicung",
-    seller: "Bu Siti Rahayu",
-    dusun: "Dusun Cipicung",
-    price: 195000,
-    image: assets.desa,
-    whatsapp: "6281234567890",
-  },
-  {
-    name: "Jus Lidah Buaya Segar",
-    seller: "Warung Sehat Bu Neneng",
-    dusun: "Dusun Ciwangi",
-    price: 8000,
-    image: assets.desa,
-    whatsapp: "6281234567890",
-  },
-];
+import ApiImage from "@/src/components/common/ApiImage";
+import Pagination from "@/src/components/common/Pagination";
+import type { UmkmItem } from "@/src/services/umkmService";
 
 const ITEMS_PER_PAGE = 6;
 
-const formatRupiah = (value: number) => {
+type ProdukUMKMSectionProps = {
+  products: UmkmItem[];
+  isUsingFallback?: boolean;
+};
+
+function formatRupiah(value: number) {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
     minimumFractionDigits: 0,
   }).format(value);
-};
+}
 
-const createWhatsappLink = (phone: string, productName: string) => {
+function createWhatsappLink(phone: string, productName: string) {
+  const normalizedPhone = phone.replace(/\D/g, "");
   const message = `Halo, saya tertarik membeli ${productName} dari Desa Cipicung. Apakah produk ini masih tersedia?`;
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-};
+  return `https://wa.me/${normalizedPhone}?text=${encodeURIComponent(message)}`;
+}
 
-const ProdukCard = ({ product }: { product: ProdukUMKM }) => {
+function ProdukCard({ product }: { product: UmkmItem }) {
+  const hasWhatsapp = product.whatsapp.trim().length > 0;
+
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <article className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="relative h-44 w-full shrink-0 overflow-hidden lg:h-48">
-        <Image
-          src={product.image}
+        <ApiImage
+          key={product.imageUrl}
+          imagePath={product.imageUrl}
           alt={`Foto produk ${product.name}`}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
@@ -95,42 +44,60 @@ const ProdukCard = ({ product }: { product: ProdukUMKM }) => {
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <h2 className="text-lg font-bold leading-snug text-hijau-tua">
+        <p className="text-xs font-semibold uppercase tracking-wide text-hijau">
+          {product.category}
+        </p>
+        <h2 className="mt-2 text-lg font-bold leading-snug text-hijau-tua">
           {product.name}
         </h2>
         <p className="mt-2 text-sm font-medium text-gray-600">
           {product.seller}
         </p>
         <p className="mt-1 text-sm text-gray-500">{product.dusun}</p>
+        {product.description && (
+          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-gray-600">
+            {product.description}
+          </p>
+        )}
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-5">
           <p className="text-xl font-bold text-hijau">
             {formatRupiah(product.price)}
           </p>
-          <a
-            href={createWhatsappLink(product.whatsapp, product.name)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua"
-            aria-label={`Beli ${product.name} melalui WhatsApp`}
-          >
-            <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
-            Beli via WA
-          </a>
+          {hasWhatsapp ? (
+            <a
+              href={createWhatsappLink(product.whatsapp, product.name)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua"
+              aria-label={`Beli ${product.name} melalui WhatsApp`}
+            >
+              <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
+              Beli via WA
+            </a>
+          ) : (
+            <span
+              aria-disabled="true"
+              className="inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500"
+            >
+              <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
+              Kontak belum tersedia
+            </span>
+          )}
         </div>
       </div>
     </article>
   );
-};
+}
 
-const ProdukUMKMSection = () => {
+export default function ProdukUMKMSection({
+  products,
+  isUsingFallback = false,
+}: ProdukUMKMSectionProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(produkUMKM.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const currentItems = produkUMKM.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE,
-  );
+  const currentItems = products.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <section
@@ -151,11 +118,31 @@ const ProdukUMKMSection = () => {
           </p>
         </header>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
-          {currentItems.map((product) => (
-            <ProdukCard key={product.name} product={product} />
-          ))}
-        </div>
+        {isUsingFallback && (
+          <p
+            role="status"
+            className="mt-10 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
+          >
+            API produk sedang tidak dapat diakses. Menampilkan produk sementara.
+          </p>
+        )}
+
+        {currentItems.length > 0 ? (
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+            {currentItems.map((product) => (
+              <ProdukCard key={product.id} product={product} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 rounded-2xl border border-gray-200 bg-white px-6 py-14 text-center">
+            <h2 className="text-lg font-bold text-hijau-tua">
+              Belum ada produk tersedia.
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              Produk UMKM Desa Cipicung akan ditampilkan setelah tersedia.
+            </p>
+          </div>
+        )}
 
         <div className="mt-10">
           <Pagination
@@ -167,6 +154,4 @@ const ProdukUMKMSection = () => {
       </div>
     </section>
   );
-};
-
-export default ProdukUMKMSection;
+}

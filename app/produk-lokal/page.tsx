@@ -1,9 +1,5 @@
-import ProdukUMKMSection from "@/src/components/produk-lokal/ProdukUMKM";
+import { permanentRedirect } from "next/navigation";
 
 export default function ProdukLokalPage() {
-  return (
-    <main className="min-h-screen w-full bg-[#f8faf8]">
-      <ProdukUMKMSection />
-    </main>
-  );
+  permanentRedirect("/umkm");
 }

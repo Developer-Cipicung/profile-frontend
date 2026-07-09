@@ -2,20 +2,18 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-type PaginationProps = {
+export type PaginationProps = {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 };
 
-const Pagination = ({
+export default function Pagination({
   currentPage,
   totalPages,
   onPageChange,
-}: PaginationProps) => {
-  if (totalPages <= 1) {
-    return null;
-  }
+}: PaginationProps) {
+  if (totalPages <= 1) return null;
 
   const changePage = (page: number) => {
     if (page >= 1 && page <= totalPages && page !== currentPage) {
@@ -68,6 +66,4 @@ const Pagination = ({
       </button>
     </nav>
   );
-};
-
-export default Pagination;
+}

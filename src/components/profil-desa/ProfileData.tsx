@@ -1,21 +1,12 @@
 import Image from "next/image";
 import { Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
 import { assets } from "@/src/assets/assets";
+import type { PopulationSummary } from "@/src/services/populationService";
+import { formatNumber } from "@/src/utils/format";
 
-const identitasDesa = [
-  { label: "Nama Desa", value: "Cipicung" },
-  { label: "Kecamatan", value: "Cijeruk" },
-  { label: "Kabupaten", value: "Bogor" },
-  { label: "Provinsi", value: "Jawa Barat" },
-  { label: "Kode Pos", value: "16740" },
-  { label: "Kode Desa", value: "3201282005" },
-  { label: "Luas Wilayah", value: "415,16 Ha" },
-  { label: "Jumlah Penduduk", value: "Data menyesuaikan" },
-  { label: "Jumlah KK", value: "Data menyesuaikan" },
-  { label: "Jumlah Dusun", value: "Data menyesuaikan" },
-  { label: "Jumlah RT", value: "Data menyesuaikan" },
-  { label: "Jumlah RW", value: "Data menyesuaikan" },
-];
+type ProfileDataSectionProps = {
+  populationSummary?: PopulationSummary | null;
+};
 
 const contactData: Array<{
   label: string;
@@ -58,7 +49,66 @@ const ContactValue = ({ href, value }: { href?: string; value: string }) => {
   );
 };
 
-const ProfileDataSection = () => {
+function formatImportedDate(value?: string) {
+  if (!value) return null;
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "Data terbaru dari sistem";
+
+  return `Data penduduk diperbarui terakhir pada ${new Intl.DateTimeFormat(
+    "id-ID",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    },
+  ).format(date)}.`;
+}
+
+const ProfileDataSection = ({
+  populationSummary,
+}: ProfileDataSectionProps) => {
+  const identitasDesa = [
+    { label: "Nama Desa", value: "Cipicung" },
+    { label: "Kecamatan", value: "Cijeruk" },
+    { label: "Kabupaten", value: "Bogor" },
+    { label: "Provinsi", value: "Jawa Barat" },
+    { label: "Kode Pos", value: "16740" },
+    { label: "Kode Desa", value: "3201282005" },
+    { label: "Luas Wilayah", value: "415,16 Ha" },
+    {
+      label: "Jumlah Penduduk",
+      value: populationSummary
+        ? formatNumber(populationSummary.currentPopulation)
+        : "Data menyesuaikan",
+    },
+    {
+      label: "Jumlah KK",
+      value: populationSummary
+        ? formatNumber(populationSummary.sumKk)
+        : "Data menyesuaikan",
+    },
+    {
+      label: "Jumlah Dusun",
+      value: populationSummary
+        ? formatNumber(populationSummary.sumDusun)
+        : "Data menyesuaikan",
+    },
+    {
+      label: "Jumlah RT",
+      value: populationSummary
+        ? formatNumber(populationSummary.sumRt)
+        : "Data menyesuaikan",
+    },
+    {
+      label: "Jumlah RW",
+      value: populationSummary
+        ? formatNumber(populationSummary.sumRw)
+        : "Data menyesuaikan",
+    },
+  ];
+  const importedDateText = formatImportedDate(populationSummary?.lastImported);
+
   return (
     <section
       aria-label="Data profil Desa Cipicung"
@@ -86,6 +136,10 @@ const ProfileDataSection = () => {
                 </div>
               ))}
             </dl>
+
+            <p className="mt-4 text-xs font-medium text-gray-500">
+              {importedDateText ?? "Data penduduk belum tersedia."}
+            </p>
           </article>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-1">

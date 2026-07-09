@@ -1,11 +1,5 @@
-const MAP_QUERY = "8QCX+HQC, Cipicung, Cijeruk, Bogor Regency, West Java 16740";
-
 const MAP_EMBED_URL =
   "https://www.google.com/maps?q=8QCX%2BHQC%2C%20Cipicung%2C%20Cijeruk%2C%20Bogor%20Regency%2C%20West%20Java%2016740&output=embed";
-
-const MAP_DETAILS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  MAP_QUERY,
-)}`;
 
 const PetaDesaSection = () => {
   return (

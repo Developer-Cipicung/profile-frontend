@@ -10,7 +10,7 @@ import {
   MapPin,
   type LucideIcon,
 } from "lucide-react";
-import Pagination from "@/src/components/Pagination";
+import Pagination from "@/src/components/common/Pagination";
 
 type Lokasi = {
   name: string;

@@ -11,11 +11,11 @@ const navigationLinks = [
   { label: "Beranda", href: "/" },
   { label: "Profil Desa", href: "/profil-desa" },
   { label: "Berita", href: "/berita" },
-  { label: "Program", href: "/program" },
+  { label: "Program", href: "/program/silih-pageuh" },
 ];
 
 const serviceLinks = [
-  { label: "Produk UMKM", href: "/produk-lokal" },
+  { label: "Produk UMKM", href: "/umkm" },
   { label: "Lokasi Penting", href: "/lokasi" },
 ];
 

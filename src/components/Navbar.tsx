@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
       { label: "SILIH PAGEUH", href: "/program/silih-pageuh" },
     ],
   },
-  { label: "Produk Lokal", href: "/produk-lokal" },
+  { label: "Produk Lokal", href: "/umkm" },
 ];
 
 const Navbar = () => {

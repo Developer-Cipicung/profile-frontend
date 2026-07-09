@@ -34,3 +34,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Konfigurasi API publik
+
+Isi `.env.local` dan konfigurasi environment deployment dengan endpoint
+production:
+
+```env
+API_BASE_URL=https://profile-cipicung-api.vercel.app/api/v1
+NEXT_PUBLIC_API_ORIGIN=https://profile-cipicung-api.vercel.app
+NEXT_PUBLIC_ALLOW_LOCAL_IMAGES=false
+```
+
+`API_BASE_URL` hanya digunakan server untuk request data. URL gambar relatif
+dari API dibentuk melalui `NEXT_PUBLIC_API_ORIGIN`.
+
+Backend saat ini menyediakan berita melalui `/news` dan produk UMKM melalui
+`/products`. Route publik frontend untuk katalog produk adalah `/umkm`;
+`/produk-lokal` hanya menjadi redirect permanen untuk kompatibilitas tautan lama.
+
+`remotePatterns` pada `next.config.ts` membatasi optimasi gambar ke domain API
+production dan path gambar yang digunakan backend.
+
+Restart dev server setelah mengubah file env atau `next.config.ts`.

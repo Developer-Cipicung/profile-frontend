@@ -11,14 +11,17 @@ const Intro = () => {
           Mengenal Desa Cipicung
         </h2>
         <p className="text-xs md:text-base text-[#5A7A68] opacity-85">
-          Desa Cipicung terletak di Kecamatan Kuningan, Kabupaten Kuningan, Jawa
-          Barat. Dengan luas wilayah 4,25 km², desa ini terdiri dari 4 dusun
-          yang dihuni masyarakat ramah, gotong royong, dan berbudaya.
+          Desa Cipicung terletak di Kecamatan Cijeruk, Kabupaten Bogor, Jawa
+          Barat. Desa ini memiliki potensi pangan lokal yang kuat dengan
+          mayoritas masyarakat bekerja di sektor pertanian dan industri rumah
+          tangga makanan tradisional.
         </p>
         <p className="text-xs md:text-base text-[#5A7A68] opacity-85">
-          Melalui Program Silih Pageuh, Desa Cipicung berkomitmen meningkatkan
-          kesejahteraan warganya secara holistik di bidang kesehatan, ekonomi,
-          sosial, dan lingkungan.
+          Masyarakat Desa Cipicung dikenal ramah, menjunjung tinggi semangat
+          gotong royong, serta memiliki kearifan lokal yang terus dijaga dalam
+          kehidupan sehari-hari. Melalui Program Silih Pageuh, Desa Cipicung
+          berkomitmen meningkatkan kesejahteraan warganya secara holistik di
+          bidang kesehatan, ekonomi, sosial, dan lingkungan.
         </p>
         <Link
           href={"/profil-desa"}
