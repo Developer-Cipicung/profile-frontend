@@ -42,7 +42,7 @@ const Data = async () => {
     },
     {
       icon: LandPlot,
-      value: "415,16 Ha",
+      value: "461,820 Ha",
       description: "Luas Desa",
     },
     {

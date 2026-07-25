@@ -2,10 +2,10 @@ const visiDesa =
   "Terwujudnya Pemerintahan Desa yang Transparan, Profesional dan Akuntabel menuju Masyarakat Sejahtera, Cerdas dan Agamis";
 
 const misiDesa = [
-  "Meningkatkan Pelayanan Publik yang Prima",
-  "Meningkatkan Pembangunan Sarana dan Prasarana Tepat Sasaran",
-  "Optimalisasi Pelayanan Posyandu",
-  "Menciptakan Kondisi Masyarakat Desa Cipicung Aman, Tertib, Rukun dalam kehidupan bermasyarakat dengan Azas Musyawarah Mufakat serta Gotong Royong.",
+  "Meningkatkan Pelayanan Publik yang Prima.",
+  "Meningkatkan Pembangunan Sarana dan Prasarana Tepat Sasaran.",
+  "Optimalisasi Pelayanan Posyandu.",
+  "Menciptakan Kondisi Masyarakat Desa Cipicung yang Aman, Tertib, dan Rukun dalam kehidupan bermasyarakat dengan azas musyawarah mufakat serta gotong royong.",
   "Pemberdayaan Potensi Kepemudaan Melalui Wadah Organisasi.",
 ];
 
@@ -21,7 +21,7 @@ const VisiMisiSection = () => {
             Visi
           </h2>
           <blockquote className="my-auto pt-6 text-base italic leading-8 text-white/90 md:text-lg md:leading-9">
-            “{visiDesa}”
+            "{visiDesa}"
           </blockquote>
         </article>
 

@@ -64,7 +64,7 @@ const Navbar = () => {
           onClick={closeMobileMenu}
         >
           <Image
-            src={assets.profile}
+            src={assets.logo_desa}
             alt="Logo Desa Cipicung"
             className="size-11 shrink-0 object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:size-12"
           />

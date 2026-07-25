@@ -16,15 +16,14 @@ const contactData: Array<{
 }> = [
   {
     label: "Telepon",
-    value: "(0251) 000-0000",
+    value: "-",
     icon: Phone,
-    href: "tel:+622510000000",
   },
   {
     label: "Email",
-    value: "desa.cipicung@gmail.com",
+    value: "cipicungjuara01@gmail.com",
     icon: Mail,
-    href: "mailto:desa.cipicung@gmail.com",
+    href: "mailto:cipicungjuara01@gmail.com",
   },
   {
     label: "Alamat",
@@ -74,8 +73,13 @@ const ProfileDataSection = ({
     { label: "Kabupaten", value: "Bogor" },
     { label: "Provinsi", value: "Jawa Barat" },
     { label: "Kode Pos", value: "16740" },
-    { label: "Kode Desa", value: "3201282005" },
-    { label: "Luas Wilayah", value: "415,16 Ha" },
+    { label: "Kode Desa", value: "32.01.28.2005" },
+    { label: "Luas Wilayah", value: "461,820 Ha" },
+    { label: "Ketinggian", value: "± 600 mdpl" },
+    {
+      label: "Wilayah Kecamatan",
+      value: "Salah satu dari sembilan desa di Kecamatan Cijeruk",
+    },
     {
       label: "Jumlah Penduduk",
       value: populationSummary
@@ -148,7 +152,7 @@ const ProfileDataSection = ({
             >
               <div className="flex size-28 items-center justify-center rounded-full">
                 <Image
-                  src={assets.profile}
+                  src={assets.logo_desa}
                   alt="Logo Desa Cipicung"
                   className="h-full w-full object-contain"
                 />

@@ -1,30 +1,8 @@
 const sejarahDesa = [
-  {
-    title: null,
-    paragraphs: [
-      'Desa Cipicung adalah salah satu desa yang terletak di Kecamatan Cijeruk, Kabupaten Bogor, Jawa Barat. Nama "Cipicung" kemungkinan berasal dari bahasa Sunda, di mana "Ci" berarti air atau sungai, dan "Picung" merujuk pada jenis pohon atau tanaman tertentu, yang dulunya mungkin banyak ditemukan di wilayah tersebut. Seperti banyak desa di kawasan kaki Gunung Salak, Cipicung memiliki sejarah panjang yang berakar pada kehidupan agraris dan budaya Sunda yang kuat.',
-    ],
-  },
-  {
-    title: "Asal Usul Desa Cipicung",
-    paragraphs: [
-      "Desa Cipicung mungkin dibentuk dari pemukiman tradisional yang berpusat di sekitar lahan pertanian subur, yang merupakan ciri khas daerah di kaki Gunung Salak. Desa ini diperkirakan tumbuh dari komunitas petani yang menggantungkan hidupnya pada sektor pertanian dan perkebunan, terutama pada tanaman padi, sayuran, dan tanaman keras lainnya. Masyarakat desa Cipicung sejak lama mengelola lahan pertanian secara mandiri dan tradisional, mengikuti siklus tanam yang disesuaikan dengan musim hujan dan kemarau.",
-    ],
-  },
-  {
-    title: "Kehidupan Sosial Budaya",
-    paragraphs: [
-      "Seperti kebanyakan desa di Kecamatan Cijeruk, Cipicung kental dengan budaya Sunda dan nilai-nilai Islam yang mendasari kehidupan sehari-hari masyarakatnya. Tradisi gotong royong dan silaturahmi tetap menjadi bagian penting dalam kehidupan sosial. Desa ini juga memiliki kearifan lokal yang mencerminkan harmoni antara manusia dan alam.",
-      "Dalam konteks budaya, masyarakat Desa Cipicung sering kali mengadakan acara-acara keagamaan dan adat yang melibatkan seluruh komunitas, seperti peringatan hari besar Islam dan ritual pertanian tradisional yang berakar dari budaya Sunda. Kebersamaan dan solidaritas di antara warga desa menjadi fondasi yang kuat dalam menjaga keharmonisan sosial.",
-    ],
-  },
-  {
-    title: "Perkembangan Pembangunan",
-    paragraphs: [
-      "Seiring dengan perkembangan waktu, Desa Cipicung mengalami perubahan yang cukup signifikan dalam hal pembangunan infrastruktur dan ekonomi. Dengan adanya program pemerintah seperti Dana Desa, Cipicung mulai memodernisasi fasilitas umum dan membangun infrastruktur dasar seperti jalan, sarana pendidikan, serta kesehatan. Ini membawa dampak positif bagi perekonomian lokal, dengan sektor perdagangan dan usaha kecil mulai berkembang.",
-      "Secara keseluruhan, sejarah Desa Cipicung mencerminkan perjalanan panjang sebuah komunitas tradisional Sunda yang terus beradaptasi dengan perubahan zaman, namun tetap menjaga kearifan lokal dan budaya agrarisnya.",
-    ],
-  },
+  "Desa Cipicung merupakan salah satu dari sembilan desa yang berada di wilayah Kecamatan Cijeruk, Kabupaten Bogor, Provinsi Jawa Barat. Desa ini terletak pada ketinggian sekitar 600 meter di atas permukaan laut dengan luas wilayah kurang lebih 461,820 hektare. Kondisi geografisnya didominasi oleh daerah perbukitan yang subur sehingga sejak dahulu menjadi kawasan yang mengandalkan sektor pertanian sebagai mata pencaharian utama masyarakatnya.",
+  "Pemerintahan Desa Cipicung mulai berjalan pada tahun 1969, dengan kantor desa pertama yang berlokasi di Kampung Genteng. Seiring meningkatnya kebutuhan pelayanan kepada masyarakat, pada tahun 1970 diselenggarakan musyawarah yang melibatkan LKMD, LMD, dan tokoh masyarakat untuk menentukan lokasi kantor desa yang lebih representatif. Hasil musyawarah tersebut menetapkan pemindahan kantor desa ke Kampung Cipicung RT 002/RW 004. Selama proses pembangunan berlangsung, kegiatan pemerintahan sementara dilaksanakan di sebuah lumbung padi yang berada di lokasi tersebut hingga kantor desa selesai dibangun pada tahun 1973 melalui bantuan pemerintah serta semangat swadaya masyarakat.",
+  "Sejak berdirinya, Desa Cipicung telah dipimpin oleh beberapa kepala desa yang secara bergantian melanjutkan pembangunan dan pelayanan kepada masyarakat. Kepemimpinan dimulai oleh H. Nurjen pada tahun 1969-1976, kemudian dilanjutkan oleh H. Sarbini pada tahun 1976-1986, Uyeh Sutisna pada tahun 1986-1993, Zaenal Arifin pada tahun 1993-2001, Cecep Saepuloh pada tahun 2001-2007, HM. Kamaludin pada tahun 2007-2019 selama dua periode, dan sejak tahun 2019 hingga sekarang dipimpin oleh E. Suherli.",
+  "Berbekal semangat gotong royong, kebersamaan, dan partisipasi aktif masyarakat, Desa Cipicung terus berkembang menjadi desa yang berkomitmen mewujudkan tata kelola pemerintahan yang baik, meningkatkan kualitas pelayanan publik, serta mengoptimalkan potensi sumber daya alam dan sumber daya manusia demi terciptanya masyarakat yang maju, mandiri, dan sejahtera.",
 ];
 
 const SejarahSingkatSection = () => {
@@ -33,7 +11,7 @@ const SejarahSingkatSection = () => {
       aria-labelledby="sejarah-singkat-title"
       className="w-full bg-[#f8faf8] px-6 pb-8 pt-16"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-5xl">
         <article className="rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-shadow duration-300 hover:shadow-md md:rounded-3xl md:p-8">
           <h2
             id="sejarah-singkat-title"
@@ -42,25 +20,14 @@ const SejarahSingkatSection = () => {
             Sejarah Singkat
           </h2>
 
-          <div className="mt-6 space-y-6">
-            {sejarahDesa.map((section) => (
-              <section key={section.title ?? "pengantar"}>
-                {section.title ? (
-                  <h3 className="text-base font-bold text-hijau-tua md:text-lg">
-                    {section.title}
-                  </h3>
-                ) : null}
-                <div className={section.title ? "mt-3 space-y-4" : "space-y-4"}>
-                  {section.paragraphs.map((paragraph) => (
-                    <p
-                      key={paragraph}
-                      className="text-sm leading-7 text-gray-600 md:text-base md:leading-8"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </section>
+          <div className="mt-6 space-y-4">
+            {sejarahDesa.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="text-sm leading-relaxed text-gray-700 md:text-base md:leading-8"
+              >
+                {paragraph}
+              </p>
             ))}
           </div>
         </article>

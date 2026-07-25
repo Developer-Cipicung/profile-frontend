@@ -23,9 +23,9 @@ const Hero = () => {
             Selamat Datang di <br /> Desa Cipicung
           </h1>
           <p className="text-sm md:text-xl font-sans font-weight mb-4">
-            Desa Cipicung merupakan desa yang kaya akan potensi pangan lokal
-            dengan mayoritas <br /> masyarakat bekerja di sektor pertanian dan
-            industri rumah tangga makanan tradisional.
+            Desa Cipicung merupakan wilayah perbukitan yang subur di Kecamatan
+            Cijeruk, Kabupaten Bogor, <br /> dengan potensi utama pada sektor
+            pertanian, sumber daya alam, dan semangat gotong royong masyarakat.
           </p>
         </div>
         <div className="w-full flex items-center justify-center pb-4 sm:pb-8">

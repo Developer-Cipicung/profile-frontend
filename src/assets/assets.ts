@@ -17,6 +17,7 @@ import kaur_umum from "./perangkat-desa/kaur-umum.jpeg";
 import kepala_desa from "./perangkat-desa/kepala-desa.jpeg";
 import sekretaris_desa from "./perangkat-desa/sekretaris-desa.png";
 import kepala_dusun3 from "./perangkat-desa/kepala-dusun-3.jpeg";
+import logo_desa from "./logo-desa.png";
 
 export const assets = {
   profile,
@@ -27,6 +28,7 @@ export const assets = {
   orang3,
   sotk,
   silihPageuhHero,
+  logo_desa,
 };
 
 export const perangkatDesa = {

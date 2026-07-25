@@ -16,24 +16,24 @@ const serviceLinks = [
 ];
 
 const socialLinks = [
-  { label: "Facebook Desa Cipicung", href: "https://facebook.com", icon: "facebook" },
-  { label: "Instagram Desa Cipicung", href: "https://instagram.com", icon: "instagram" },
-  { label: "YouTube Desa Cipicung", href: "https://youtube.com", icon: "youtube" },
+  {
+    label: "Instagram Desa Cipicung",
+    href: "https://www.instagram.com/desa.cipicung",
+    icon: "instagram",
+  },
+  {
+    label: "YouTube Cipicung Bangkit",
+    href: "https://www.youtube.com/@cipicungbangkit01",
+    icon: "youtube",
+  },
+  {
+    label: "TikTok Desa Cipicung",
+    href: "https://www.tiktok.com/@desa.cipicung01",
+    icon: "tiktok",
+  },
 ] as const;
 
 function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
-  if (icon === "facebook") {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-        className="h-4 w-4 fill-current"
-      >
-        <path d="M14 8h2.5V4H14c-3.1 0-5 1.9-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.6.4-1 1-1Z" />
-      </svg>
-    );
-  }
-
   if (icon === "instagram") {
     return (
       <svg
@@ -53,6 +53,32 @@ function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
         />
         <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="2" />
         <circle cx="16.5" cy="7.5" r="1.1" fill="currentColor" />
+      </svg>
+    );
+  }
+
+  if (icon === "tiktok") {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-5 w-5"
+        fill="none"
+      >
+        <path
+          d="M14 4v9.1a4.1 4.1 0 1 1-3.8-4.1"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
+        <path
+          d="M14 4c.6 2.8 2.1 4.5 5 5"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        />
       </svg>
     );
   }
@@ -96,7 +122,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <Image
-                src={assets.profile}
+                src={assets.logo_desa}
                 alt="Logo Desa Cipicung"
                 className="h-10 w-10 shrink-0 rounded-full bg-white p-1 object-contain md:h-11 md:w-11"
               />
@@ -111,8 +137,8 @@ export default function Footer() {
             </div>
 
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
-              Masyarakat Cipicung yang informatif, maju, sehat, dan berdaya
-              menuju desa mandiri.
+              Website resmi Pemerintah Desa Cipicung sebagai media informasi,
+              komunikasi, dan pelayanan bagi masyarakat.
             </p>
 
             <div
@@ -184,21 +210,18 @@ export default function Footer() {
                 </span>
               </div>
 
-              <a
-                href="tel:+622321234567"
-                className="flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-kuning"
-              >
+              <div className="flex items-center gap-3 text-sm text-white/65">
                 <Phone
                   size={16}
                   strokeWidth={1.8}
                   aria-hidden="true"
                   className="shrink-0 text-hijau-muda"
                 />
-                (0232) 123-4567
-              </a>
+                -
+              </div>
 
               <a
-                href="mailto:desa.cipicung@gmail.com"
+                href="mailto:cipicungjuara01@gmail.com"
                 className="flex min-w-0 items-center gap-3 text-sm text-white/65 transition-colors hover:text-kuning"
               >
                 <Mail
@@ -207,7 +230,7 @@ export default function Footer() {
                   aria-hidden="true"
                   className="shrink-0 text-hijau-muda"
                 />
-                <span className="break-all">desa.cipicung@gmail.com</span>
+                <span className="break-all">cipicungjuara01@gmail.com</span>
               </a>
             </address>
           </div>

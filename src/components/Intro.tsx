@@ -12,16 +12,15 @@ const Intro = () => {
         </h2>
         <p className="text-xs md:text-base text-[#5A7A68] opacity-85">
           Desa Cipicung terletak di Kecamatan Cijeruk, Kabupaten Bogor, Jawa
-          Barat. Desa ini memiliki potensi pangan lokal yang kuat dengan
-          mayoritas masyarakat bekerja di sektor pertanian dan industri rumah
-          tangga makanan tradisional.
+          Barat. Desa ini merupakan wilayah perbukitan yang subur dengan
+          potensi utama pada sektor pertanian, sumber daya alam, serta
+          kehidupan masyarakat yang menjunjung tinggi nilai gotong royong.
         </p>
         <p className="text-xs md:text-base text-[#5A7A68] opacity-85">
-          Masyarakat Desa Cipicung dikenal ramah, menjunjung tinggi semangat
-          gotong royong, serta memiliki kearifan lokal yang terus dijaga dalam
-          kehidupan sehari-hari. Melalui Program Silih Pageuh, Desa Cipicung
-          berkomitmen meningkatkan kesejahteraan warganya secara holistik di
-          bidang kesehatan, ekonomi, sosial, dan lingkungan.
+          Dengan luas wilayah sekitar 461,820 hektare dan ketinggian kurang
+          lebih 600 meter di atas permukaan laut, Desa Cipicung terus berupaya
+          mengembangkan potensi lokal, meningkatkan pelayanan publik, serta
+          membangun masyarakat yang maju, mandiri, dan sejahtera.
         </p>
         <Link
           href={"/profil-desa"}
