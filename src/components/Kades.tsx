@@ -30,7 +30,7 @@ const Kades = () => {
         <span className="mt-1 block font-bold text-l md:text-xl">
           {kepalaDesa.nama}
         </span>
-        <p className="mt-0.5 text-xs font-semibold text-[#5A7A68] md:text-sm">
+        <p className="mt-0.5 text-xs font-semibold text-[#5A7A68]">
           Kepala Desa Cipicung
         </p>
         <div className="mt-4 space-y-3 text-xs leading-relaxed text-gray-700 sm:text-base">

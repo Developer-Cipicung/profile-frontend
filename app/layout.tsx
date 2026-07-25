@@ -19,7 +19,7 @@ const lakkiReddy = Lakki_Reddy({
 });
 
 export const metadata: Metadata = {
-  title: "Desa Cipicung",
+  title: "Website Desa Cipicung",
   description: "Website resmi Desa Cipicung",
 };
 
