@@ -133,6 +133,15 @@ export async function getNewsList(): Promise<NewsItem[]> {
   ]);
 }
 
+/**
+ * Fetches a limited preview of the latest news for the homepage.
+ * Only requests page 1 with the given limit — avoids over-fetching.
+ */
+export async function getNewsPreview(limit: number): Promise<NewsItem[]> {
+  const response = await apiFetch<unknown>(`/news?page=1&limit=${limit}`);
+  return normalizeNewsList(response);
+}
+
 export async function getNewsById(id: string): Promise<NewsItem> {
   const response = await apiFetch<unknown>(`/news/${encodeURIComponent(id)}`);
   const news = normalizeNewsItem(unwrapData(response));

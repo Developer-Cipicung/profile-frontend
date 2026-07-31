@@ -129,6 +129,15 @@ export async function getUmkmList(): Promise<UmkmItem[]> {
   ]);
 }
 
+/**
+ * Fetches a limited preview of active products for the homepage.
+ * Only requests page 1 with the given limit — avoids over-fetching.
+ */
+export async function getUmkmPreview(limit: number): Promise<UmkmItem[]> {
+  const response = await apiFetch<unknown>(`${UMKM_ENDPOINT}?page=1&limit=${limit}`);
+  return normalizeUmkmList(response);
+}
+
 export async function getUmkmById(id: string): Promise<UmkmItem> {
   const response = await apiFetch<unknown>(
     `${UMKM_ENDPOINT}/${encodeURIComponent(id)}`,
