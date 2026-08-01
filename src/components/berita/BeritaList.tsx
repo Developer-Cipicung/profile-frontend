@@ -44,7 +44,8 @@ const BeritaCard = ({ berita }: { berita: NewsItem }) => {
           {berita.title}
         </h2>
         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-gray-600">
-          {berita.excerpt || "Informasi selengkapnya tersedia pada halaman berita."}
+          {berita.excerpt ||
+            "Informasi selengkapnya tersedia pada halaman berita."}
         </p>
 
         <Link
@@ -90,7 +91,7 @@ const BeritaListSection = ({
         )}
 
         {currentItems.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
             {currentItems.map((berita) => (
               <BeritaCard key={berita.id} berita={berita} />
             ))}
