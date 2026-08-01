@@ -8,15 +8,19 @@ import sotk from "./sotk.png";
 import silihPageuhHero from "./silih-pageuh-hero.png";
 
 import badan_permusyawaratan_desa from "./perangkat-desa/badan-permusyahwaratan.jpeg";
-import kasi_kesejahteraan from "./perangkat-desa/kasi-kesejahteraan-rakyat.jpeg";
-import kasi_pelayanan from "./perangkat-desa/kasi-pelayanan.jpeg";
-import kasi_pemerintahan from "./perangkat-desa/kasi-pemerintahan.jpeg";
-import kaur_keuangan from "./perangkat-desa/kaur-keuangan.jpeg";
-import kaur_perencanaan from "./perangkat-desa/kaur-perencanaan.jpeg";
-import kaur_umum from "./perangkat-desa/kaur-umum.jpeg";
+import kasi_kesejahteraan from "./perangkat-desa/kasi-kesejahteraan-rakyat.jpg";
+import kasi_pelayanan from "./perangkat-desa/kasi-pelayanan.jpg";
+import kasi_pemerintahan from "./perangkat-desa/kasi-pemerintahan.jpg";
+import kaur_keuangan from "./perangkat-desa/kaur-keuangan.jpg";
+import kaur_perencanaan from "./perangkat-desa/kaur-perencanaan.png";
+import kaur_umum from "./perangkat-desa/kaur-umum.jpg";
 import kepala_desa from "./perangkat-desa/kepala-desa.jpeg";
-import sekretaris_desa from "./perangkat-desa/sekretaris-desa.png";
-import kepala_dusun3 from "./perangkat-desa/kepala-dusun-3.jpeg";
+import sekretaris_desa from "./perangkat-desa/sekretaris-desa.jpg";
+import kepala_dusun1 from "./perangkat-desa/kepala-dusun-1.jpg";
+import kepala_dusun2 from "./perangkat-desa/kepala-dusun-2.jpeg";
+import kepala_dusun3 from "./perangkat-desa/kepala-dusun-3.jpg";
+import staff1 from "./perangkat-desa/staff-1.png";
+import staff2 from "./perangkat-desa/staff-2.jpeg";
 import logo_desa from "./logo-desa.png";
 
 export const assets = {
@@ -41,5 +45,9 @@ export const perangkatDesa = {
   kaur_umum,
   kepala_desa,
   sekretaris_desa,
+  staff1,
+  staff2,
+  kepala_dusun1,
+  kepala_dusun2,
   kepala_dusun3,
 };

@@ -17,17 +17,25 @@ const Kades = () => {
   if (!kepalaDesa?.image) return null;
 
   return (
-    <div className="my-8 flex h-auto w-full flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:items-start md:my-16 md:px-32">
-      <Image
-        src={kepalaDesa.image}
-        alt={`Foto ${kepalaDesa.nama}, ${kepalaDesa.jabatan}`}
-        className="h-30 w-30 shrink-0 rounded-full object-cover object-top md:h-50 md:w-50"
-      />
-      <div className="max-w-4xl">
-        <h1 className="text-2xl sm:text-3xl font-bold text-hijau-tua">
+    <div className="my-8 flex w-full flex-col items-center gap-8 px-4 sm:flex-row sm:items-center md:my-16 md:px-32">
+      {/* Photo — square card, larger on desktop */}
+      <div className="relative h-56 w-56 shrink-0 overflow-hidden rounded-2xl shadow-md md:h-72 md:w-72">
+        <Image
+          src={kepalaDesa.image}
+          alt={`Foto ${kepalaDesa.nama}, ${kepalaDesa.jabatan}`}
+          fill
+          sizes="(min-width: 768px) 288px, 224px"
+          className="object-cover object-top"
+          priority
+        />
+      </div>
+
+      {/* Text block */}
+      <div className="max-w-7xl">
+        <h1 className="text-2xl font-bold text-hijau-tua sm:text-3xl">
           Sambutan Kepala Desa
         </h1>
-        <span className="mt-1 block font-bold text-l md:text-xl">
+        <span className="mt-1 block text-lg font-bold md:text-xl">
           {kepalaDesa.nama}
         </span>
         <p className="mt-0.5 text-xs font-semibold text-[#5A7A68]">

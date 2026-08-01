@@ -18,12 +18,13 @@ function PerangkatCard({ perangkat }: { perangkat: PerangkatDesaItem }) {
 
   return (
     <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-      <div className="relative h-60 w-full overflow-hidden bg-[var(--hijau-muda)]/40">
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--hijau-muda)]/40">
         {perangkat.image ? (
           <Image
             src={perangkat.image}
             alt={`Foto ${perangkat.nama}`}
-            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+            fill
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           />
         ) : (

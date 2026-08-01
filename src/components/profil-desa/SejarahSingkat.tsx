@@ -9,9 +9,9 @@ const SejarahSingkatSection = () => {
   return (
     <section
       aria-labelledby="sejarah-singkat-title"
-      className="w-full bg-[#f8faf8] px-6 pb-8 pt-16"
+      className="w-full pb-8 pt-16"
     >
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-7xl">
         <article className="rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-shadow duration-300 hover:shadow-md md:rounded-3xl md:p-8">
           <h2
             id="sejarah-singkat-title"
@@ -20,7 +20,7 @@ const SejarahSingkatSection = () => {
             Sejarah Singkat
           </h2>
 
-          <div className="mt-6 space-y-4">
+          <div className="mt-6 space-y-4 text-justify">
             {sejarahDesa.map((paragraph) => (
               <p
                 key={paragraph}

@@ -58,12 +58,12 @@ export const daftarPerangkatDesa: PerangkatDesaItem[] = [
   {
     nama: "Dini Novianti",
     jabatan: "Staff",
-    image: null,
+    image: perangkatDesaAssets.staff1,
   },
   {
     nama: "Amug Abdurahman",
     jabatan: "Staff",
-    image: null,
+    image: perangkatDesaAssets.staff2,
   },
   {
     nama: "Edi Hidayat",

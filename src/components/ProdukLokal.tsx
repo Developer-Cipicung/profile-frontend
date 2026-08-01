@@ -55,7 +55,9 @@ function ProdukCard({ product }: { product: UmkmItem }) {
         <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug text-hijau-tua">
           {product.name}
         </h3>
-        <p className="mt-2 text-sm font-medium text-gray-600">{product.seller}</p>
+        <p className="mt-2 text-sm font-medium text-gray-600">
+          {product.seller}
+        </p>
         <p className="mt-1 text-sm text-gray-500">{product.dusun}</p>
         {product.description && (
           <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-gray-600">
@@ -148,7 +150,7 @@ export default async function ProdukLokalSection() {
   return (
     <section
       aria-labelledby="produk-lokal-title"
-      className="w-full bg-[#f8faf8] px-6 py-16 md:py-20"
+      className="w-full px-6 py-16 md:py-20"
     >
       <div className="mx-auto max-w-7xl">
         <header className="text-center">

@@ -11,16 +11,24 @@ const Intro = () => {
           Mengenal Desa Cipicung
         </h2>
         <p className="text-xs md:text-base text-[#5A7A68] opacity-85">
-          Desa Cipicung terletak di Kecamatan Cijeruk, Kabupaten Bogor, Jawa
-          Barat. Desa ini merupakan wilayah perbukitan yang subur dengan
-          potensi utama pada sektor pertanian, sumber daya alam, serta
-          kehidupan masyarakat yang menjunjung tinggi nilai gotong royong.
+          Desa Cipicung adalah salah satu dari 9 desa diwilayah Kecamatan
+          Cijeruk Kabupaten Bogor, Desa Cipicung berada di ketinggian 600 meter
+          diatas permukaan Laut dengan Luas wilayah 461.820 Ha. Suhu di Daerah
+          desa Cipicung 32 derajat celcius, sebagaimana desa-desa lain di
+          Indonesia mempunyai Iklim Kemarau dan Iklim Penghujan.hal tersebut
+          mempunyai mengaruh langsung terhadap pola Tanam yang ada di Desa
+          Cipicung. Iklim suatu daerah sangat berpengaruh dalam kehidupan
+          utamanya untuk pertumbuhan tanaman dan kelangsungan hidup. Selain itu,
+          kondisi geografis desa Cipicung umumnya merupakan perbukitan.
         </p>
         <p className="text-xs md:text-base text-[#5A7A68] opacity-85">
-          Dengan luas wilayah sekitar 461,820 hektare dan ketinggian kurang
-          lebih 600 meter di atas permukaan laut, Desa Cipicung terus berupaya
-          mengembangkan potensi lokal, meningkatkan pelayanan publik, serta
-          membangun masyarakat yang maju, mandiri, dan sejahtera.
+          Pada tahun 1969 Kantor Desa Cipicung pertama berlokasi di Kp. Genteng,
+          pada tahun 1970 diadakan musyawarah LKMD,LMD dan serta Tokoh
+          Masyarakat, membahas tentang kantor desa Cipicung akan dipindahkan ke
+          Kp. Cipicung Rt. 002/004, sebelum selesainya kantor desa Cipicung,
+          menggunakan kantor Desa sementara adalah Lumbung padi di Kp. Cipicung
+          Rt. 002/004 pada tahun 1973. Pembangunan Kantor desa Cipicung dengan
+          bantuan Pemrintah menggunakan subsidi dan swadaya masyarakat.
         </p>
         <Link
           href={"/profil-desa"}

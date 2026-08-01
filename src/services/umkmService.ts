@@ -74,7 +74,7 @@ export function normalizeUmkmItem(item: unknown): UmkmItem | null {
         item.thumbnail_url,
     ),
     whatsapp: toText(
-      item.whatsapp ?? item.phone ?? item.noWa ?? item.phoneNumber,
+      item.no_telp ?? item.whatsapp ?? item.phone ?? item.noWa ?? item.phoneNumber,
     ),
     createdAt: toText(item.createdAt ?? item.created_at) || undefined,
   };

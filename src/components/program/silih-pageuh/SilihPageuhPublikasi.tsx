@@ -5,19 +5,19 @@ const publikasi = [
   {
     title: "Buku Panduan Silih Pageuh 2024",
     type: "PDF",
-    year: "2024",
+    year: "2026",
     href: "#",
   },
   {
-    title: "Laporan Kinerja Program Semester I",
+    title: "Laporan Kinerja Program",
     type: "PDF",
-    year: "2024",
+    year: "2026",
     href: "#",
   },
   {
     title: "Modul Pelatihan Kader Posyandu",
     type: "PDF",
-    year: "2024",
+    year: "2026",
     href: "#",
   },
 ];

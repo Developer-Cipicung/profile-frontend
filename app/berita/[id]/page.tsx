@@ -42,7 +42,8 @@ function RelatedNewsCard({ news }: { news: NewsItem }) {
           {news.title}
         </h3>
         <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-gray-600">
-          {news.excerpt || "Informasi selengkapnya tersedia pada halaman berita."}
+          {news.excerpt ||
+            "Informasi selengkapnya tersedia pada halaman berita."}
         </p>
         <Link
           href={`/berita/${news.id}`}
@@ -122,7 +123,8 @@ export default async function BeritaDetailPage({
     getNewsList(),
   ]);
   const fallbackDetail = fallbackNews.find((item) => item.id === id);
-  const news = detailResult.status === "fulfilled" ? detailResult.value : fallbackDetail;
+  const news =
+    detailResult.status === "fulfilled" ? detailResult.value : fallbackDetail;
 
   if (!news) {
     notFound();
@@ -131,7 +133,9 @@ export default async function BeritaDetailPage({
   const isUsingFallback = detailResult.status === "rejected";
   const newsList =
     listResult.status === "fulfilled" ? listResult.value : fallbackNews;
-  const relatedNews = newsList.filter((item) => item.id !== news.id).slice(0, 2);
+  const relatedNews = newsList
+    .filter((item) => item.id !== news.id)
+    .slice(0, 2);
   const date = getNewsDate(news);
   const content = news.content || news.excerpt;
 
@@ -176,7 +180,10 @@ export default async function BeritaDetailPage({
 
           <div className="mx-auto mt-8 max-w-4xl">
             <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500">
-              <time dateTime={date || undefined} className="flex items-center gap-2">
+              <time
+                dateTime={date || undefined}
+                className="flex items-center gap-2"
+              >
                 <CalendarDays
                   size={17}
                   strokeWidth={1.8}
@@ -186,7 +193,9 @@ export default async function BeritaDetailPage({
                 {formatNewsDate(date)}
               </time>
               <span aria-hidden="true">•</span>
-              <span className="font-medium text-hijau-tua">{news.category}</span>
+              <span className="font-medium text-hijau-tua">
+                {news.category}
+              </span>
             </div>
 
             <h1 className="mt-4 text-2xl font-bold leading-tight text-hijau-tua md:text-4xl">
@@ -212,7 +221,7 @@ export default async function BeritaDetailPage({
                 id="related-news-title"
                 className="text-2xl font-bold text-hijau-tua md:text-3xl"
               >
-                Berita Terkait
+                Berita Lainnya
               </h2>
               <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
                 {relatedNews.map((item) => (

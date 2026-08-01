@@ -57,11 +57,11 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
 
   return (
     <article
-      className={`group flex h-auto min-w-0 flex-col overflow-hidden rounded-xl shadow-[0_6px_18px_rgba(22,94,51,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(22,94,51,0.2)] md:aspect-[3/4] md:rounded-2xl ${
+      className={`group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
         isMain ? "bg-[#165E33]" : "bg-white"
       }`}
     >
-      <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-[#EAF8F0]">
+      <div className="relative aspect-[3/4] w-full shrink-0 overflow-hidden bg-[#EAF8F0]">
         {perangkat.image ? (
           <SafeImage
             src={perangkat.image}
@@ -86,27 +86,29 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
         )}
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col p-3 sm:p-4 md:p-2 lg:p-4 xl:p-5">
+      <div className="flex min-h-0 flex-1 flex-col p-4 xl:p-5">
+        {isMain ? (
+          <span className="mb-3 w-fit rounded-full bg-[var(--kuning)] px-3 py-1 text-xs font-bold text-[#165E33]">
+            Pimpinan Desa
+          </span>
+        ) : null}
+
         <h3
-          className={`break-words text-sm font-bold leading-tight md:text-xs lg:text-sm xl:text-base ${
-            isMain ? "text-white" : "text-slate-900"
+          className={`break-words text-base font-bold leading-tight ${
+            isMain ? "text-white" : "text-[#165E33]"
           }`}
         >
           {perangkat.nama}
         </h3>
         <p
-          className={`mt-1 break-words text-xs font-semibold leading-tight md:text-[10px] lg:text-xs xl:text-sm ${
-            isMain ? "text-[#83FFBB]" : "text-[#165E33]"
+          className={`mt-2 w-fit rounded-full px-3 py-1 text-xs font-semibold leading-relaxed ${
+            isMain
+              ? "bg-white/10 text-[#83FFBB]"
+              : "bg-[#EAF8F0] text-[#165E33]"
           }`}
         >
           {perangkat.jabatan}
         </p>
-
-        {isMain ? (
-          <p className="mt-2 text-[10px] leading-tight text-white/75 md:mt-1 md:text-[9px] lg:mt-2 lg:text-[10px] xl:text-xs">
-            Pimpinan Desa
-          </p>
-        ) : null}
       </div>
     </article>
   );
