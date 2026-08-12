@@ -108,7 +108,7 @@ export default function ProdukUMKMSection({
         <header className="text-center">
           <h1
             id="produk-umkm-title"
-            className="font-reddy text-3xl text-hijau-tua md:text-5xl"
+            className="font-montserrat font-bold tracking-tighter text-3xl text-hijau-tua md:text-5xl"
           >
             Katalog Produk UMKM
           </h1>

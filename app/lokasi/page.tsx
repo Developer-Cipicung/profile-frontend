@@ -7,7 +7,7 @@ export default function LokasiPage() {
       <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto mb-10 max-w-3xl text-center">
-            <h1 className="text-3xl font-bold text-[var(--hijau-tua)] md:text-5xl">
+            <h1 className="text-3xl font-montserrat font-bold tracking-tighter text-[var(--hijau-tua)] md:text-5xl">
               Lokasi Penting Desa
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-gray-600 md:text-base">

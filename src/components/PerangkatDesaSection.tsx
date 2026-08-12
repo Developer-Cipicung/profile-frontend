@@ -75,7 +75,7 @@ export default function PerangkatDesaSection() {
     <section className="bg-[#f8faf8] py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-[var(--hijau-tua)] md:text-4xl">
+          <h2 className="font-montserrat font-bold tracking-tighter text-3xl text-hijau-tua md:text-5xl">
             Perangkat Desa
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">

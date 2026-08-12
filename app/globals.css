@@ -31,6 +31,10 @@ body {
   font-family: var(--font-lakki-reddy), serif;
 }
 
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
 .cipicung-boundary-map .leaflet-pane,
 .cipicung-boundary-map .leaflet-top,
 .cipicung-boundary-map .leaflet-bottom {

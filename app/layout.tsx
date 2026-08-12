@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Lakki_Reddy, Noto_Sans } from "next/font/google";
+import { Lakki_Reddy, Noto_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
@@ -15,6 +15,13 @@ const lakkiReddy = Lakki_Reddy({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-lakki-reddy",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 

@@ -156,7 +156,7 @@ export default async function ProdukLokalSection() {
         <header className="text-center">
           <h2
             id="produk-lokal-title"
-            className="text-center text-3xl font-bold tracking-wide text-hijau-tua md:text-4xl"
+            className="text-center text-3xl font-bold font-montserrat tracking-tighter text-hijau-tua md:text-4xl"
           >
             Produk Lokal
           </h2>

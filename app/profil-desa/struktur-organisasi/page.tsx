@@ -12,7 +12,7 @@ export default function StrukturOrganisasiPage() {
               Pemerintahan Desa
             </p> */}
 
-            <h1 className="text-3xl font-bold text-[var(--hijau-tua)] md:text-5xl">
+            <h1 className="font-montserrat font-bold tracking-tighter text-3xl text-hijau-tua md:text-5xl">
               Struktur Organisasi Desa
             </h1>
 

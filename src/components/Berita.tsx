@@ -122,7 +122,7 @@ export default async function BeritaDesaSection() {
       <div className="mx-auto max-w-7xl px-6">
         <h2
           id="berita-desa-title"
-          className="text-center text-3xl font-bold tracking-wide text-hijau-tua md:text-4xl"
+          className="text-center text-3xl font-bold font-montserrat tracking-tighter text-hijau-tua md:text-4xl"
         >
           Berita Desa
         </h2>
