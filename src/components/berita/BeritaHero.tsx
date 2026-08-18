@@ -1,8 +1,11 @@
 const BeritaHeroSection = () => {
   return (
-    <section className="w-full bg-[#f8faf8] px-6 pb-8 pt-16 md:pt-20">
+    <section className="w-full bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8">
       <div className="mx-auto max-w-7xl text-center">
-        <h1 className="font-montserrat font-bold tracking-tighter text-3xl text-hijau-tua md:text-5xl">
+        <p className="text-sm font-bold uppercase text-hijau">
+          Informasi Desa
+        </p>
+        <h1 className="mt-2 font-montserrat text-3xl font-extrabold leading-tight text-hijau-tua md:text-5xl">
           Berita Desa
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-600 md:text-base">

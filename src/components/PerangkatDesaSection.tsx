@@ -17,8 +17,8 @@ function PerangkatCard({ perangkat }: { perangkat: PerangkatDesaItem }) {
   const isMain = perangkat.utama === true;
 
   return (
-    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--hijau-muda)]/40">
+    <article className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)]">
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#eef8f1]">
         {perangkat.image ? (
           <Image
             src={perangkat.image}
@@ -44,7 +44,7 @@ function PerangkatCard({ perangkat }: { perangkat: PerangkatDesaItem }) {
         }`}
       >
         {isMain ? (
-          <span className="mb-3 w-fit rounded-full bg-[var(--kuning)] px-3 py-1 text-xs font-bold text-[var(--hijau-tua)]">
+          <span className="mb-3 w-fit rounded-md bg-[var(--kuning)] px-3 py-1 text-xs font-bold text-[var(--hijau-tua)]">
             Pimpinan Desa
           </span>
         ) : null}
@@ -57,7 +57,7 @@ function PerangkatCard({ perangkat }: { perangkat: PerangkatDesaItem }) {
           {perangkat.nama}
         </h3>
         <p
-          className={`mt-2 w-fit rounded-full px-3 py-1 text-sm font-semibold leading-relaxed ${
+          className={`mt-2 w-fit rounded-md px-3 py-1 text-sm font-semibold leading-relaxed ${
             isMain
               ? "bg-white/10 text-[var(--hijau-muda)]"
               : "bg-[var(--hijau-muda)]/25 text-[var(--hijau-tua)]"
@@ -72,10 +72,13 @@ function PerangkatCard({ perangkat }: { perangkat: PerangkatDesaItem }) {
 
 export default function PerangkatDesaSection() {
   return (
-    <section className="bg-[#f8faf8] py-12 md:py-16">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="bg-[#f6faf7] px-5 py-12 sm:px-6 md:py-16 lg:px-8">
+      <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-montserrat font-bold tracking-tighter text-3xl text-hijau-tua md:text-5xl">
+          <p className="text-sm font-bold uppercase text-hijau">
+            Pemerintahan Desa
+          </p>
+          <h2 className="mt-2 font-montserrat text-3xl font-extrabold leading-tight text-hijau-tua md:text-5xl">
             Perangkat Desa
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">

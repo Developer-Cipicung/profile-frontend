@@ -26,7 +26,7 @@ function SidebarNewsCard({ news }: { news: NewsItem }) {
   return (
     <Link
       href={`/berita/${news.slug ?? news.id}`}
-      className="group flex gap-3 rounded-xl p-2 transition-colors hover:bg-[#EAF8F0]"
+      className="group flex gap-3 rounded-lg p-2 transition-colors hover:bg-[#EAF8F0]"
     >
       {/* Thumbnail */}
       <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-lg bg-gray-100">
@@ -150,8 +150,6 @@ export default async function BeritaDetailPage({
 
   const date = getNewsDate(news);
   const content = news.content || news.excerpt;
-  const slug = news.slug ?? news.id;
-
   if (detailResult.status === "rejected") {
     console.error(
       "Unable to load news detail from the API; using fallback data.",
@@ -160,8 +158,8 @@ export default async function BeritaDetailPage({
   }
 
   return (
-    <main className="min-h-screen w-full bg-[#f8faf8]">
-      <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-14">
+    <main className="min-h-screen w-full bg-[#f6faf7]">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-14 lg:px-8">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-sm text-gray-500">
           <Link href="/" className="flex items-center gap-1 transition-colors hover:text-hijau-tua">
@@ -180,7 +178,7 @@ export default async function BeritaDetailPage({
         {isUsingFallback && (
           <p
             role="status"
-            className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
+            className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
           >
             Detail API belum dapat diakses. Menampilkan berita sementara.
           </p>
@@ -189,9 +187,9 @@ export default async function BeritaDetailPage({
         {/* Two-column layout */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
           {/* ── LEFT: Main article ─────────────────────────────────────── */}
-          <article className="min-w-0 flex-1">
+          <article className="min-w-0 flex-1 rounded-lg border border-emerald-100 bg-white p-5 shadow-[0_14px_34px_rgba(22,94,51,0.08)] md:p-7">
             {/* Title */}
-            <h1 className="text-2xl font-bold leading-tight text-hijau-tua md:text-3xl">
+            <h1 className="font-montserrat text-2xl font-extrabold leading-tight text-hijau-tua md:text-4xl">
               {news.title}
             </h1>
 
@@ -222,7 +220,7 @@ export default async function BeritaDetailPage({
             </div>
 
             {/* Hero image */}
-            <div className="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl shadow-[0_8px_24px_rgba(22,94,51,0.12)]">
+            <div className="relative mt-6 aspect-video w-full overflow-hidden rounded-lg shadow-[0_12px_28px_rgba(22,94,51,0.12)]">
               <ApiImage
                 key={news.imageUrl}
                 imagePath={news.imageUrl}
@@ -252,9 +250,9 @@ export default async function BeritaDetailPage({
           {/* ── RIGHT: Sidebar ─────────────────────────────────────────── */}
           <aside
             aria-label="Berita terbaru"
-            className="w-full shrink-0 lg:sticky lg:top-6 lg:w-72 xl:w-80"
+            className="w-full shrink-0 lg:sticky lg:top-24 lg:w-72 xl:w-80"
           >
-            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-[0_8px_24px_rgba(22,94,51,0.08)]">
+            <div className="rounded-lg border border-emerald-100 bg-white p-5 shadow-[0_12px_28px_rgba(22,94,51,0.08)]">
               <h2 className="mb-4 text-base font-bold text-hijau-tua">
                 Berita Terbaru
               </h2>

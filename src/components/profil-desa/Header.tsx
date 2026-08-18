@@ -2,15 +2,20 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 px-4 py-2.5 text-center md:py-8">
-      <h1 className="font-montserrat font-bold tracking-tighter text-3xl text-hijau-tua md:text-5xl">
+    <section className="w-full bg-white px-5 py-14 text-center sm:px-6 md:py-20 lg:px-8">
+      <div className="mx-auto max-w-3xl">
+        <p className="text-sm font-bold uppercase text-hijau">
+          Profil Desa
+        </p>
+        <h1 className="mt-2 font-montserrat text-3xl font-extrabold leading-tight text-hijau-tua md:text-5xl">
         Profil Desa Cipicung
-      </h1>
-      <p className="text-[#5A7A68]">
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#5A7A68] md:text-base">
         Mengenal lebih jauh sejarah, identitas, dan arah pembangunan Desa
         Cipicung
-      </p>
-    </div>
+        </p>
+      </div>
+    </section>
   );
 };
 

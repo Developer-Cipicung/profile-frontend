@@ -4,7 +4,7 @@ export default function PetaDesaSection() {
   return (
     <section
       aria-labelledby="peta-desa-title"
-      className="w-full px-4 py-6 md:px-32 md:py-10"
+      className="w-full bg-[#f6faf7] px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
       <div className="mx-auto w-full max-w-[1440px]">
         <MapClient showTitle />

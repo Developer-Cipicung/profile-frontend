@@ -14,7 +14,7 @@ export default async function UmkmPage() {
   }
 
   return (
-    <main className="min-h-screen w-full bg-[#f8faf8]">
+    <main className="min-h-screen w-full bg-[#f6faf7]">
       <ProdukUMKMSection
         products={products}
         isUsingFallback={isUsingFallback}

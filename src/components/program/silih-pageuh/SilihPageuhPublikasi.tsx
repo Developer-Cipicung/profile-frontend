@@ -26,12 +26,15 @@ const SilihPageuhPublikasiSection = () => {
   return (
     <section
       aria-labelledby="publikasi-title"
-      className="w-full bg-[#f8faf8] px-6 py-16 md:py-20"
+      className="w-full bg-[#f6faf7] px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
+        <p className="text-sm font-bold uppercase text-hijau">
+          Dokumen Program
+        </p>
         <h2
           id="publikasi-title"
-          className="text-3xl font-bold text-hijau-tua md:text-4xl"
+          className="mt-2 font-montserrat text-3xl font-extrabold text-hijau-tua md:text-4xl"
         >
           Materi &amp; Publikasi
         </h2>
@@ -41,10 +44,10 @@ const SilihPageuhPublikasiSection = () => {
             <Link
               key={item.title}
               href={item.href}
-              className="group flex min-w-0 items-center gap-4 rounded-xl border border-gray-100 bg-white p-5 shadow-[0_8px_20px_rgba(22,94,51,0.07)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau hover:shadow-md"
+              className="group flex min-w-0 items-center gap-4 rounded-lg border border-emerald-100 bg-white p-5 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)]"
               aria-label={`Unduh ${item.title}`}
             >
-              <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-hijau-muda/25 text-hijau-tua">
+              <div className="grid size-11 shrink-0 place-items-center rounded-lg bg-[#eef8f1] text-hijau-tua">
                 <FileText size={21} strokeWidth={1.8} aria-hidden="true" />
               </div>
               <div className="min-w-0 flex-1">

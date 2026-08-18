@@ -62,7 +62,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
   const hasPurchaseUrl = product.purchaseUrl.trim().length > 0;
 
   return (
-    <article className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <article className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)]">
       <Link
         href={`/umkm/${product.slug ?? product.id}`}
         className="absolute inset-0 z-10 focus:outline-none focus:ring-4 focus:ring-hijau/20"
@@ -107,7 +107,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
                   href={product.purchaseUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#EE4D2D] bg-white px-4 py-2 text-sm font-semibold text-[#EE4D2D] transition-colors hover:bg-[#fff3ef] focus:outline-none focus:ring-4 focus:ring-[#EE4D2D]/20"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-[#EE4D2D] bg-white px-4 py-2 text-sm font-semibold text-[#EE4D2D] transition-colors hover:bg-[#fff3ef] focus:outline-none focus:ring-4 focus:ring-[#EE4D2D]/20"
                   aria-label={`Beli ${product.name} melalui Shopee`}
                 >
                   <ShopeeLogo className="h-5 w-5" />
@@ -119,7 +119,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
                   href={createWhatsappLink(product.whatsapp, product.name)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
                   aria-label={`Beli ${product.name} melalui WhatsApp`}
                 >
                   <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
@@ -130,7 +130,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
           ) : (
             <span
               aria-disabled="true"
-              className="inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500"
+              className="inline-flex cursor-not-allowed items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500"
             >
               <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
               Kontak belum tersedia
@@ -154,13 +154,16 @@ export default function ProdukUMKMSection({
   return (
     <section
       aria-labelledby="produk-umkm-title"
-      className="w-full bg-[#f8faf8] px-6 py-16 md:py-20"
+      className="w-full bg-[#f6faf7] px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <header className="text-center">
+          <p className="text-sm font-bold uppercase text-hijau">
+            Ekonomi Warga
+          </p>
           <h1
             id="produk-umkm-title"
-            className="font-montserrat font-bold tracking-tighter text-3xl text-hijau-tua md:text-5xl"
+            className="mt-2 font-montserrat text-3xl font-extrabold leading-tight text-hijau-tua md:text-5xl"
           >
             Katalog Produk UMKM
           </h1>
@@ -173,7 +176,7 @@ export default function ProdukUMKMSection({
         {isUsingFallback && (
           <p
             role="status"
-            className="mt-10 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
+            className="mt-10 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
           >
             API produk sedang tidak dapat diakses. Menampilkan produk sementara.
           </p>
@@ -186,7 +189,7 @@ export default function ProdukUMKMSection({
             ))}
           </div>
         ) : (
-          <div className="mt-10 rounded-2xl border border-gray-200 bg-white px-6 py-14 text-center">
+          <div className="mt-10 rounded-lg border border-gray-200 bg-white px-6 py-14 text-center">
             <h2 className="text-lg font-bold text-hijau-tua">
               Belum ada produk tersedia.
             </h2>

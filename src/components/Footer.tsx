@@ -116,15 +116,15 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-hijau-tua text-white">
-      <div className="mx-auto max-w-7xl px-5 py-8 md:px-6 md:py-12">
-        <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-[1.35fr_0.8fr_0.8fr_1.35fr]">
+    <footer className="w-full border-t border-emerald-950/10 bg-[#103f25] text-white">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-14 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-[1.35fr_0.8fr_0.8fr_1.35fr]">
           <div>
             <div className="flex items-center gap-3">
               <Image
                 src={assets.logo_desa}
                 alt="Logo Desa Cipicung"
-                className="h-10 w-10 shrink-0 rounded-full bg-white p-1 object-contain md:h-11 md:w-11"
+                className="h-10 w-10 shrink-0 rounded-full bg-white p-1 object-contain shadow-[0_10px_24px_rgba(0,0,0,0.22)] md:h-11 md:w-11"
               />
               <div>
                 <p className="text-lg font-bold leading-tight text-white">
@@ -152,7 +152,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-white/80 transition-all hover:bg-kuning hover:text-hijau-tua"
+                  className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/10 text-white/80 transition-all hover:-translate-y-0.5 hover:bg-kuning hover:text-hijau-tua"
                 >
                   <SocialIcon icon={icon} />
                 </a>
@@ -236,7 +236,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-5 md:mt-10 md:pt-6">
+        <div className="mt-10 border-t border-white/10 pt-5 md:mt-12 md:pt-6">
           <p className="text-xs leading-relaxed text-white/40">
             &copy; 2026 Pemerintah Desa Cipicung. Seluruh hak dilindungi
             undang-undang.

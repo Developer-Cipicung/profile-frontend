@@ -3,6 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { assets } from "@/src/assets/assets";
 import {
   daftarPerangkatDesa,
@@ -57,7 +58,7 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
 
   return (
     <article
-      className={`group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+      className={`group flex min-w-0 flex-col overflow-hidden rounded-lg border border-emerald-100 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)] ${
         isMain ? "bg-[#165E33]" : "bg-white"
       }`}
     >
@@ -88,7 +89,7 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
 
       <div className="flex min-h-0 flex-1 flex-col p-4 xl:p-5">
         {isMain ? (
-          <span className="mb-3 w-fit rounded-full bg-[var(--kuning)] px-3 py-1 text-xs font-bold text-[#165E33]">
+          <span className="mb-3 w-fit rounded-md bg-[var(--kuning)] px-3 py-1 text-xs font-bold text-[#165E33]">
             Pimpinan Desa
           </span>
         ) : null}
@@ -101,7 +102,7 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
           {perangkat.nama}
         </h3>
         <p
-          className={`mt-2 w-fit rounded-full px-3 py-1 text-xs font-semibold leading-relaxed ${
+          className={`mt-2 w-fit rounded-md px-3 py-1 text-xs font-semibold leading-relaxed ${
             isMain
               ? "bg-white/10 text-[#83FFBB]"
               : "bg-[#EAF8F0] text-[#165E33]"
@@ -118,23 +119,26 @@ const SotkSection = () => {
   return (
     <section
       aria-labelledby="sotk-title"
-      className="w-full bg-white py-4 md:py-10"
+      className="w-full bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl">
         <header className="max-w-2xl">
+          <p className="text-sm font-bold uppercase text-hijau">
+            Pemerintahan Desa
+          </p>
           <h2
             id="sotk-title"
-            className="text-3xl font-bold text-[#165E33] md:text-4xl"
+            className="mt-2 font-montserrat text-3xl font-extrabold text-[#165E33] md:text-4xl"
           >
             SOTK
           </h2>
-          <p className="mt-2 text-sm text-[#5A7A68] md:text-base">
+          <p className="mt-3 text-sm leading-relaxed text-[#5A7A68] md:text-base">
             Struktur Organisasi Kepemimpinan Desa
           </p>
         </header>
 
-        <div className="mx-auto my-10 w-full max-w-[1100px] md:my-14">
-          <div className="relative aspect-[1107/516] w-full overflow-hidden">
+        <div className="mx-auto my-10 w-full max-w-[1100px] rounded-lg border border-emerald-100 bg-[#f8fbf8] p-4 shadow-[0_18px_42px_rgba(22,94,51,0.08)] md:my-14 md:p-6">
+          <div className="relative aspect-[1107/516] w-full overflow-hidden rounded-lg bg-white">
             <SafeImage
               src={assets.sotk}
               alt="Bagan Struktur Organisasi dan Tata Kerja Desa Cipicung"
@@ -155,9 +159,10 @@ const SotkSection = () => {
           <div className="mt-4 flex justify-end">
             <Link
               href="/profil-desa/struktur-organisasi"
-              className="text-xs font-semibold text-[#165E33] transition-colors hover:text-[#36C56F] sm:text-sm md:text-base"
+              className="inline-flex items-center gap-2 rounded-lg border border-hijau-tua px-4 py-2 text-xs font-bold text-[#165E33] transition-colors hover:bg-hijau-tua hover:text-white sm:text-sm md:text-base"
             >
-              Selengkapnya &gt;
+              Selengkapnya
+              <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
             </Link>
           </div>
         </div>

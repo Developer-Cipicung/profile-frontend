@@ -44,13 +44,16 @@ const SilihPageuhPilarSection = () => {
   return (
     <section
       aria-labelledby="pilar-program-title"
-      className="w-full bg-white px-6 py-16 md:py-20"
+      className="w-full bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
       <div className="mx-auto max-w-5xl">
         <header className="mb-10 text-center">
+          <p className="text-sm font-bold uppercase text-hijau">
+            Program Desa
+          </p>
           <h2
             id="pilar-program-title"
-            className="text-3xl font-bold text-hijau-tua md:text-4xl"
+            className="mt-2 font-montserrat text-3xl font-extrabold text-hijau-tua md:text-4xl"
           >
             Pilar Program
           </h2>
@@ -67,7 +70,7 @@ const SilihPageuhPilarSection = () => {
             return (
               <article
                 key={pilar.title}
-                className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-all duration-300 hover:shadow-md"
+                className="overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)]"
               >
                 <button
                   type="button"
@@ -77,7 +80,7 @@ const SilihPageuhPilarSection = () => {
                 >
                   <span
                     aria-hidden="true"
-                    className={`grid size-12 shrink-0 place-items-center rounded-full text-2xl ${pilar.accent}`}
+                    className={`grid size-12 shrink-0 place-items-center rounded-lg text-2xl ${pilar.accent}`}
                   >
                     {pilar.symbol}
                   </span>

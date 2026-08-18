@@ -9,13 +9,16 @@ const SejarahSingkatSection = () => {
   return (
     <section
       aria-labelledby="sejarah-singkat-title"
-      className="w-full pb-8 pt-16"
+      className="w-full bg-[#f6faf7] px-5 pb-10 pt-4 sm:px-6 md:pb-14 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
-        <article className="rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-shadow duration-300 hover:shadow-md md:rounded-3xl md:p-8">
+        <article className="rounded-lg border border-emerald-100 bg-white p-6 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)] md:p-8">
+          <p className="text-sm font-bold uppercase text-hijau">
+            Sejarah
+          </p>
           <h2
             id="sejarah-singkat-title"
-            className="text-xl font-bold text-hijau-tua md:text-2xl"
+            className="mt-2 text-xl font-bold text-hijau-tua md:text-2xl"
           >
             Sejarah Singkat
           </h2>

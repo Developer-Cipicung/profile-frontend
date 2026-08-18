@@ -2,9 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Home, MessageCircle, Package, Tag } from "lucide-react";
 import ApiImage from "@/src/components/common/ApiImage";
-import { assets } from "@/src/assets/assets";
 import { fallbackUmkm } from "@/src/data/umkmFallback";
-import { getImageUrl } from "@/src/lib/imageUrl";
 import {
   getUmkmById,
   getUmkmList,
@@ -57,7 +55,7 @@ function SidebarProductCard({ product }: { product: UmkmItem }) {
   return (
     <Link
       href={`/umkm/${product.slug ?? product.id}`}
-      className="group flex gap-3 rounded-xl p-2 transition-colors hover:bg-[#EAF8F0]"
+      className="group flex gap-3 rounded-lg p-2 transition-colors hover:bg-[#EAF8F0]"
     >
       <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-lg bg-gray-100">
         <ApiImage
@@ -82,14 +80,15 @@ function SidebarProductCard({ product }: { product: UmkmItem }) {
 }
 
 function ProductHeroImage({ product }: { product: UmkmItem }) {
-  const imageUrl = getImageUrl(product.imageUrl) ?? assets.desa.src;
-
   return (
-    <div className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_24px_rgba(22,94,51,0.12)]">
-      <img
-        src={imageUrl}
+    <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-white shadow-[0_12px_28px_rgba(22,94,51,0.12)]">
+      <ApiImage
+        imagePath={product.imageUrl}
         alt={`Foto produk ${product.name}`}
-        className="h-auto max-h-[76vh] w-full object-contain"
+        fill
+        priority
+        sizes="(min-width: 1024px) 42vw, 100vw"
+        className="object-contain"
       />
     </div>
   );
@@ -126,8 +125,8 @@ export default async function UmkmDetailPage({ params }: UmkmDetailPageProps) {
   }
 
   return (
-    <main className="min-h-screen w-full bg-[#f8faf8]">
-      <div className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-14">
+    <main className="min-h-screen w-full bg-[#f6faf7]">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 md:py-14 lg:px-8">
         <nav
           aria-label="Breadcrumb"
           className="mb-6 flex items-center gap-1.5 text-sm text-gray-500"
@@ -148,25 +147,25 @@ export default async function UmkmDetailPage({ params }: UmkmDetailPageProps) {
         {isUsingFallback && (
           <p
             role="status"
-            className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
+            className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
           >
             Detail API belum dapat diakses. Menampilkan produk sementara.
           </p>
         )}
 
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
-          <article className="min-w-0 flex-1">
+          <article className="min-w-0 flex-1 rounded-lg border border-emerald-100 bg-white p-5 shadow-[0_14px_34px_rgba(22,94,51,0.08)] md:p-7">
             <div className="grid gap-7 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start">
               <ProductHeroImage product={product} />
 
               <section aria-labelledby="product-title">
-                <p className="inline-flex items-center gap-2 rounded-full bg-[#EAF8F0] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-hijau">
+                <p className="inline-flex items-center gap-2 rounded-lg bg-[#EAF8F0] px-3 py-1 text-xs font-semibold uppercase text-hijau">
                   <Tag size={13} strokeWidth={1.8} aria-hidden="true" />
                   {product.category}
                 </p>
                 <h1
                   id="product-title"
-                  className="mt-4 text-2xl font-bold leading-tight text-hijau-tua md:text-3xl"
+                  className="mt-4 font-montserrat text-2xl font-extrabold leading-tight text-hijau-tua md:text-4xl"
                 >
                   {product.name}
                 </h1>
@@ -193,7 +192,7 @@ export default async function UmkmDetailPage({ params }: UmkmDetailPageProps) {
                       href={product.purchaseUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[#EE4D2D] bg-white px-5 py-2.5 text-sm font-semibold text-[#EE4D2D] transition-colors hover:bg-[#fff3ef] focus:outline-none focus:ring-4 focus:ring-[#EE4D2D]/20"
+                      className="inline-flex items-center gap-2 rounded-lg border border-[#EE4D2D] bg-white px-5 py-2.5 text-sm font-semibold text-[#EE4D2D] transition-colors hover:bg-[#fff3ef] focus:outline-none focus:ring-4 focus:ring-[#EE4D2D]/20"
                       aria-label={`Beli ${product.name} melalui Shopee`}
                     >
                       <ShopeeLogo className="h-5 w-5" />
@@ -205,7 +204,7 @@ export default async function UmkmDetailPage({ params }: UmkmDetailPageProps) {
                       href={createWhatsappLink(product.whatsapp, product.name)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-hijau px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
+                      className="inline-flex items-center gap-2 rounded-lg bg-hijau px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
                       aria-label={`Beli ${product.name} melalui WhatsApp`}
                     >
                       <MessageCircle size={17} strokeWidth={1.8} aria-hidden="true" />
@@ -228,9 +227,9 @@ export default async function UmkmDetailPage({ params }: UmkmDetailPageProps) {
 
           <aside
             aria-label="Produk lainnya"
-            className="w-full shrink-0 lg:sticky lg:top-6 lg:w-72 xl:w-80"
+            className="w-full shrink-0 lg:sticky lg:top-24 lg:w-72 xl:w-80"
           >
-            <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-[0_8px_24px_rgba(22,94,51,0.08)]">
+            <div className="rounded-lg border border-emerald-100 bg-white p-5 shadow-[0_12px_28px_rgba(22,94,51,0.08)]">
               <h2 className="mb-4 text-base font-bold text-hijau-tua">
                 Produk Lainnya
               </h2>

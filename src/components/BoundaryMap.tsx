@@ -182,20 +182,20 @@ export default function BoundaryMap({
   return (
     <div className={className}>
       {showTitle ? (
-        <div className="mb-6">
-          {/* <p className="text-sm font-semibold text-[var(--hijau)]">
+        <div className="mb-8 max-w-2xl">
+          <p className="text-sm font-bold uppercase text-hijau">
             Lokasi Desa
-          </p> */}
-          <h2 className="text-3xl font-bold text-[var(--hijau-tua)]">
+          </p>
+          <h2 className="mt-2 font-montserrat text-3xl font-extrabold text-[var(--hijau-tua)] md:text-4xl">
             Peta Desa
           </h2>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-3 text-sm leading-relaxed text-gray-600 md:text-base">
             Menampilkan Peta Desa Dengan Interest Point Desa Cipicung
           </p>
         </div>
       ) : null}
 
-      <div className="cipicung-boundary-map relative z-0 h-[320px] w-full overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-md md:h-[430px]">
+      <div className="cipicung-boundary-map relative z-0 h-[340px] w-full overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_18px_42px_rgba(22,94,51,0.1)] md:h-[470px]">
         <MapContainer
           center={kantorDesaPosition}
           zoom={14}

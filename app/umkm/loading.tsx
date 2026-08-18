@@ -1,6 +1,6 @@
 export default function UmkmLoading() {
   return (
-    <main className="min-h-screen w-full animate-pulse bg-[#f8faf8] px-6 py-16">
+    <main className="min-h-screen w-full animate-pulse bg-[#f6faf7] px-5 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto h-10 w-72 rounded-lg bg-gray-200" />
         <div className="mx-auto mt-4 h-5 w-full max-w-lg rounded bg-gray-200" />
@@ -8,7 +8,7 @@ export default function UmkmLoading() {
           {Array.from({ length: 6 }, (_, index) => (
             <div
               key={index}
-              className="h-96 rounded-2xl border border-gray-100 bg-white shadow-sm"
+              className="h-96 rounded-lg border border-emerald-100 bg-white shadow-sm"
             />
           ))}
         </div>

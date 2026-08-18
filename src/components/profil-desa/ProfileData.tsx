@@ -34,7 +34,7 @@ const contactData: Array<{
 ];
 
 const cardClassName =
-  "rounded-2xl border border-gray-100 bg-white shadow-[0_8px_24px_rgba(22,94,51,0.08)] transition-shadow duration-300 hover:shadow-md md:rounded-3xl";
+  "rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)]";
 
 const ContactValue = ({ href, value }: { href?: string; value: string }) => {
   if (!href) {
@@ -116,12 +116,15 @@ const ProfileDataSection = ({
   return (
     <section
       aria-label="Data profil Desa Cipicung"
-      className="w-full py-4 md:py-6"
+      className="w-full bg-[#f6faf7] px-5 py-12 sm:px-6 md:py-16 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[2fr_0.85fr]">
           <article className={`${cardClassName} p-6 md:p-8`}>
-            <h2 className="text-xl font-bold text-hijau-tua md:text-2xl">
+            <p className="text-sm font-bold uppercase text-hijau">
+              Identitas
+            </p>
+            <h2 className="mt-2 text-xl font-bold text-hijau-tua md:text-2xl">
               Identitas Desa
             </h2>
 
@@ -129,12 +132,12 @@ const ProfileDataSection = ({
               {identitasDesa.map((item) => (
                 <div
                   key={item.label}
-                  className="flex min-w-0 items-start justify-between gap-4 border-b border-gray-100 py-4"
+                  className="flex min-w-0 items-start justify-between gap-4 border-b border-emerald-50 py-4"
                 >
-                  <dt className="shrink-0 text-sm text-gray-500">
+                  <dt className="shrink-0 text-sm text-[#5A7A68]">
                     {item.label}
                   </dt>
-                  <dd className="min-w-0 break-words text-right text-sm font-semibold text-slate-800">
+                  <dd className="min-w-0 break-words text-right text-sm font-bold text-slate-800">
                     {item.value}
                   </dd>
                 </div>
@@ -150,7 +153,7 @@ const ProfileDataSection = ({
             <article
               className={`${cardClassName} flex flex-col items-center justify-center p-6 text-center md:p-8`}
             >
-              <div className="flex size-28 items-center justify-center rounded-full">
+              <div className="flex size-28 items-center justify-center rounded-full bg-[#f6faf7] p-2">
                 <Image
                   src={assets.logo_desa}
                   alt="Logo Desa Cipicung"
@@ -170,7 +173,7 @@ const ProfileDataSection = ({
               <address className="mt-6 space-y-5 not-italic">
                 {contactData.map(({ label, value, href, icon: Icon }) => (
                   <div key={label} className="flex min-w-0 items-start gap-3">
-                    <div className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg bg-hijau-muda/20 text-hijau-tua">
+                    <div className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg bg-[#eef8f1] text-hijau-tua">
                       <Icon size={17} strokeWidth={1.8} aria-hidden="true" />
                     </div>
                     <div className="min-w-0">

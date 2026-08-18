@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { CalendarDays } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import ApiImage from "@/src/components/common/ApiImage";
 import Pagination from "@/src/components/common/Pagination";
 import { formatNewsDate, getNewsDate } from "@/src/lib/news";
@@ -14,7 +14,7 @@ const BeritaCard = ({ berita }: { berita: NewsItem }) => {
   const date = getNewsDate(berita);
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(22,94,51,0.16)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)]">
       <div className="relative h-44 w-full shrink-0 overflow-hidden lg:h-48">
         <ApiImage
           key={berita.imageUrl}
@@ -50,10 +50,11 @@ const BeritaCard = ({ berita }: { berita: NewsItem }) => {
 
         <Link
           href={`/berita/${berita.id}`}
-          className="mt-auto inline-flex items-center pt-5 text-sm font-semibold text-hijau transition-colors hover:text-hijau-tua"
+          className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-hijau transition-colors hover:text-hijau-tua"
           aria-label={`Baca selengkapnya tentang ${berita.title}`}
         >
-          Baca Selengkapnya →
+          Baca Selengkapnya
+          <ArrowRight size={15} strokeWidth={2} aria-hidden="true" />
         </Link>
       </div>
     </article>
@@ -78,13 +79,13 @@ const BeritaListSection = ({
     <section
       id="berita-list"
       aria-label="Daftar berita Desa Cipicung"
-      className="w-full bg-[#f8faf8] px-6 pb-20 pt-8"
+      className="w-full bg-[#f6faf7] px-5 pb-20 pt-12 sm:px-6 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         {isUsingFallback && (
           <p
             role="status"
-            className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
+            className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"
           >
             API berita sedang tidak dapat diakses. Menampilkan berita sementara.
           </p>
@@ -97,7 +98,7 @@ const BeritaListSection = ({
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-gray-200 bg-white px-6 py-14 text-center">
+          <div className="rounded-lg border border-gray-200 bg-white px-6 py-14 text-center">
             <h2 className="text-lg font-bold text-hijau-tua">
               Belum ada berita tersedia.
             </h2>

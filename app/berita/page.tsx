@@ -15,7 +15,7 @@ export default async function BeritaPage() {
   }
 
   return (
-    <main className="flex min-h-screen w-full flex-col bg-[#f8faf8]">
+    <main className="flex min-h-screen w-full flex-col bg-[#f6faf7]">
       <BeritaHeroSection />
       <BeritaListSection news={news} isUsingFallback={isUsingFallback} />
     </main>

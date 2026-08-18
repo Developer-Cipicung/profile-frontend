@@ -6,8 +6,8 @@
 export default function ProdukLokalSkeleton() {
   return (
     <section
-      aria-label="Memuat produk lokal…"
-      className="w-full bg-[#f8faf8] px-6 py-16 md:py-20"
+      aria-label="Memuat produk lokal..."
+      className="w-full bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         {/* Header skeleton */}
@@ -20,7 +20,7 @@ export default function ProdukLokalSkeleton() {
           {Array.from({ length: 6 }, (_, index) => (
             <div
               key={index}
-              className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)]"
+              className="flex h-full flex-col overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)]"
               aria-hidden="true"
             >
               {/* Image skeleton */}
@@ -37,7 +37,7 @@ export default function ProdukLokalSkeleton() {
                 </div>
                 <div className="mt-auto flex items-center justify-between pt-5">
                   <div className="h-7 w-24 animate-pulse rounded bg-gray-200" />
-                  <div className="h-9 w-28 animate-pulse rounded-full bg-gray-200" />
+                  <div className="h-9 w-28 animate-pulse rounded-lg bg-gray-200" />
                 </div>
               </div>
             </div>

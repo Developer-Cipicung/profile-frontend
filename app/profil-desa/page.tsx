@@ -14,7 +14,7 @@ const page = async () => {
   }
 
   return (
-    <main className="flex min-h-screen w-full flex-col items-center bg-white pt-4 md:pt-8">
+    <main className="flex min-h-screen w-full flex-col items-center bg-[#f6faf7]">
       <Header />
       <ProfileDataSection populationSummary={populationSummary} />
       <SejarahSingkatSection />

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import ApiImage from "@/src/components/common/ApiImage";
 import { getUmkmPreview, type UmkmItem } from "@/src/services/umkmService";
 
@@ -58,7 +58,7 @@ function ShopeeLogo({ className = "" }: { className?: string }) {
 }
 
 // ---------------------------------------------------------------------------
-// ProdukCard – matches the design in ProdukUMKM.tsx exactly
+// ProdukCard - homepage preview card
 // ---------------------------------------------------------------------------
 
 function ProdukCard({ product }: { product: UmkmItem }) {
@@ -66,7 +66,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
   const hasPurchaseUrl = product.purchaseUrl.trim().length > 0;
 
   return (
-    <article className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <article className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)]">
       <Link
         href={`/umkm/${product.slug ?? product.id}`}
         className="absolute inset-0 z-10 focus:outline-none focus:ring-4 focus:ring-hijau/20"
@@ -111,7 +111,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
                   href={product.purchaseUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#EE4D2D] bg-white px-4 py-2 text-sm font-semibold text-[#EE4D2D] transition-colors hover:bg-[#fff3ef] focus:outline-none focus:ring-4 focus:ring-[#EE4D2D]/20"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-[#EE4D2D] bg-white px-4 py-2 text-sm font-semibold text-[#EE4D2D] transition-colors hover:bg-[#fff3ef] focus:outline-none focus:ring-4 focus:ring-[#EE4D2D]/20"
                   aria-label={`Beli ${product.name} melalui Shopee`}
                 >
                   <ShopeeLogo className="h-5 w-5" />
@@ -123,7 +123,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
                   href={createWhatsappLink(product.whatsapp, product.name)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
                   aria-label={`Beli ${product.name} melalui WhatsApp`}
                 >
                   <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
@@ -134,7 +134,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
           ) : (
             <span
               aria-disabled="true"
-              className="inline-flex cursor-not-allowed items-center gap-2 rounded-full bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500"
+              className="inline-flex cursor-not-allowed items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500"
             >
               <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
               Kontak belum tersedia
@@ -152,7 +152,7 @@ function ProdukCard({ product }: { product: UmkmItem }) {
 
 function ProdukEmptyState() {
   return (
-    <div className="col-span-full rounded-2xl border border-gray-200 bg-white px-6 py-14 text-center">
+    <div className="col-span-full rounded-lg border border-gray-200 bg-white px-6 py-14 text-center">
       <p className="text-lg font-bold text-hijau-tua">
         Belum ada produk yang tersedia.
       </p>
@@ -169,7 +169,7 @@ function ProdukEmptyState() {
 
 function ProdukErrorState() {
   return (
-    <div className="col-span-full rounded-2xl border border-red-100 bg-red-50 px-6 py-14 text-center">
+    <div className="col-span-full rounded-lg border border-red-100 bg-red-50 px-6 py-14 text-center">
       <p className="text-base font-bold text-red-700">Gagal memuat data.</p>
       <p className="mt-1 text-sm text-red-600">
         Silakan coba beberapa saat lagi.
@@ -201,13 +201,16 @@ export default async function ProdukLokalSection() {
   return (
     <section
       aria-labelledby="produk-lokal-title"
-      className="w-full px-6 py-16 md:py-20"
+      className="w-full bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <header className="text-center">
+          <p className="text-sm font-bold uppercase text-hijau">
+            Ekonomi Warga
+          </p>
           <h2
             id="produk-lokal-title"
-            className="text-center text-3xl font-bold font-montserrat tracking-tighter text-hijau-tua md:text-4xl"
+            className="mt-2 text-center font-montserrat text-3xl font-extrabold text-hijau-tua md:text-4xl"
           >
             Produk Lokal
           </h2>
@@ -232,9 +235,10 @@ export default async function ProdukLokalSection() {
         <div className="mt-10 text-center">
           <Link
             href="/umkm"
-            className="font-bold text-hijau-tua underline decoration-2 underline-offset-4 transition-colors hover:text-kuning"
+            className="inline-flex items-center gap-2 rounded-lg bg-hijau-tua px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-hijau focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             Lihat produk lebih banyak
+            <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
           </Link>
         </div>
       </div>

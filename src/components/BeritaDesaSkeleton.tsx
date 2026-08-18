@@ -6,10 +6,10 @@
 export default function BeritaDesaSkeleton() {
   return (
     <section
-      aria-label="Memuat berita desa…"
-      className="w-full bg-white py-16 md:py-20"
+      aria-label="Memuat berita desa..."
+      className="w-full bg-[#f6faf7] px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl">
         {/* Title skeleton */}
         <div className="mx-auto h-9 w-48 animate-pulse rounded-lg bg-gray-200 md:h-10 md:w-56" />
 
@@ -17,7 +17,7 @@ export default function BeritaDesaSkeleton() {
           {Array.from({ length: 3 }, (_, index) => (
             <div
               key={index}
-              className="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_8px_24px_rgba(22,94,51,0.12)]"
+              className="flex h-full flex-col overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)]"
               aria-hidden="true"
             >
               {/* Image skeleton */}
@@ -33,7 +33,7 @@ export default function BeritaDesaSkeleton() {
                 </div>
                 <div className="mt-auto flex items-center justify-between pt-6">
                   <div className="h-4 w-28 animate-pulse rounded bg-gray-200" />
-                  <div className="h-6 w-24 animate-pulse rounded-full bg-gray-200" />
+                  <div className="h-6 w-24 animate-pulse rounded-lg bg-gray-200" />
                 </div>
               </div>
             </div>

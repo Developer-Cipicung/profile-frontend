@@ -39,9 +39,9 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full">
       <body
-        className={`${notoSans.variable} ${lakkiReddy.variable} min-h-full flex flex-col bg-white antialiased`}
+        className={`${notoSans.variable} ${lakkiReddy.variable} ${montserrat.variable} min-h-full flex flex-col bg-[#f6faf7] antialiased`}
       >
-        <div className="mx-auto w-full sm:max-w-2xl md:max-w-[1840px]">
+        <div className="mx-auto flex w-full max-w-[1840px] flex-1 flex-col overflow-hidden bg-white shadow-[0_0_80px_rgba(15,23,42,0.06)]">
           <Navbar />
           {children}
 

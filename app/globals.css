@@ -8,6 +8,9 @@
   --hijau: #36C56F;
   --hijau-muda: #83FFBB;
   --kuning: #E8B921;
+  --surface-soft: #f6faf7;
+  --surface-warm: #fffbeb;
+  --ink-muted: #5A7A68;
 }
 
 @theme inline {
@@ -21,9 +24,18 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--surface-soft);
   color: var(--foreground);
   font-family: var(--font-noto-sans), sans-serif;
+}
+
+::selection {
+  background: rgba(232, 185, 33, 0.35);
+  color: var(--hijau-tua);
+}
+
+:focus-visible {
+  outline-color: var(--kuning);
 }
 
 .font-reddy,

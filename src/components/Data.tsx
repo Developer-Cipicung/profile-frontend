@@ -11,14 +11,18 @@ type DataCardProps = {
 
 const DataCard = ({ icon: Icon, value, description }: DataCardProps) => {
   return (
-    <article className="flex min-h-[140px] flex-col items-center justify-center rounded-xl bg-white px-4 py-5 text-center shadow-[0_8px_20px_rgba(22,94,51,0.16)] transition-transform duration-300 last:col-span-2 last:w-[calc(50%-0.5rem)] last:justify-self-center hover:-translate-y-1 sm:last:col-span-1 sm:last:w-full">
-      <div className="mb-3 flex size-10 items-center justify-center rounded-full bg-emerald-50 text-emerald-500">
+    <article className="group flex min-h-[148px] flex-col justify-between rounded-lg border border-emerald-100 bg-white p-5 text-left shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 last:col-span-2 last:w-[calc(50%-0.5rem)] last:justify-self-center hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)] sm:last:col-span-1 sm:last:w-full">
+      <div className="flex size-11 items-center justify-center rounded-lg bg-[#eef8f1] text-hijau-tua transition-colors group-hover:bg-hijau-tua group-hover:text-white">
         <Icon size={20} strokeWidth={1.8} aria-hidden="true" />
       </div>
-      <p className="text-lg font-bold text-hijau-tua md:text-xl">{value}</p>
-      <p className="mt-1 text-[11px] text-[#5A7A68] md:text-xs">
-        {description}
-      </p>
+      <div className="mt-5">
+        <p className="text-xl font-extrabold text-hijau-tua md:text-2xl">
+          {value}
+        </p>
+        <p className="mt-1 text-xs font-semibold uppercase text-[#5A7A68]">
+          {description}
+        </p>
+      </div>
     </article>
   );
 };
@@ -69,12 +73,22 @@ const Data = async () => {
   return (
     <section
       aria-label="Data Desa Cipicung"
-      className="w-full px-4 py-8 md:px-32 md:py-16"
+      className="w-full bg-white px-5 py-10 sm:px-6 md:py-16 lg:px-8"
     >
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5">
-        {villageData.map((item) => (
-          <DataCard key={item.description} {...item} />
-        ))}
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8 max-w-2xl">
+          <p className="text-sm font-bold uppercase text-hijau">
+            Data Singkat
+          </p>
+          <h2 className="mt-2 font-montserrat text-3xl font-extrabold text-hijau-tua md:text-4xl">
+            Gambaran Desa
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5">
+          {villageData.map((item) => (
+            <DataCard key={item.description} {...item} />
+          ))}
+        </div>
       </div>
     </section>
   );

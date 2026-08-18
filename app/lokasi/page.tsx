@@ -3,11 +3,14 @@ import MapClient from "@/src/components/MapClient";
 
 export default function LokasiPage() {
   return (
-    <main className="min-h-screen w-full bg-[#f8faf8]">
-      <section className="px-6 py-16 md:py-20">
+    <main className="min-h-screen w-full bg-[#f6faf7]">
+      <section className="bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto mb-10 max-w-3xl text-center">
-            <h1 className="text-3xl font-montserrat font-bold tracking-tighter text-[var(--hijau-tua)] md:text-5xl">
+            <p className="text-sm font-bold uppercase text-hijau">
+              Peta Desa
+            </p>
+            <h1 className="mt-2 font-montserrat text-3xl font-extrabold leading-tight text-[var(--hijau-tua)] md:text-5xl">
               Lokasi Penting Desa
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-gray-600 md:text-base">

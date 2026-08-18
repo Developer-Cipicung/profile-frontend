@@ -4,7 +4,7 @@ import SilihPageuhPublikasiSection from "@/src/components/program/silih-pageuh/S
 
 export default function SilihPageuhPage() {
   return (
-    <main className="min-h-screen w-full bg-white">
+    <main className="min-h-screen w-full bg-[#f6faf7]">
       <SilihPageuhHeroSection />
       <SilihPageuhPilarSection />
       <SilihPageuhPublikasiSection />
