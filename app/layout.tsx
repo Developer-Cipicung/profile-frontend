@@ -3,6 +3,7 @@ import { Lakki_Reddy, Noto_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -43,7 +44,9 @@ export default function RootLayout({
         <div className="mx-auto w-full sm:max-w-2xl md:max-w-[1840px]">
           <Navbar />
           {children}
+
           <Footer />
+          <Analytics />
         </div>
       </body>
     </html>

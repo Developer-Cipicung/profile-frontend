@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "leaflet": "^1.9.4",
     "lucide": "^1.23.0",
     "lucide-react": "^1.23.0",
