@@ -11,6 +11,7 @@ export const fallbackUmkm: UmkmItem[] = [
     price: 15_000,
     imageUrl: "",
     whatsapp: "6281234567890",
+    purchaseUrl: "",
   },
   {
     id: "anyaman-bambu-tas-belanja",
@@ -22,6 +23,7 @@ export const fallbackUmkm: UmkmItem[] = [
     price: 85_000,
     imageUrl: "",
     whatsapp: "6281234567890",
+    purchaseUrl: "",
   },
   {
     id: "tempe-organik-pak-ujang",
@@ -33,6 +35,7 @@ export const fallbackUmkm: UmkmItem[] = [
     price: 5_000,
     imageUrl: "",
     whatsapp: "6281234567890",
+    purchaseUrl: "",
   },
   {
     id: "madu-hutan-murni",
@@ -44,6 +47,7 @@ export const fallbackUmkm: UmkmItem[] = [
     price: 120_000,
     imageUrl: "",
     whatsapp: "6281234567890",
+    purchaseUrl: "",
   },
   {
     id: "batik-cap-motif-cipicung",
@@ -55,16 +59,18 @@ export const fallbackUmkm: UmkmItem[] = [
     price: 195_000,
     imageUrl: "",
     whatsapp: "6281234567890",
+    purchaseUrl: "",
   },
   {
-    id: "jus-lidah-buaya-segar",
-    name: "Jus Lidah Buaya Segar",
-    seller: "Warung Sehat Bu Neneng",
-    dusun: "Dusun Ciwangi",
-    category: "Minuman",
-    description: "Minuman lidah buaya segar produksi rumahan.",
-    price: 8_000,
+    id: "cibi-cookies-umbi",
+    name: "CiBi! Cookies Berbahan Dasar Umbi",
+    seller: "CiBi",
+    dusun: "Desa Cipicung",
+    category: "Makanan",
+    description: "Cookies lokal berbahan dasar umbi dari pelaku UMKM Desa Cipicung.",
+    price: 15_000,
     imageUrl: "",
     whatsapp: "6281234567890",
+    purchaseUrl: "https://shopee.co.id/CiBi!-Cookies-berbahan-dasar-umbi-i.1059611197.46965904800?extraParams=%7B%22display_model_id%22%3A376356473781%2C%22model_selection_logic%22%3A3%7D",
   },
 ];

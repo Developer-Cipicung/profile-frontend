@@ -28,15 +28,50 @@ function createWhatsappLink(phone: string, productName: string) {
   return `https://wa.me/${normalizedPhone}?text=${encodeURIComponent(message)}`;
 }
 
+function ShopeeLogo({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="none"
+    >
+      <path
+        d="M7.2 7.3h9.6l.8 12.4a1.5 1.5 0 0 1-1.5 1.6H7.9a1.5 1.5 0 0 1-1.5-1.6l.8-12.4Z"
+        fill="#EE4D2D"
+      />
+      <path
+        d="M9.2 8.4V6.7a2.8 2.8 0 0 1 5.6 0v1.7"
+        stroke="#EE4D2D"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M13.9 11.3c-.5-.4-1.1-.6-1.9-.6-1 0-1.7.5-1.7 1.2 0 1.8 4 .9 4 3.5 0 1.3-1 2.3-2.7 2.3-.9 0-1.8-.3-2.4-.8"
+        stroke="#fff"
+        strokeWidth="1.45"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 // ---------------------------------------------------------------------------
 // ProdukCard – matches the design in ProdukUMKM.tsx exactly
 // ---------------------------------------------------------------------------
 
 function ProdukCard({ product }: { product: UmkmItem }) {
   const hasWhatsapp = product.whatsapp.trim().length > 0;
+  const hasPurchaseUrl = product.purchaseUrl.trim().length > 0;
 
   return (
-    <article className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <article className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-[0_8px_22px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+      <Link
+        href={`/umkm/${product.slug ?? product.id}`}
+        className="absolute inset-0 z-10 focus:outline-none focus:ring-4 focus:ring-hijau/20"
+        aria-label={`Lihat detail produk ${product.name}`}
+      />
       <div className="relative h-44 w-full shrink-0 overflow-hidden lg:h-48">
         <ApiImage
           key={product.imageUrl}
@@ -65,21 +100,37 @@ function ProdukCard({ product }: { product: UmkmItem }) {
           </p>
         )}
 
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-5">
+        <div className="relative z-20 mt-auto flex flex-wrap items-center justify-between gap-3 pt-5">
           <p className="text-xl font-bold text-hijau">
             {formatRupiah(product.price)}
           </p>
-          {hasWhatsapp ? (
-            <a
-              href={createWhatsappLink(product.whatsapp, product.name)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua"
-              aria-label={`Beli ${product.name} melalui WhatsApp`}
-            >
-              <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
-              Beli via WA
-            </a>
+          {hasPurchaseUrl || hasWhatsapp ? (
+            <div className="flex flex-wrap items-center gap-2">
+              {hasPurchaseUrl && (
+                <a
+                  href={product.purchaseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[#EE4D2D] bg-white px-4 py-2 text-sm font-semibold text-[#EE4D2D] transition-colors hover:bg-[#fff3ef] focus:outline-none focus:ring-4 focus:ring-[#EE4D2D]/20"
+                  aria-label={`Beli ${product.name} melalui Shopee`}
+                >
+                  <ShopeeLogo className="h-5 w-5" />
+                  Beli di Shopee
+                </a>
+              )}
+              {hasWhatsapp && (
+                <a
+                  href={createWhatsappLink(product.whatsapp, product.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center gap-2 rounded-full bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
+                  aria-label={`Beli ${product.name} melalui WhatsApp`}
+                >
+                  <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
+                  Beli via WA
+                </a>
+              )}
+            </div>
           ) : (
             <span
               aria-disabled="true"
@@ -161,8 +212,8 @@ export default async function ProdukLokalSection() {
             Produk Lokal
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 md:text-base">
-            Dukung produk lokal warga Desa Cipicung, pembelian langsung via
-            WhatsApp
+            Dukung produk lokal warga Desa Cipicung melalui Shopee atau kontak
+            WhatsApp pelaku UMKM.
           </p>
         </header>
 

@@ -3,6 +3,8 @@ import { apiFetch } from "@/src/lib/api";
 // The current backend exposes UMKM products through /products.
 // Change this single constant if the backend later moves it to /umkm.
 const UMKM_ENDPOINT = "/products";
+const CIBI_SHOPEE_URL =
+  "https://shopee.co.id/CiBi!-Cookies-berbahan-dasar-umbi-i.1059611197.46965904800?extraParams=%7B%22display_model_id%22%3A376356473781%2C%22model_selection_logic%22%3A3%7D";
 
 export type UmkmItem = {
   id: string;
@@ -15,6 +17,7 @@ export type UmkmItem = {
   price: number;
   imageUrl: string;
   whatsapp: string;
+  purchaseUrl: string;
   createdAt?: string;
 };
 
@@ -43,6 +46,33 @@ function getCategory(value: unknown) {
   return toText(value, "Produk Lokal");
 }
 
+function toShopeeUrl(value: unknown) {
+  const text = toText(value).trim();
+  if (!text) return "";
+
+  try {
+    const url = new URL(text);
+    const isHttp = url.protocol === "https:" || url.protocol === "http:";
+    const isShopee =
+      url.hostname === "shopee.co.id" || url.hostname.endsWith(".shopee.co.id");
+
+    return isHttp && isShopee ? url.toString() : "";
+  } catch {
+    return "";
+  }
+}
+
+function getKnownPurchaseUrl(item: UnknownRecord) {
+  const name = toText(item.name ?? item.nama ?? item.productName).toLowerCase();
+  const id = toText(item.id ?? item._id ?? item.slug).toLowerCase();
+
+  if (name.includes("cibi") || id.includes("cibi")) {
+    return CIBI_SHOPEE_URL;
+  }
+
+  return "";
+}
+
 export function normalizeUmkmItem(item: unknown): UmkmItem | null {
   if (!isRecord(item)) return null;
 
@@ -56,7 +86,7 @@ export function normalizeUmkmItem(item: unknown): UmkmItem | null {
     slug: toText(item.slug) || undefined,
     seller: toText(
       item.seller ?? item.penjual ?? item.owner,
-      "Pelaku UMKM",
+      "Admin Desa",
     ),
     dusun: toText(
       item.dusun ?? item.address ?? item.alamat,
@@ -75,6 +105,16 @@ export function normalizeUmkmItem(item: unknown): UmkmItem | null {
     ),
     whatsapp: toText(
       item.no_telp ?? item.whatsapp ?? item.phone ?? item.noWa ?? item.phoneNumber,
+    ),
+    purchaseUrl: toShopeeUrl(
+      item.shopee_url ??
+        item.link_shopee ??
+        item.marketplace_url ??
+        item.purchaseUrl ??
+        item.purchase_url ??
+        item.shop_url ??
+        item.ecommerce_url ??
+        getKnownPurchaseUrl(item),
     ),
     createdAt: toText(item.createdAt ?? item.created_at) || undefined,
   };
