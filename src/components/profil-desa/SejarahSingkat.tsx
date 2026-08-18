@@ -9,25 +9,25 @@ const SejarahSingkatSection = () => {
   return (
     <section
       aria-labelledby="sejarah-singkat-title"
-      className="w-full bg-[#f6faf7] px-5 pb-10 pt-4 sm:px-6 md:pb-14 lg:px-8"
+      className="w-full bg-[#f6faf7] px-5 pb-8 pt-2 sm:px-6 md:pb-14 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
-        <article className="rounded-lg border border-emerald-100 bg-white p-6 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)] md:p-8">
-          <p className="text-sm font-bold uppercase text-hijau">
+        <article className="rounded-lg border border-emerald-100 bg-white p-4 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)] md:p-8">
+          <p className="text-xs font-bold uppercase text-hijau md:text-sm">
             Sejarah
           </p>
           <h2
             id="sejarah-singkat-title"
-            className="mt-2 text-xl font-bold text-hijau-tua md:text-2xl"
+            className="mt-1.5 text-lg font-bold text-hijau-tua md:mt-2 md:text-2xl"
           >
             Sejarah Singkat
           </h2>
 
-          <div className="mt-6 space-y-4 text-justify">
+          <div className="mt-4 space-y-3 text-left md:mt-6 md:space-y-4 md:text-justify">
             {sejarahDesa.map((paragraph) => (
               <p
                 key={paragraph}
-                className="text-sm leading-relaxed text-gray-700 md:text-base md:leading-8"
+                className="text-xs leading-6 text-gray-700 md:text-base md:leading-8"
               >
                 {paragraph}
               </p>

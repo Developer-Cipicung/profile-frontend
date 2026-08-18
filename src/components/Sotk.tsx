@@ -58,11 +58,11 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
 
   return (
     <article
-      className={`group flex min-w-0 flex-col overflow-hidden rounded-lg border border-emerald-100 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)] ${
+      className={`group flex min-w-0 flex-col overflow-hidden rounded-lg border border-emerald-100 shadow-[0_8px_20px_rgba(22,94,51,0.07)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)] md:shadow-[0_12px_28px_rgba(22,94,51,0.08)] ${
         isMain ? "bg-[#165E33]" : "bg-white"
       }`}
     >
-      <div className="relative aspect-[3/4] w-full shrink-0 overflow-hidden bg-[#EAF8F0]">
+      <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-[#EAF8F0] md:aspect-[3/4]">
         {perangkat.image ? (
           <SafeImage
             src={perangkat.image}
@@ -87,22 +87,22 @@ const PerangkatCard = ({ perangkat }: { perangkat: PerangkatDesaItem }) => {
         )}
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col p-4 xl:p-5">
+      <div className="flex min-h-0 flex-1 flex-col p-3 md:p-4 xl:p-5">
         {isMain ? (
-          <span className="mb-3 w-fit rounded-md bg-[var(--kuning)] px-3 py-1 text-xs font-bold text-[#165E33]">
+          <span className="mb-2 w-fit rounded-md bg-[var(--kuning)] px-2 py-1 text-[10px] font-bold text-[#165E33] md:mb-3 md:px-3 md:text-xs">
             Pimpinan Desa
           </span>
         ) : null}
 
         <h3
-          className={`break-words text-base font-bold leading-tight ${
+          className={`break-words text-xs font-bold leading-tight sm:text-sm md:text-base ${
             isMain ? "text-white" : "text-[#165E33]"
           }`}
         >
           {perangkat.nama}
         </h3>
         <p
-          className={`mt-2 w-fit rounded-md px-3 py-1 text-xs font-semibold leading-relaxed ${
+          className={`mt-2 w-fit rounded-md px-2 py-1 text-[10px] font-semibold leading-snug sm:text-xs md:px-3 md:leading-relaxed ${
             isMain
               ? "bg-white/10 text-[#83FFBB]"
               : "bg-[#EAF8F0] text-[#165E33]"
@@ -149,8 +149,8 @@ const SotkSection = () => {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-[760px] md:w-4/5 md:max-w-none">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-3 lg:gap-4 xl:gap-6">
+        <div className="mx-auto w-full max-w-[640px] md:w-4/5 md:max-w-none">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 md:gap-3 lg:gap-4 xl:gap-6">
             {perangkatDesaRingkas.map((perangkat) => (
               <PerangkatCard key={perangkat.nama} perangkat={perangkat} />
             ))}

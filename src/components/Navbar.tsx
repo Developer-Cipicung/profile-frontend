@@ -29,9 +29,7 @@ const navItems: NavItem[] = [
   { label: "Berita", href: "/berita" },
   {
     label: "Program",
-    children: [
-      { label: "SILIH PAGEUH", href: "/program/silih-pageuh" },
-    ],
+    children: [{ label: "SILIH PAGEUH", href: "/program/silih-pageuh" }],
   },
   { label: "Produk Lokal", href: "/umkm" },
 ];
@@ -52,36 +50,38 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-hijau-tua/95 text-white shadow-[0_10px_30px_rgba(15,23,42,0.14)] backdrop-blur">
+    <header className="sticky top-0 z-50 bg-hijau-tua text-white shadow-[0_2px_12px_rgba(0,0,0,0.12)]">
       <nav
         aria-label="Navigasi utama"
-        className="mx-auto flex min-h-18 max-w-[1640px] items-center justify-between gap-3 px-4 sm:px-6 lg:px-10"
+        className="mx-auto flex min-h-20 max-w-[1640px] items-center justify-between gap-3 px-4 lg:px-8"
       >
         <Link
           href="/"
           aria-label="Beranda Desa Cipicung"
-          className="flex min-w-0 items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          className="flex min-w-0 items-center gap-3 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           onClick={closeMobileMenu}
         >
           <Image
             src={assets.logo_desa}
             alt="Logo Desa Cipicung"
-            className="size-10 shrink-0 rounded-full bg-white p-1 object-contain shadow-[0_8px_18px_rgba(0,0,0,0.18)] sm:size-11"
+            className="size-11 shrink-0 object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] sm:size-12"
           />
           <span className="min-w-0 leading-none">
-            <span className="block text-xs font-medium uppercase text-white/70 sm:text-sm">
+            <span className="block text-xs font-medium tracking-[0.12em] text-white/75 sm:text-sm">
               Kabupaten Bogor
             </span>
-            <span className="mt-1 block text-lg font-bold sm:text-xl">
+            <span className="mt-1 block text-lg font-bold tracking-tight sm:text-xl">
               Desa Cipicung
             </span>
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1.5 lg:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => {
             if (item.children) {
-              const active = item.children.some((child) => isActive(child.href));
+              const active = item.children.some((child) =>
+                isActive(child.href),
+              );
               const isDropdownOpen = openDropdown === item.label;
 
               return (
@@ -99,10 +99,10 @@ const Navbar = () => {
                         open === item.label ? null : item.label,
                       )
                     }
-                    className={`flex items-center gap-1 rounded-lg px-3.5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                    className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                       active
-                        ? "bg-white/15 text-white"
-                        : "text-white/80 hover:bg-white/10 hover:text-white"
+                        ? "text-white underline decoration-2 underline-offset-8"
+                        : "text-white/85 hover:text-white"
                     }`}
                   >
                     {item.label}
@@ -117,7 +117,7 @@ const Navbar = () => {
 
                   <div
                     role="menu"
-                    className={`absolute left-1/2 top-full z-50 mt-2 w-56 -translate-x-1/2 rounded-lg border border-emerald-100 bg-white p-2 text-hijau-tua shadow-[0_18px_42px_rgba(15,23,42,0.16)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+                    className={`absolute left-1/2 top-full z-50 mt-2 w-52 -translate-x-1/2 rounded-xl border border-gray-100 bg-white p-2 text-hijau-tua shadow-[0_12px_28px_rgba(0,0,0,0.16)] transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
                       isDropdownOpen
                         ? "visible translate-y-0 opacity-100"
                         : "invisible -translate-y-1 opacity-0"
@@ -129,8 +129,8 @@ const Navbar = () => {
                         href={child.href}
                         role="menuitem"
                         onClick={() => setOpenDropdown(null)}
-                        className={`block rounded-md px-3 py-2.5 text-sm font-semibold transition-colors hover:bg-[#eef8f1] ${
-                          isActive(child.href) ? "bg-[#eef8f1]" : ""
+                        className={`block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors hover:bg-hijau-muda/30 ${
+                          isActive(child.href) ? "bg-hijau-muda/20" : ""
                         }`}
                       >
                         {child.label}
@@ -149,10 +149,10 @@ const Navbar = () => {
                 key={href}
                 href={href}
                 aria-current={active ? "page" : undefined}
-                className={`rounded-lg px-3.5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                   active
-                    ? "bg-white/15 text-white"
-                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                    ? "text-white underline decoration-2 underline-offset-8"
+                    : "text-white/85 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -195,7 +195,7 @@ const Navbar = () => {
 
       <div
         id="mobile-navigation"
-        className={`overflow-hidden border-t border-white/10 bg-hijau-tua/95 transition-[max-height,opacity] duration-300 lg:hidden ${
+        className={`overflow-hidden border-t border-white/10 bg-hijau-tua transition-[max-height,opacity] duration-300 lg:hidden ${
           isOpen ? "max-h-[560px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -214,7 +214,7 @@ const Navbar = () => {
                         open === item.label ? null : item.label,
                       )
                     }
-                    className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold text-white/90 transition-colors hover:bg-white/10"
+                    className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/10"
                   >
                     {item.label}
                     <ChevronDown
@@ -264,7 +264,7 @@ const Navbar = () => {
                 href={href}
                 aria-current={active ? "page" : undefined}
                 onClick={closeMobileMenu}
-                className={`rounded-lg px-3 py-3 text-sm font-semibold transition-colors ${
+                className={`rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
                   active
                     ? "bg-white/10 text-white"
                     : "text-white/90 hover:bg-white/10 hover:text-white"

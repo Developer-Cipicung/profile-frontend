@@ -13,32 +13,32 @@ const VisiMisiSection = () => {
   return (
     <section
       aria-label="Visi dan misi Desa Cipicung"
-      className="w-full bg-[#f6faf7] px-5 pb-20 pt-4 sm:px-6 lg:px-8"
+      className="w-full bg-[#f6faf7] px-5 pb-12 pt-2 sm:px-6 md:pb-16 lg:px-8"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-2">
-        <article className="flex h-full flex-col rounded-lg bg-hijau-tua p-6 text-white shadow-[0_18px_40px_rgba(22,94,51,0.18)] md:p-8">
-          <h2 className="text-xl font-bold text-[#ffefb0] md:text-2xl">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-3 md:gap-6 lg:grid-cols-2">
+        <article className="rounded-lg bg-hijau-tua p-4 text-white shadow-[0_18px_40px_rgba(22,94,51,0.18)] md:p-8">
+          <h2 className="text-lg font-bold text-[#ffefb0] md:text-2xl">
             Visi
           </h2>
-          <blockquote className="my-auto pt-6 text-base italic leading-8 text-white/90 md:text-lg md:leading-9">
+          <blockquote className="pt-3 text-sm italic leading-7 text-white/90 md:pt-6 md:text-lg md:leading-9">
             &quot;{visiDesa}&quot;
           </blockquote>
         </article>
 
-        <article className="h-full rounded-lg border border-emerald-100 bg-white p-6 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)] md:p-8">
-          <h2 className="text-xl font-bold text-hijau-tua md:text-2xl">
+        <article className="h-full rounded-lg border border-emerald-100 bg-white p-4 shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)] md:p-8">
+          <h2 className="text-lg font-bold text-hijau-tua md:text-2xl">
             Misi
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-gray-600">
+          <p className="mt-1 text-[11px] leading-5 text-gray-600 md:mt-2 md:text-sm md:leading-relaxed">
             Misi Desa Cipicung yaitu sebagai berikut:
           </p>
-          <ol className="mt-6 space-y-4">
+          <ol className="mt-3 grid gap-2 md:mt-6 md:gap-4">
             {misiDesa.map((item, index) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#eef8f1] text-xs font-semibold text-hijau-tua">
+              <li key={item} className="flex items-start gap-2 md:gap-3">
+                <span className="flex size-5 shrink-0 items-center justify-center rounded-md bg-[#eef8f1] text-[10px] font-semibold text-hijau-tua md:size-7 md:rounded-lg md:text-xs">
                   {index + 1}
                 </span>
-                <p className="text-sm leading-relaxed text-gray-600">
+                <p className="text-[11px] leading-5 text-gray-600 md:text-sm md:leading-relaxed">
                   {item}
                 </p>
               </li>

@@ -117,7 +117,7 @@ export default async function BeritaDesaSection() {
   return (
     <section
       aria-labelledby="berita-desa-title"
-      className="w-full bg-[#f6faf7] px-5 py-14 sm:px-6 md:py-20 lg:px-8"
+      className="w-full bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <header className="mx-auto max-w-2xl text-center">

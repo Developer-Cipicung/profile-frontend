@@ -202,10 +202,10 @@ export default function BoundaryMap({
           minZoom={13}
           maxZoom={18}
           scrollWheelZoom={false}
+          attributionControl={false}
           className="h-full w-full"
         >
           <TileLayer
-            attribution="&copy; OpenStreetMap contributors"
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
@@ -261,6 +261,18 @@ export default function BoundaryMap({
             </Marker>
           ))}
         </MapContainer>
+
+        <div className="absolute bottom-0 right-0 z-[500] bg-white/90 px-2 py-1 text-[11px] leading-none text-gray-700">
+          PPK Ormawa Himagizi 2026 |{" "}
+          <a
+            href="https://www.openstreetmap.org/copyright"
+            target="_blank"
+            rel="noreferrer"
+            className="underline hover:text-hijau-tua"
+          >
+            &copy; OpenStreetMap contributors
+          </a>
+        </div>
       </div>
     </div>
   );

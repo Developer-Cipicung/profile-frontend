@@ -1,113 +1,82 @@
-"use client";
+import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { silihPageuh } from "@/src/assets/assets";
+import {
+  silihPageuhSubprograms,
+  type SilihPageuhSubprogramSlug,
+} from "@/src/data/silihPageuhSubprograms";
 
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-
-const pilarProgram = [
-  {
-    title: "AKAR",
-    symbol: "🌳",
-    accent: "bg-[#E8B921]/20",
-    description:
-      "Batang sebuah penguat seluruh bagian dalam suatu kehidupan. Keberadaan yang kuat dan menyeluruh menjadi dasar dalam membentuk proses kehidupan yang berdaya bagi masyarakat. Akar program menjadi pondasi awal dalam membangun kemandirian, kesehatan, dan keberlanjutan Desa Cipicung.",
-  },
-  {
-    title: "BATANG",
-    symbol: "🌱",
-    accent: "bg-[#36C56F]/20",
-    description:
-      "Batang menggambarkan kekuatan utama program dalam menopang setiap kegiatan pemberdayaan masyarakat. Pilar ini berfokus pada penguatan kapasitas warga, kolaborasi, dan pelaksanaan kegiatan secara berkelanjutan.",
-  },
-  {
-    title: "DAUN",
-    symbol: "🍃",
-    accent: "bg-[#83FFBB]/25",
-    description:
-      "Daun melambangkan pertumbuhan, penyegaran, dan manfaat yang dirasakan masyarakat. Pilar ini menekankan edukasi, publikasi, kesehatan, serta peningkatan kualitas hidup warga desa.",
-  },
-  {
-    title: "TUNAS",
-    symbol: "🌿",
-    accent: "bg-[#165E33]/10",
-    description:
-      "Tunas menggambarkan harapan dan keberlanjutan. Pilar ini berfokus pada regenerasi, inovasi, dan pengembangan potensi desa agar program dapat terus berjalan setelah kegiatan utama selesai.",
-  },
-];
+const subprogramImages: Record<SilihPageuhSubprogramSlug, StaticImageData> = {
+  "akar-desa": silihPageuh.ts1,
+  "rindang-pangan": silihPageuh.ts2,
+  "tunas-sehat": silihPageuh.ts3,
+  "batang-kayu": silihPageuh.ts4,
+};
 
 const SilihPageuhPilarSection = () => {
-  const [activePilar, setActivePilar] = useState<string | null>(null);
-
-  const handleTogglePilar = (title: string) => {
-    setActivePilar((current) => (current === title ? null : title));
-  };
-
   return (
     <section
-      aria-labelledby="pilar-program-title"
-      className="w-full bg-white px-5 py-14 sm:px-6 md:py-20 lg:px-8"
+      aria-labelledby="subprogram-silih-pageuh-title"
+      className="w-full bg-white px-5 pb-12 pt-6 sm:px-6 md:pb-20 md:pt-10 lg:px-8"
     >
-      <div className="mx-auto max-w-5xl">
-        <header className="mb-10 text-center">
-          <p className="text-sm font-bold uppercase text-hijau">
-            Program Desa
-          </p>
+      <div className="mx-auto max-w-7xl">
+        <header className="mx-auto mb-7 max-w-3xl text-center md:mb-10">
           <h2
-            id="pilar-program-title"
-            className="mt-2 font-montserrat text-3xl font-extrabold text-hijau-tua md:text-4xl"
+            id="subprogram-silih-pageuh-title"
+            className="font-montserrat text-2xl font-extrabold text-hijau-tua md:text-4xl"
           >
-            Pilar Program
+            Subprogram Silih Pageuh
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-gray-600 md:text-base">
-            Empat pilar yang menjadi dasar penguatan dan keberlanjutan Program
-            Silih Pageuh.
+          <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-gray-700 md:text-base md:leading-8">
+            Empat subprogram resmi yang menjadi ruang pelaksanaan Program Silih
+            Pageuh di Desa Cipicung.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-8">
-          {pilarProgram.map((pilar) => {
-            const isActive = pilar.title === activePilar;
+        <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4">
+          {silihPageuhSubprograms.map((subprogram) => {
+            const image = subprogramImages[subprogram.slug];
 
             return (
               <article
-                key={pilar.title}
-                className="overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.13)]"
+                key={subprogram.slug}
+                className="group flex h-full min-w-0 flex-col overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_12px_28px_rgba(22,94,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-hijau/40 hover:shadow-[0_18px_38px_rgba(22,94,51,0.14)]"
               >
-                <button
-                  type="button"
-                  onClick={() => handleTogglePilar(pilar.title)}
-                  aria-expanded={isActive}
-                  className="flex w-full items-center gap-4 p-6 text-left"
-                >
-                  <span
-                    aria-hidden="true"
-                    className={`grid size-12 shrink-0 place-items-center rounded-lg text-2xl ${pilar.accent}`}
-                  >
-                    {pilar.symbol}
-                  </span>
-                  <span className="flex-1 text-xl font-bold text-hijau-tua">
-                    {pilar.title}
-                  </span>
-                  <ChevronDown
-                    size={20}
-                    aria-hidden="true"
-                    className={`shrink-0 text-hijau transition-transform duration-300 ${
-                      isActive ? "rotate-180" : ""
-                    }`}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-emerald-50">
+                  <Image
+                    src={image}
+                    alt={`Gambar subprogram ${subprogram.name}`}
+                    fill
+                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                </button>
+                </div>
 
-                <div
-                  className={`grid transition-[grid-template-rows,opacity] duration-300 ${
-                    isActive
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="px-6 pb-6 text-sm leading-7 text-gray-600 md:text-base md:leading-8">
-                      {pilar.description}
-                    </p>
-                  </div>
+                <div className="flex flex-1 flex-col p-3 sm:p-4 md:p-5">
+                  <p className="text-[10px] font-bold uppercase leading-4 text-hijau sm:text-xs">
+                    {subprogram.focus}
+                  </p>
+                  <h3 className="mt-1.5 text-sm font-extrabold leading-tight text-hijau-tua sm:text-base md:mt-2 md:text-xl">
+                    {subprogram.name}
+                  </h3>
+                  <p className="mt-2 line-clamp-3 text-xs leading-5 text-gray-600 sm:line-clamp-4 md:mt-4 md:line-clamp-5 md:text-sm md:leading-7">
+                    {subprogram.shortDescription}
+                  </p>
+
+                  <Link
+                    href={subprogram.href}
+                    className="mt-auto inline-flex items-center gap-1.5 pt-4 text-xs font-bold text-hijau-tua transition-colors hover:text-hijau md:gap-2 md:pt-6 md:text-sm"
+                    aria-label={`Lihat detail subprogram ${subprogram.name}`}
+                  >
+                    Lihat detail
+                    <ArrowRight
+                      size={14}
+                      strokeWidth={2}
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </Link>
                 </div>
               </article>
             );

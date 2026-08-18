@@ -122,7 +122,11 @@ function ProdukCard({ product }: { product: UmkmItem }) {
                   className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-hijau px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hijau-tua focus:outline-none focus:ring-4 focus:ring-hijau/20"
                   aria-label={`Beli ${product.name} melalui WhatsApp`}
                 >
-                  <MessageCircle size={16} strokeWidth={1.8} aria-hidden="true" />
+                  <MessageCircle
+                    size={16}
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                  />
                   Beli via WA
                 </a>
               )}
@@ -158,9 +162,7 @@ export default function ProdukUMKMSection({
     >
       <div className="mx-auto max-w-7xl">
         <header className="text-center">
-          <p className="text-sm font-bold uppercase text-hijau">
-            Ekonomi Warga
-          </p>
+          <p className="text-sm font-bold uppercase text-hijau">Ekonomi</p>
           <h1
             id="produk-umkm-title"
             className="mt-2 font-montserrat text-3xl font-extrabold leading-tight text-hijau-tua md:text-5xl"

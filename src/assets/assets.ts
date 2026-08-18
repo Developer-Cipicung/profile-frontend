@@ -23,6 +23,12 @@ import staff1 from "./perangkat-desa/staff-1.png";
 import staff2 from "./perangkat-desa/staff-2.jpeg";
 import logo_desa from "./logo-desa.png";
 
+//Silih pageuh
+import ts1 from "./tunas sehat/ts1.png";
+import ts2 from "./tunas sehat/ts2.jpeg";
+import ts3 from "./tunas sehat/ts3.jpeg";
+import ts4 from "./tunas sehat/ts4.jpeg";
+
 export const assets = {
   profile,
   desa,
@@ -50,4 +56,11 @@ export const perangkatDesa = {
   kepala_dusun1,
   kepala_dusun2,
   kepala_dusun3,
+};
+
+export const silihPageuh = {
+  ts1,
+  ts2,
+  ts3,
+  ts4,
 };
