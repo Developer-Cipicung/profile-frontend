@@ -32,7 +32,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 01",
     address: "RW 01, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 01.",
-    position: null,
+    position: [-6.668887715, 106.8151061],
   },
   {
     id: "posyandu-anggrek-1",
@@ -41,7 +41,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 02",
     address: "RW 02, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 02.",
-    position: null,
+    position: [-6.66963668, 106.8072717],
   },
   {
     id: "posyandu-anggrek-2",
@@ -50,7 +50,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 02",
     address: "RW 02, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 02.",
-    position: null,
+    position: [-6.672790923, 106.804678],
   },
   {
     id: "posyandu-melati-1",
@@ -59,7 +59,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 03",
     address: "RW 03, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 03.",
-    position: [-6.6791667, 106.7939444],
+    position: [-6.679167, 106.793944],
   },
   {
     id: "posyandu-melati-2",
@@ -77,7 +77,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 04",
     address: "RW 04, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 04.",
-    position: null,
+    position: [-6.6785437, 106.7994166],
   },
   {
     id: "posyandu-flamboyan-2",
@@ -86,7 +86,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 04",
     address: "RW 04, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 04.",
-    position: [-6.6791667, 106.7939444],
+    position: [-6.679167, 106.793944],
   },
   {
     id: "posyandu-mawar-1",
@@ -104,7 +104,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 05",
     address: "RW 05, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 05.",
-    position: [-6.684, 106.7993056],
+    position: [-6.684, 106.799306],
   },
   {
     id: "posyandu-bougenvil",
@@ -122,7 +122,7 @@ export const villageLocations: VillageLocation[] = [
     rw: "RW 06",
     address: "RW 06, Desa Cipicung",
     description: "Layanan posyandu wilayah RW 06.",
-    position: null,
+    position: [-6.673159208, 106.8118704],
   },
   {
     id: "posyandu-aster",
