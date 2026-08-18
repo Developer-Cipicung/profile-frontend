@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { assets } from "@/src/assets/assets";
+import { assets, silihPageuh } from "@/src/assets/assets";
 import {
   BackToSilihPageuh,
   GalleryPanel,
@@ -18,11 +18,43 @@ export const tunasSehatMeta = {
 };
 
 const tunasSehatGallery: SubprogramGalleryItem[] = [
-  { image: null, alt: "Dokumentasi TUNAS SEHAT 1", caption: "" },
-  { image: null, alt: "Dokumentasi TUNAS SEHAT 2", caption: "" },
-  { image: null, alt: "Dokumentasi TUNAS SEHAT 3", caption: "" },
-  { image: null, alt: "Dokumentasi TUNAS SEHAT 4", caption: "" },
-  { image: null, alt: "Dokumentasi TUNAS SEHAT 5", caption: "" },
+  {
+    image: silihPageuh.ts1,
+    alt: "Dokumentasi TUNAS SEHAT 1",
+    caption:
+      "Monitoring kader posyandu menggunakan website pendataan kesehatan Posyandu Mawar 1",
+  },
+  {
+    image: silihPageuh.ts2,
+    alt: "Dokumentasi TUNAS SEHAT 2",
+    caption: "Penyuluhan Pendamping Lansia, Posbindu Lansia, dan P2L",
+  },
+  {
+    image: silihPageuh.ts3,
+    alt: "Dokumentasi TUNAS SEHAT 3",
+    caption: "Penyuluhan Pendamping Lansia, Posbindu Lansia, dan P2L",
+  },
+  {
+    image: silihPageuh.ts4,
+    alt: "Dokumentasi TUNAS SEHAT 4",
+    caption: "Sosialisasi 6 SPM",
+  },
+  {
+    image: silihPageuh.ts5,
+    alt: "Dokumentasi TUNAS SEHAT 5",
+    caption: "Pengenalan website pendataan kesehatan posyandu kepada kader",
+  },
+  {
+    image: silihPageuh.ts6,
+    alt: "Dokumentasi TUNAS SEHAT 6",
+    caption: "Penyuluhan Pendamping Lansia, Posbindu Lansia, dan P2L",
+  },
+  {
+    image: silihPageuh.ts7,
+    alt: "Dokumentasi TUNAS SEHAT 7",
+    caption:
+      "Monitoring kader posyandu menggunakan website pendataan kesehatan Posyandu Cempaka 1",
+  },
 ];
 
 const highlights: HighlightItem[] = [

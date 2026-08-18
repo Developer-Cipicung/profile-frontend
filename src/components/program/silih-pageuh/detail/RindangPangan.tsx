@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { assets } from "@/src/assets/assets";
+import { assets, silihPageuh } from "@/src/assets/assets";
 import {
   BackToSilihPageuh,
   GalleryPanel,
@@ -18,11 +18,33 @@ export const rindangPanganMeta = {
 };
 
 const rindangPanganGallery: SubprogramGalleryItem[] = [
-  { image: null, alt: "Dokumentasi RINDANG PANGAN 1", caption: "" },
-  { image: null, alt: "Dokumentasi RINDANG PANGAN 2", caption: "" },
-  { image: null, alt: "Dokumentasi RINDANG PANGAN 3", caption: "" },
-  { image: null, alt: "Dokumentasi RINDANG PANGAN 4", caption: "" },
-  { image: null, alt: "Dokumentasi RINDANG PANGAN 5", caption: "" },
+  {
+    image: silihPageuh.rp1,
+    alt: "Dokumentasi RINDANG PANGAN 1",
+    caption: "Jahe untuk CiHerb!",
+  },
+  {
+    image: silihPageuh.rp2,
+    alt: "Dokumentasi RINDANG PANGAN 2",
+    caption:
+      "Pembuatan otak-otak ikan nila untuk PMT anak sasaran gizi kurang.",
+  },
+  {
+    image: silihPageuh.rp3,
+    alt: "Dokumentasi RINDANG PANGAN 3",
+    caption:
+      "Pembagian PMT otak-otak ikan nila kepada anak sasaran gizi kurang.",
+  },
+  {
+    image: silihPageuh.rp4,
+    alt: "Dokumentasi RINDANG PANGAN 4",
+    caption: "CiBi Singkong Coklat",
+  },
+  {
+    image: silihPageuh.rp5,
+    alt: "Dokumentasi RINDANG PANGAN 5",
+    caption: "CiBi Ubi Ungu & Ubi Kuning",
+  },
 ];
 
 const highlights: HighlightItem[] = [

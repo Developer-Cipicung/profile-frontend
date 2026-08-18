@@ -18,10 +18,10 @@ export type HighlightItem = {
 };
 
 const subprogramImages: Record<SilihPageuhSubprogramSlug, StaticImageData> = {
-  "akar-desa": silihPageuh.ts1,
-  "rindang-pangan": silihPageuh.ts2,
-  "tunas-sehat": silihPageuh.ts3,
-  "batang-kayu": silihPageuh.ts4,
+  "akar-desa": silihPageuh.ak1,
+  "rindang-pangan": silihPageuh.rp1,
+  "tunas-sehat": silihPageuh.ts1,
+  "batang-kayu": silihPageuh.bk1,
 };
 
 export function BackToSilihPageuh() {

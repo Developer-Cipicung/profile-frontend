@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { assets } from "@/src/assets/assets";
+import { assets, silihPageuh } from "@/src/assets/assets";
 import {
   BackToSilihPageuh,
   GalleryPanel,
@@ -18,11 +18,36 @@ export const batangKayuMeta = {
 };
 
 const batangKayuGallery: SubprogramGalleryItem[] = [
-  { image: null, alt: "Dokumentasi BATANG KAYU 1", caption: "" },
-  { image: null, alt: "Dokumentasi BATANG KAYU 2", caption: "" },
-  { image: null, alt: "Dokumentasi BATANG KAYU 3", caption: "" },
-  { image: null, alt: "Dokumentasi BATANG KAYU 4", caption: "" },
-  { image: null, alt: "Dokumentasi BATANG KAYU 5", caption: "" },
+  {
+    image: silihPageuh.bk1,
+    alt: "Dokumentasi BATANG KAYU 1",
+    caption:
+      "Peningkatan kapasitas kader melalui pelatihan pengukuran antropometri.",
+  },
+  {
+    image: silihPageuh.bk2,
+    alt: "Dokumentasi BATANG KAYU 2",
+    caption:
+      "Peningkatan kapasitas kader melalui pelatihan pengukuran antropometri.",
+  },
+  {
+    image: silihPageuh.bk3,
+    alt: "Dokumentasi BATANG KAYU 3",
+    caption:
+      "Koordinasi dengan kader di awal program untuk membentuk Komunitas Silih Asuh.",
+  },
+  {
+    image: silihPageuh.bk4,
+    alt: "Dokumentasi BATANG KAYU 4",
+    caption:
+      "Penyuluhan ibu dan anak untuk meningkatkan pemahaman pola makan beragam, seimbang, dan praktik pengasuhan anak.",
+  },
+  {
+    image: silihPageuh.bk5,
+    alt: "Dokumentasi BATANG KAYU 5",
+    caption:
+      "Peningkatan kapasitas kader melalui pelatihan pengukuran antropometri.",
+  },
 ];
 
 const highlights: HighlightItem[] = [

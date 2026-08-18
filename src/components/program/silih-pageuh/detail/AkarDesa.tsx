@@ -10,6 +10,7 @@ import {
   type HighlightItem,
 } from "@/src/components/program/silih-pageuh/detail/SubprogramDetailParts";
 import type { SubprogramGalleryItem } from "@/src/components/program/silih-pageuh/ProgramGalleryCarousel";
+import { silihPageuh } from "@/src/assets/assets";
 
 export const akarDesaMeta = {
   title: "AKAR DESA | Silih Pageuh",
@@ -18,11 +19,41 @@ export const akarDesaMeta = {
 };
 
 const akarDesaGallery: SubprogramGalleryItem[] = [
-  { image: null, alt: "Dokumentasi AKAR DESA 1", caption: "" },
-  { image: null, alt: "Dokumentasi AKAR DESA 2", caption: "" },
-  { image: null, alt: "Dokumentasi AKAR DESA 3", caption: "" },
-  { image: null, alt: "Dokumentasi AKAR DESA 4", caption: "" },
-  { image: null, alt: "Dokumentasi AKAR DESA 5", caption: "" },
+  {
+    image: silihPageuh.ak1,
+    alt: "Dokumentasi AKAR DESA 1",
+    caption: "Sosialisasi Bottle Press SDN04 Cipicung",
+  },
+  {
+    image: silihPageuh.ak2,
+    alt: "Dokumentasi AKAR DESA 2",
+    caption: "Penggalian Lubang Biopori",
+  },
+  {
+    image: silihPageuh.ak3,
+    alt: "Dokumentasi AKAR DESA 3",
+    caption: "Pemasangan Pos Pandai",
+  },
+  {
+    image: silihPageuh.ak4,
+    alt: "Dokumentasi AKAR DESA 4",
+    caption: "Sosialiasasi Bottle Press SDN01 Cipicung",
+  },
+  {
+    image: silihPageuh.ak5,
+    alt: "Dokumentasi AKAR DESA 5",
+    caption: "Sosialiasasi Bottle Press SDN02 Cipicung",
+  },
+  {
+    image: silihPageuh.ak6,
+    alt: "Dokumentasi AKAR DESA 2",
+    caption: "Penggalian Lubang Biopori",
+  },
+  {
+    image: silihPageuh.ak7,
+    alt: "Dokumentasi AKAR DESA 2",
+    caption: "Sosialiasasi Bottle Press SDN03 Cipicung",
+  },
 ];
 
 const highlights: HighlightItem[] = [
