@@ -41,7 +41,7 @@ export default function RootLayout({
       <body
         className={`${notoSans.variable} ${lakkiReddy.variable} ${montserrat.variable} min-h-full flex flex-col bg-[#f6faf7] antialiased`}
       >
-        <div className="mx-auto flex w-full max-w-[1840px] flex-1 flex-col overflow-hidden bg-white shadow-[0_0_80px_rgba(15,23,42,0.06)]">
+        <div className="mx-auto flex w-full max-w-[1840px] flex-1 flex-col bg-white shadow-[0_0_80px_rgba(15,23,42,0.06)]">
           <Navbar />
           {children}
 

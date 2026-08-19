@@ -44,6 +44,11 @@ const Navbar = () => {
       ? pathname === href
       : pathname === href || pathname.startsWith(`${href}/`);
 
+  const getActiveChildHref = (children: NonNullable<NavItem["children"]>) =>
+    children
+      .filter((child) => isActive(child.href))
+      .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+
   const closeMobileMenu = () => {
     setIsOpen(false);
     setOpenDropdown(null);
@@ -79,9 +84,8 @@ const Navbar = () => {
         <div className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => {
             if (item.children) {
-              const active = item.children.some((child) =>
-                isActive(child.href),
-              );
+              const activeChildHref = getActiveChildHref(item.children);
+              const active = Boolean(activeChildHref);
               const isDropdownOpen = openDropdown === item.label;
 
               return (
@@ -128,9 +132,14 @@ const Navbar = () => {
                         key={child.href}
                         href={child.href}
                         role="menuitem"
+                        aria-current={
+                          activeChildHref === child.href ? "page" : undefined
+                        }
                         onClick={() => setOpenDropdown(null)}
                         className={`block rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors hover:bg-hijau-muda/30 ${
-                          isActive(child.href) ? "bg-hijau-muda/20" : ""
+                          activeChildHref === child.href
+                            ? "bg-hijau-muda/20"
+                            : ""
                         }`}
                       >
                         {child.label}
@@ -202,6 +211,7 @@ const Navbar = () => {
         <div className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:px-6">
           {navItems.map((item) => {
             if (item.children) {
+              const activeChildHref = getActiveChildHref(item.children);
               const isDropdownOpen = openDropdown === item.label;
 
               return (
@@ -238,9 +248,14 @@ const Navbar = () => {
                           <Link
                             key={child.href}
                             href={child.href}
+                            aria-current={
+                              activeChildHref === child.href
+                                ? "page"
+                                : undefined
+                            }
                             onClick={closeMobileMenu}
                             className={`block rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
-                              isActive(child.href)
+                              activeChildHref === child.href
                                 ? "bg-white/10 text-white"
                                 : "text-white/75 hover:bg-white/10 hover:text-white"
                             }`}
