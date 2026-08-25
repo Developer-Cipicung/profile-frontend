@@ -3,7 +3,9 @@ export type VillageLocationCategory =
   | "Posyandu"
   | "Fasilitas Umum"
   | "Pendidikan"
-  | "Kesehatan";
+  | "Sumber Daya"
+  | "Bottle Press"
+  | "Biopori";
 
 export type VillageLocation = {
   id: string;
@@ -13,6 +15,10 @@ export type VillageLocation = {
   address: string;
   description?: string;
   position: [number, number] | null;
+};
+
+export type MappedVillageLocation = VillageLocation & {
+  position: [number, number];
 };
 
 export const villageLocations: VillageLocation[] = [
@@ -136,7 +142,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "kandang-budidaya-ayam-petelur",
     name: "Kandang Budidaya Ayam Petelur",
-    category: "Fasilitas Umum",
+    category: "Sumber Daya",
     address: "Desa Cipicung",
     description: "Lokasi kandang budidaya ayam petelur.",
     position: [-6.675669, 106.814155],
@@ -144,7 +150,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "kolam-budidaya-ikan-nila",
     name: "Kolam Budidaya Ikan Nila",
-    category: "Fasilitas Umum",
+    category: "Sumber Daya",
     address: "Desa Cipicung",
     description: "Lokasi kolam budidaya ikan nila.",
     position: [-6.684974, 106.801376],
@@ -152,7 +158,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "lahan-budidaya-ubi-jahe-kunyit",
     name: "Lahan Budidaya Ubi, Jahe dan Kunyit",
-    category: "Fasilitas Umum",
+    category: "Sumber Daya",
     address: "Desa Cipicung",
     description: "Lokasi lahan budidaya ubi, jahe dan kunyit.",
     position: [-6.6766368, 106.813448],
@@ -160,7 +166,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "biopori-kebun-pak-sigit",
     name: "Biopori Kebun Pak Sigit (Biopori 1)",
-    category: "Fasilitas Umum",
+    category: "Biopori",
     address: "Desa Cipicung",
     description: "Lokasi biopori kebun Pak Sigit.",
     position: [-6.662233, 106.812938],
@@ -168,7 +174,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "biopori-kebun-pak-h-ijudin",
     name: "Biopori Kebun Pak H. Ijudin (Biopori 2)",
-    category: "Fasilitas Umum",
+    category: "Biopori",
     address: "Desa Cipicung",
     description: "Lokasi biopori kebun Pak H. Ijudin.",
     position: [-6.682283, 106.804361],
@@ -176,7 +182,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "biopori-kebun-kel-h-taufik",
     name: "Biopori Kebun Kel. H. Taufik (Biopori 3)",
-    category: "Fasilitas Umum",
+    category: "Biopori",
     address: "Desa Cipicung",
     description: "Lokasi biopori kebun Kel. H. Taufik.",
     position: [-6.682646, 106.806129],
@@ -184,7 +190,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "rumah-produksi-teras-cipicung",
     name: "Rumah Produksi Teras Cipicung",
-    category: "Fasilitas Umum",
+    category: "Sumber Daya",
     address: "Desa Cipicung",
     description: "Lokasi rumah produksi Teras Cipicung.",
     position: [-6.683735, 106.802629],
@@ -192,7 +198,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "bottle-press-sdn-01",
     name: "Bottle Press SDN 01",
-    category: "Fasilitas Umum",
+    category: "Bottle Press",
     address: "SDN 01, Desa Cipicung",
     description: "Lokasi bottle press SDN 01.",
     position: [-6.669711, 106.806623],
@@ -200,7 +206,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "bottle-press-sdn-02",
     name: "Bottle Press SDN 02",
-    category: "Fasilitas Umum",
+    category: "Bottle Press",
     address: "SDN 02, Desa Cipicung",
     description: "Lokasi bottle press SDN 02.",
     position: [-6.682788, 106.789967],
@@ -208,7 +214,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "bottle-press-sdn-03",
     name: "Bottle Press SDN 03",
-    category: "Fasilitas Umum",
+    category: "Bottle Press",
     address: "SDN 03, Desa Cipicung",
     description: "Lokasi bottle press SDN 03.",
     position: [-6.678687, 106.800188],
@@ -216,7 +222,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "bottle-press-sdn-04",
     name: "Bottle Press SDN 04",
-    category: "Fasilitas Umum",
+    category: "Bottle Press",
     address: "SDN 04, Desa Cipicung",
     description: "Lokasi bottle press SDN 04.",
     position: [-6.668516, 106.815087],
@@ -224,7 +230,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "bottle-press-sdn-05",
     name: "Bottle Press SDN 05",
-    category: "Fasilitas Umum",
+    category: "Bottle Press",
     address: "SDN 05, Desa Cipicung",
     description: "Lokasi bottle press SDN 05.",
     position: [-6.662315, 106.809522],
@@ -232,7 +238,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "bottle-press-sdn-cipaok",
     name: "Bottle Press SDN Cipaok",
-    category: "Fasilitas Umum",
+    category: "Bottle Press",
     address: "SDN Cipaok, Desa Cipicung",
     description: "Lokasi bottle press SDN Cipaok.",
     position: [-6.688145, 106.799262],
@@ -240,7 +246,7 @@ export const villageLocations: VillageLocation[] = [
   {
     id: "bottle-press-mts-maarif-nu",
     name: "Bottle Press MTs Maarif NU",
-    category: "Fasilitas Umum",
+    category: "Bottle Press",
     address: "MTs Maarif NU, Desa Cipicung",
     description: "Lokasi bottle press MTs Maarif NU.",
     position: [-6.662306, 106.811998],
@@ -264,6 +270,5 @@ export const villageLocations: VillageLocation[] = [
 ];
 
 export const mappedVillageLocations = villageLocations.filter(
-  (location): location is VillageLocation & { position: [number, number] } =>
-    location.position !== null,
+  (location): location is MappedVillageLocation => location.position !== null,
 );

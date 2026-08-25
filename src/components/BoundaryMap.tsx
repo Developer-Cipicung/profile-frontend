@@ -13,12 +13,15 @@ import L from "leaflet";
 import type { FeatureCollection } from "geojson";
 import {
   mappedVillageLocations,
+  type MappedVillageLocation,
   type VillageLocation,
 } from "@/src/data/villageLocations";
 
-type BoundaryMapProps = {
+export type BoundaryMapProps = {
   className?: string;
   showTitle?: boolean;
+  locations?: MappedVillageLocation[];
+  focusLocationId?: string | null;
 };
 
 const kantorDesaLocation = mappedVillageLocations.find(
@@ -101,8 +104,8 @@ const bioporiIcon = createLocationIcon({
   color: "white",
 });
 
-const budidayaIcon = createLocationIcon({
-  label: "BD",
+const sumberDayaIcon = createLocationIcon({
+  label: "SD",
   background: "#E8B921",
   color: "#2F2A0A",
 });
@@ -137,25 +140,7 @@ const educationIcon = createLocationIcon({
   color: "white",
 });
 
-const healthIcon = createLocationIcon({
-  label: "H",
-  background: "#DC2626",
-  color: "white",
-});
-
 const locationTypeMatchers = [
-  {
-    pattern: /bottle-press/,
-    icon: bottlePressIcon,
-  },
-  {
-    pattern: /biopori/,
-    icon: bioporiIcon,
-  },
-  {
-    pattern: /budidaya|lahan/,
-    icon: budidayaIcon,
-  },
   {
     pattern: /rumah-produksi/,
     icon: produksiIcon,
@@ -173,8 +158,10 @@ const locationTypeMatchers = [
 function getLocationIcon(location: VillageLocation) {
   if (location.category === "Kantor Desa") return kantorDesaIcon;
   if (location.category === "Posyandu") return posyanduIcon;
+  if (location.category === "Bottle Press") return bottlePressIcon;
+  if (location.category === "Biopori") return bioporiIcon;
+  if (location.category === "Sumber Daya") return sumberDayaIcon;
   if (location.category === "Pendidikan") return educationIcon;
-  if (location.category === "Kesehatan") return healthIcon;
 
   const locationMatch = locationTypeMatchers.find(({ pattern }) =>
     pattern.test(location.id),
@@ -198,13 +185,67 @@ function LimitToBoundary({ data }: { data: FeatureCollection }) {
   return null;
 }
 
+function SyncMapView({
+  locations,
+  focusLocationId,
+}: {
+  locations: MappedVillageLocation[];
+  focusLocationId?: string | null;
+}) {
+  const map = useMap();
+
+  useEffect(() => {
+    const focusedLocation = focusLocationId
+      ? locations.find((location) => location.id === focusLocationId)
+      : null;
+
+    if (focusedLocation) {
+      map.flyTo(focusedLocation.position, 17, {
+        duration: 0.45,
+      });
+      return;
+    }
+
+    if (locations.length === 1) {
+      map.flyTo(locations[0].position, 17, {
+        duration: 0.45,
+      });
+      return;
+    }
+
+    if (
+      locations.length > 1 &&
+      locations.length < mappedVillageLocations.length
+    ) {
+      const bounds = L.latLngBounds(
+        locations.map((location) => location.position),
+      );
+
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, {
+          padding: [44, 44],
+          maxZoom: 16,
+        });
+      }
+      return;
+    }
+
+    map.setView(kantorDesaPosition, 15);
+  }, [focusLocationId, locations, map]);
+
+  return null;
+}
+
 export default function BoundaryMap({
   className,
   showTitle = false,
+  locations,
+  focusLocationId,
 }: BoundaryMapProps) {
   const [boundaryData, setBoundaryData] = useState<FeatureCollection | null>(
     null,
   );
+  const visibleLocations = locations ?? mappedVillageLocations;
 
   useEffect(() => {
     let isMounted = true;
@@ -283,7 +324,12 @@ export default function BoundaryMap({
             </>
           ) : null}
 
-          {mappedVillageLocations.map((location) => (
+          <SyncMapView
+            locations={visibleLocations}
+            focusLocationId={focusLocationId}
+          />
+
+          {visibleLocations.map((location) => (
             <Marker
               key={location.id}
               position={location.position}
