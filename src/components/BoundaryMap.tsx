@@ -26,111 +26,164 @@ const kantorDesaLocation = mappedVillageLocations.find(
 );
 const kantorDesaPosition = kantorDesaLocation?.position ?? [-6.6786, 106.7989];
 
-const kantorDesaIcon = L.divIcon({
-  className: "",
-  html: `
-    <div style="
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    ">
+type LocationIconVariant = {
+  label: string;
+  background: string;
+  color: string;
+  borderColor?: string;
+  radius?: string;
+  rotate?: boolean;
+};
+
+const createLocationIcon = ({
+  label,
+  background,
+  color,
+  borderColor = "white",
+  radius = "9999px",
+  rotate = false,
+}: LocationIconVariant) =>
+  L.divIcon({
+    className: "",
+    html: `
       <div style="
-        width: 52px;
-        height: 52px;
-        background: linear-gradient(135deg, #165E33, #36C56F);
-        border: 4px solid white;
-        border-radius: 18px;
-        box-shadow: 0 12px 28px rgba(22, 94, 51, 0.35);
+        width: 30px;
+        height: 30px;
+        background: ${background};
+        border: 2px solid ${borderColor};
+        border-radius: ${radius};
+        box-shadow: 0 6px 14px rgba(0,0,0,0.2);
         display: flex;
         align-items: center;
         justify-content: center;
-        transform: rotate(45deg);
+        transform: ${rotate ? "rotate(45deg)" : "none"};
       ">
         <span style="
-          transform: rotate(-45deg);
-          color: white;
-          font-size: 18px;
+          transform: ${rotate ? "rotate(-45deg)" : "none"};
+          color: ${color};
+          font-size: ${label.length > 1 ? "9px" : "14px"};
           font-weight: 900;
+          line-height: 1;
           letter-spacing: 0;
         ">
-          K
+          ${label}
         </span>
       </div>
+    `,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+    popupAnchor: [0, -15],
+  });
 
-      <div style="
-        margin-top: 8px;
-        background: white;
-        color: #165E33;
-        border: 1px solid rgba(22, 94, 51, 0.15);
-        border-radius: 9999px;
-        padding: 4px 10px;
-        font-size: 11px;
-        font-weight: 700;
-        white-space: nowrap;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-      ">
-        Kantor Desa
-      </div>
-    </div>
-  `,
-  iconSize: [110, 82],
-  iconAnchor: [55, 54],
-  popupAnchor: [0, -54],
+const kantorDesaIcon = createLocationIcon({
+  label: "K",
+  background: "#165E33",
+  color: "white",
+  radius: "9px",
+  rotate: true,
 });
 
-const posyanduIcon = L.divIcon({
-  className: "",
-  html: `
-    <div style="
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    ">
-      <div style="
-        width: 44px;
-        height: 44px;
-        background: linear-gradient(135deg, #E8B921, #83FFBB);
-        border: 3px solid white;
-        border-radius: 9999px;
-        box-shadow: 0 10px 24px rgba(0,0,0,0.22);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #165E33;
-        font-size: 22px;
-        font-weight: 800;
-      ">
-        +
-      </div>
-
-      <div style="
-        margin-top: 5px;
-        background: white;
-        color: #165E33;
-        border-radius: 9999px;
-        padding: 3px 8px;
-        font-size: 10px;
-        font-weight: 700;
-        white-space: nowrap;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-      ">
-        Posyandu
-      </div>
-    </div>
-  `,
-  iconSize: [90, 68],
-  iconAnchor: [45, 44],
-  popupAnchor: [0, -44],
+const posyanduIcon = createLocationIcon({
+  label: "+",
+  background: "#36C56F",
+  color: "#124629",
 });
+
+const bottlePressIcon = createLocationIcon({
+  label: "BP",
+  background: "#2F80ED",
+  color: "white",
+});
+
+const bioporiIcon = createLocationIcon({
+  label: "BI",
+  background: "#0F766E",
+  color: "white",
+});
+
+const budidayaIcon = createLocationIcon({
+  label: "BD",
+  background: "#E8B921",
+  color: "#2F2A0A",
+});
+
+const produksiIcon = createLocationIcon({
+  label: "RP",
+  background: "#7C3AED",
+  color: "white",
+});
+
+const posPandaiIcon = createLocationIcon({
+  label: "PP",
+  background: "#F97316",
+  color: "white",
+});
+
+const pengepulIcon = createLocationIcon({
+  label: "PS",
+  background: "#475569",
+  color: "white",
+});
+
+const fasilitasUmumIcon = createLocationIcon({
+  label: "L",
+  background: "#64748B",
+  color: "white",
+});
+
+const educationIcon = createLocationIcon({
+  label: "S",
+  background: "#2563EB",
+  color: "white",
+});
+
+const healthIcon = createLocationIcon({
+  label: "H",
+  background: "#DC2626",
+  color: "white",
+});
+
+const locationTypeMatchers = [
+  {
+    pattern: /bottle-press/,
+    icon: bottlePressIcon,
+  },
+  {
+    pattern: /biopori/,
+    icon: bioporiIcon,
+  },
+  {
+    pattern: /budidaya|lahan/,
+    icon: budidayaIcon,
+  },
+  {
+    pattern: /rumah-produksi/,
+    icon: produksiIcon,
+  },
+  {
+    pattern: /pos-pandai/,
+    icon: posPandaiIcon,
+  },
+  {
+    pattern: /pengepul-sampah/,
+    icon: pengepulIcon,
+  },
+];
 
 function getLocationIcon(location: VillageLocation) {
   if (location.category === "Kantor Desa") return kantorDesaIcon;
   if (location.category === "Posyandu") return posyanduIcon;
+  if (location.category === "Pendidikan") return educationIcon;
+  if (location.category === "Kesehatan") return healthIcon;
 
-  return posyanduIcon;
+  const locationMatch = locationTypeMatchers.find(({ pattern }) =>
+    pattern.test(location.id),
+  );
+
+  return locationMatch?.icon ?? fasilitasUmumIcon;
 }
 
-function FitToBoundary({ data }: { data: FeatureCollection }) {
+function LimitToBoundary({ data }: { data: FeatureCollection }) {
   const map = useMap();
 
   useEffect(() => {
@@ -138,9 +191,6 @@ function FitToBoundary({ data }: { data: FeatureCollection }) {
     const bounds = layer.getBounds();
 
     if (bounds.isValid()) {
-      map.fitBounds(bounds, {
-        padding: [28, 28],
-      });
       map.setMaxBounds(bounds.pad(0.35));
     }
   }, [data, map]);
@@ -198,8 +248,8 @@ export default function BoundaryMap({
       <div className="cipicung-boundary-map relative z-0 h-[340px] w-full overflow-hidden rounded-lg border border-emerald-100 bg-white shadow-[0_18px_42px_rgba(22,94,51,0.1)] md:h-[470px]">
         <MapContainer
           center={kantorDesaPosition}
-          zoom={14}
-          minZoom={13}
+          zoom={15}
+          minZoom={14}
           maxZoom={18}
           scrollWheelZoom={false}
           attributionControl={false}
@@ -211,7 +261,7 @@ export default function BoundaryMap({
 
           {boundaryData ? (
             <>
-              <FitToBoundary data={boundaryData} />
+              <LimitToBoundary data={boundaryData} />
 
               <GeoJSON
                 data={boundaryData}
