@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Home, MessageCircle, Package, Tag } from "lucide-react";
 import ApiImage from "@/src/components/common/ApiImage";
 import { fallbackUmkm } from "@/src/data/umkmFallback";
+import { createMetaDescription, createSeoMetadata } from "@/src/lib/seo";
 import {
   getUmkmById,
   getUmkmList,
@@ -12,6 +13,36 @@ import {
 type UmkmDetailPageProps = {
   params: Promise<{ id: string }>;
 };
+
+function getUmkmPath(product: Pick<UmkmItem, "id" | "slug">) {
+  return `/umkm/${encodeURIComponent(product.slug ?? product.id)}`;
+}
+
+export async function generateMetadata({ params }: UmkmDetailPageProps) {
+  const { id } = await params;
+  let product = fallbackUmkm.find((item) => item.id === id || item.slug === id);
+
+  try {
+    product = await getUmkmById(id);
+  } catch {
+    // Keep metadata generation resilient when the public API is unavailable.
+  }
+
+  if (!product) {
+    return createSeoMetadata({
+      title: "Produk UMKM",
+      description:
+        "Dukung produk lokal warga Desa Cipicung melalui Shopee atau kontak WhatsApp pelaku UMKM.",
+      path: `/umkm/${encodeURIComponent(id)}`,
+    });
+  }
+
+  return createSeoMetadata({
+    title: product.name,
+    description: createMetaDescription(product.description),
+    path: getUmkmPath(product),
+  });
+}
 
 function formatRupiah(value: number) {
   return new Intl.NumberFormat("id-ID", {

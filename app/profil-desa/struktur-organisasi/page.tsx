@@ -1,6 +1,14 @@
 import Image from "next/image";
 import PerangkatDesaSection from "@/src/components/PerangkatDesaSection";
 import { assets } from "@/src/assets/assets";
+import { createSeoMetadata } from "@/src/lib/seo";
+
+export const metadata = createSeoMetadata({
+  title: "Struktur Organisasi Desa",
+  description:
+    "Susunan organisasi pemerintahan Desa Cipicung, Kecamatan Cijeruk, Kabupaten Bogor.",
+  path: "/profil-desa/struktur-organisasi",
+});
 
 export default function StrukturOrganisasiPage() {
   return (

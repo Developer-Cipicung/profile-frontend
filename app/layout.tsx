@@ -4,6 +4,12 @@ import "./globals.css";
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import {
+  shortSiteName,
+  siteDescription,
+  siteName,
+  siteUrl,
+} from "@/src/lib/seo";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -27,8 +33,40 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Website Desa Cipicung",
-  description: "Website resmi Desa Cipicung",
+  metadataBase: siteUrl,
+  applicationName: siteName,
+  title: {
+    default: siteName,
+    template: `%s | ${shortSiteName}`,
+  },
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteName,
+    description: siteDescription,
+    url: "/",
+    siteName: shortSiteName,
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: siteName,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

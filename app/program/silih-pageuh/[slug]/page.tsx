@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import { notFound } from "next/navigation";
+import { createSeoMetadata } from "@/src/lib/seo";
 import AkarDesa, {
   akarDesaMeta,
 } from "@/src/components/program/silih-pageuh/detail/AkarDesa";
@@ -55,12 +56,16 @@ export async function generateMetadata({ params }: SubprogramPageProps) {
   const detailPage = detailPages[slug as keyof typeof detailPages];
 
   if (!detailPage) {
-    return {
+    return createSeoMetadata({
       title: "Subprogram Silih Pageuh",
-    };
+      path: "/program/silih-pageuh",
+    });
   }
 
-  return detailPage.metadata;
+  return createSeoMetadata({
+    ...detailPage.metadata,
+    path: `/program/silih-pageuh/${slug}`,
+  });
 }
 
 export default async function SilihPageuhSubprogramPage({

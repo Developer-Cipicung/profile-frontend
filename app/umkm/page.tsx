@@ -1,6 +1,14 @@
 import ProdukUMKMSection from "@/src/components/produk-lokal/ProdukUMKM";
 import { fallbackUmkm } from "@/src/data/umkmFallback";
+import { createSeoMetadata } from "@/src/lib/seo";
 import { getUmkmList } from "@/src/services/umkmService";
+
+export const metadata = createSeoMetadata({
+  title: "Produk UMKM",
+  description:
+    "Dukung produk lokal warga Desa Cipicung melalui Shopee atau kontak WhatsApp pelaku UMKM.",
+  path: "/umkm",
+});
 
 export default async function UmkmPage() {
   let products = fallbackUmkm;

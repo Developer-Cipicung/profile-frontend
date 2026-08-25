@@ -9,6 +9,14 @@ import BeritaDesaSection from "@/src/components/Berita";
 import BeritaDesaSkeleton from "@/src/components/BeritaDesaSkeleton";
 import ProdukLokalSection from "@/src/components/ProdukLokal";
 import ProdukLokalSkeleton from "@/src/components/ProdukLokalSkeleton";
+import { createSeoMetadata, siteDescription, siteName } from "@/src/lib/seo";
+
+export const metadata = createSeoMetadata({
+  title: siteName,
+  absoluteTitle: true,
+  description: siteDescription,
+  path: "/",
+});
 
 export default function Home() {
   return (

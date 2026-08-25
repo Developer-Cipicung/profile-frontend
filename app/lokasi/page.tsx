@@ -1,5 +1,13 @@
 import LokasiPentingSection from "@/src/components/lokasi/LokasiPenting";
 import MapClient from "@/src/components/MapClient";
+import { createSeoMetadata } from "@/src/lib/seo";
+
+export const metadata = createSeoMetadata({
+  title: "Lokasi Penting Desa",
+  description:
+    "Temukan fasilitas, layanan, dan lokasi strategis di Desa Cipicung.",
+  path: "/lokasi",
+});
 
 export default function LokasiPage() {
   return (

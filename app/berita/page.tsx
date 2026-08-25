@@ -1,7 +1,15 @@
 import BeritaHeroSection from "@/src/components/berita/BeritaHero";
 import BeritaListSection from "@/src/components/berita/BeritaList";
 import { fallbackNews } from "@/src/data/newsFallback";
+import { createSeoMetadata } from "@/src/lib/seo";
 import { getNewsList } from "@/src/services/newsService";
+
+export const metadata = createSeoMetadata({
+  title: "Berita Desa",
+  description:
+    "Informasi terkini kegiatan, pengumuman, dan agenda Desa Cipicung.",
+  path: "/berita",
+});
 
 export default async function BeritaPage() {
   let news = fallbackNews;

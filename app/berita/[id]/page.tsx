@@ -6,6 +6,7 @@ import ApiImage from "@/src/components/common/ApiImage";
 import ShareButtons from "@/src/components/berita/ShareButtons";
 import { fallbackNews } from "@/src/data/newsFallback";
 import { containsHtml, formatNewsDate, getNewsDate } from "@/src/lib/news";
+import { createMetaDescription, createSeoMetadata } from "@/src/lib/seo";
 import {
   getNewsById,
   getNewsList,
@@ -15,6 +16,36 @@ import {
 type BeritaDetailPageProps = {
   params: Promise<{ id: string }>;
 };
+
+function getNewsPath(news: Pick<NewsItem, "id" | "slug">) {
+  return `/berita/${encodeURIComponent(news.slug ?? news.id)}`;
+}
+
+export async function generateMetadata({ params }: BeritaDetailPageProps) {
+  const { id } = await params;
+  let news = fallbackNews.find((item) => item.id === id || item.slug === id);
+
+  try {
+    news = await getNewsById(id);
+  } catch {
+    // Keep metadata generation resilient when the public API is unavailable.
+  }
+
+  if (!news) {
+    return createSeoMetadata({
+      title: "Berita Desa",
+      description:
+        "Informasi terkini kegiatan, pengumuman, dan agenda Desa Cipicung.",
+      path: `/berita/${encodeURIComponent(id)}`,
+    });
+  }
+
+  return createSeoMetadata({
+    title: news.title,
+    description: createMetaDescription(news.excerpt || news.content),
+    path: getNewsPath(news),
+  });
+}
 
 // ---------------------------------------------------------------------------
 // Sidebar card – compact horizontal thumbnail + text
