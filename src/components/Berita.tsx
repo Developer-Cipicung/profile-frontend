@@ -3,7 +3,7 @@ import { ArrowRight, Eye } from "lucide-react";
 import { CalendarDays } from "lucide-react";
 import ApiImage from "@/src/components/common/ApiImage";
 import { getNewsPreview, type NewsItem } from "@/src/services/newsService";
-import { formatNewsDate, getNewsDate } from "@/src/lib/news";
+import { formatNewsDate, getNewsDate, stripHtml } from "@/src/lib/news";
 
 // ---------------------------------------------------------------------------
 // Configuration
@@ -21,7 +21,7 @@ function BeritaCard({ berita }: { berita: NewsItem }) {
   const formattedDate = rawDate ? formatNewsDate(rawDate) : null;
   const isoDate = rawDate || undefined;
   const excerpt =
-    berita.excerpt?.trim() ||
+    stripHtml(berita.excerpt?.trim() ?? "") ||
     "Informasi selengkapnya tersedia pada halaman berita.";
 
   return (

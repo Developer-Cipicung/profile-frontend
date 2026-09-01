@@ -19,11 +19,15 @@ export default function ApiImage({
     () => getImageUrl(imagePath) ?? assets.desa,
   );
 
+  const isExternalUrl =
+    typeof src === "string" && /^https?:\/\//i.test(src);
+
   return (
     <Image
       {...imageProps}
       src={src}
       alt={alt}
+      unoptimized={isExternalUrl}
       onError={(event) => {
         setSrc(assets.desa);
         onError?.(event);

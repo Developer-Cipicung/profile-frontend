@@ -20,6 +20,19 @@ export function formatNewsDate(value: string) {
   }).format(date);
 }
 
+export function stripHtml(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, " ")       // remove all HTML tags
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#039;/gi, "'")
+    .replace(/\s+/g, " ")           // collapse multiple spaces
+    .trim();
+}
+
 export function containsHtml(value: string) {
   return /<\/?[a-z][\s\S]*>/i.test(value);
 }

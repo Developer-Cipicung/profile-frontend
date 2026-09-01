@@ -113,22 +113,36 @@ function NewsContent({ content }: { content: string }) {
         "li",
         "h2",
         "h3",
+        "h4",
         "a",
+        "img",
       ],
       allowedAttributes: {
         a: ["href", "title", "rel"],
+        img: ["src", "alt", "width", "height", "class"],
       },
       allowedSchemes: ["http", "https", "mailto"],
       transformTags: {
         a: sanitizeHtml.simpleTransform("a", {
           rel: "noopener noreferrer",
         }),
+        img: (tagName, attribs) => ({
+          tagName,
+          attribs: {
+            ...attribs,
+            // Force https to prevent Next.js private-IP errors
+            src: (attribs.src ?? "").replace(/^http:\/\//i, "https://"),
+            alt: attribs.alt ?? "",
+            class:
+              "my-4 max-w-full rounded-lg shadow-sm mx-auto block",
+          },
+        }),
       },
     });
 
     return (
       <div
-        className="space-y-5 text-sm leading-7 text-gray-700 [&_a]:font-medium [&_a]:text-hijau [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-hijau [&_blockquote]:pl-4 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-hijau-tua [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-hijau-tua [&_li]:ml-5 [&_li]:list-disc [&_ol>li]:list-decimal [&_p]:leading-7 md:text-base md:[&_p]:leading-8"
+        className="news-content md:text-base"
         dangerouslySetInnerHTML={{ __html: safeHtml }}
       />
     );

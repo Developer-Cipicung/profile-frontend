@@ -13,6 +13,16 @@ const nextConfig: NextConfig = {
         hostname: "profile-cipicung-api.vercel.app",
         pathname: "/images/**",
       },
+      {
+        protocol: "http",
+        hostname: "profile-cipicung-api.vercel.app",
+        pathname: "/api/v1/images/**",
+      },
+      {
+        protocol: "http",
+        hostname: "profile-cipicung-api.vercel.app",
+        pathname: "/images/**",
+      },
     ],
   },
 };

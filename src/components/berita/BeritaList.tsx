@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import ApiImage from "@/src/components/common/ApiImage";
 import Pagination from "@/src/components/common/Pagination";
-import { formatNewsDate, getNewsDate } from "@/src/lib/news";
+import { formatNewsDate, getNewsDate, stripHtml } from "@/src/lib/news";
 import type { NewsItem } from "@/src/services/newsService";
 
 const ITEMS_PER_PAGE = 6;
@@ -44,7 +44,7 @@ const BeritaCard = ({ berita }: { berita: NewsItem }) => {
           {berita.title}
         </h2>
         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-gray-600">
-          {berita.excerpt ||
+          {stripHtml(berita.excerpt ?? "") ||
             "Informasi selengkapnya tersedia pada halaman berita."}
         </p>
 

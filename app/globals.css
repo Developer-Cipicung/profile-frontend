@@ -56,3 +56,106 @@ body {
 .cipicung-boundary-map .leaflet-control {
   z-index: 1;
 }
+
+/* ── Berita / news body content ─────────────────────────────────────────── */
+@layer utilities {
+  .news-content {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .news-content > * + * {
+    margin-top: 0.75em;
+  }
+
+  .news-content p {
+    margin: 0.5em 0;
+    line-height: 1.8;
+  }
+
+  .news-content h2 {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    color: var(--hijau-tua);
+    margin-top: 1.75em;
+    margin-bottom: 0.4em;
+    line-height: 1.3;
+    border-bottom: 2px solid #d1fae5;
+    padding-bottom: 0.3em;
+  }
+
+  .news-content h3 {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: var(--hijau-tua);
+    margin-top: 1.4em;
+    margin-bottom: 0.3em;
+    line-height: 1.4;
+  }
+
+  .news-content h4 {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: var(--hijau-tua);
+    margin-top: 1.1em;
+    margin-bottom: 0.25em;
+  }
+
+  .news-content ul {
+    list-style-type: disc !important;
+    padding-left: 1.5em;
+    margin: 0.75em 0;
+  }
+
+  .news-content ol {
+    list-style-type: decimal !important;
+    padding-left: 1.5em;
+    margin: 0.75em 0;
+  }
+
+  .news-content li {
+    margin: 0.3em 0;
+    line-height: 1.7;
+  }
+
+  .news-content blockquote {
+    border-left: 4px solid var(--hijau);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    color: var(--ink-muted);
+    font-style: italic;
+    background: #f0fdf4;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .news-content a {
+    color: var(--hijau-tua);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .news-content a:hover {
+    color: var(--hijau);
+  }
+
+  .news-content strong,
+  .news-content b {
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  .news-content em,
+  .news-content i {
+    font-style: italic;
+  }
+
+  .news-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(22, 94, 51, 0.10);
+    margin: 1.25em auto;
+    display: block;
+  }
+}
